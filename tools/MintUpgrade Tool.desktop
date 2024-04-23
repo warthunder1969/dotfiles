@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=MintUpgrade Assistant
+Exec=sudo mintupgrade
+Comment=Upgrade System
+Terminal=true
+Icon=mintupload
+Type=Application
+Name[en_US]=MintUpgrade Tool

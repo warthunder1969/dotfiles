@@ -1,0 +1,121 @@
+#!/bin/bash
+
+# syncall --A script to look for local machines and sync data to them if they are on line.
+# By Joe Collins. (www.ezeelinux.com GNU/General Public License version 2.0)
+
+# Verify that ifconfig is installed:
+
+which ifconfig >/dev/null
+if [ "$?" != "0" ]; then
+    echo "SyncAll Error: The ifconfig utility is not installed!" >&2
+    echo "Ubuntu and Linux Mint: Run 'sudo apt install net-tools'" >&2
+    exit 1
+fi
+
+# Functions.
+
+transfer-status () {
+
+    # Exit script if transfer fails.
+    if [ "$?" != "0" ]; then
+        echo "Syncall Error: A transfer failed! Check network status." >&2
+        exit 1
+    fi
+
+}
+
+transfer () {
+
+# Skip local machine:
+
+    if [ "$LOCALIP" == "$NETIP""$HOSTIP" ]; then
+        echo "...Syncing from $HOSTIP"
+        return
+    fi
+
+# Check for machines and sync if on line:
+
+echo "Checking for $HOSTIP..."
+ping -c 3 "$NETIP""$HOSTIP" >/dev/null 2>&1
+
+    # Checking exit status of ping:
+    if [ "$?" == "0" ]; then
+        echo "...Syncing to Machine $HOSTIP"
+        syncit-script
+        echo "...Machine $HOSTIP Synced!"
+    else
+        echo "...Skipping $HOSTIP! Not on network."
+    fi
+
+}
+
+syncit-script () {
+
+# Rsync commands to sync specified directories:
+
+echo $'\n'$"Syncing bin..."
+rsync -av --delete /home/"$USER"/bin/ "$NETIP""$HOSTIP":bin/
+transfer-status
+
+echo $'\n'$"Syncing Desktop..."
+rsync -av --delete /home/"$USER"/Desktop/ "$NETIP""$HOSTIP":Desktop/
+transfer-status
+
+echo $'\n'$"Syncing Documents..."
+rsync -av --delete /home/"$USER"/Documents/ "$NETIP""$HOSTIP":Documents/
+transfer-status
+
+#echo $'\n'$"Syncing Downloads..."
+#rsync -av --delete /home/"$USER"/Downloads/ "$NETIP""$HOSTIP":Downloads/
+#transfer-status
+
+echo $'\n'$"Syncing Music..."
+rsync -av --delete /home/"$USER"/Music/ "$NETIP""$HOSTIP":Music/
+transfer-status
+
+echo $'\n'$"Syncing Pictures..."
+rsync -av --delete /home/"$USER"/Pictures/ "$NETIP""$HOSTIP":Pictures/
+transfer-status
+
+#echo $'\n'$"Syncing Videos..."
+#rsync -av --delete /home/"$USER"/Videos/ "$NETIP""$HOSTIP":Videos/
+#transfer-status
+
+}
+
+# Execution.
+
+# Tell 'em who we are...
+
+echo "SyncAll -- Syncing up all the machines at once!"
+
+# Set $NETIP:
+
+NETIP=192.168.0.
+
+# Set $LOCALIP variable with ifconfig:
+LOCALIP="$(ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' \
+| grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1')"
+
+# Set HOSTIP variable and run transfer function for each listed machine.:
+
+# big-boy
+HOSTIP=11
+transfer
+
+# teensy
+HOSTIP=12
+transfer
+
+# bones
+HOSTIP=13
+transfer
+
+# wee-woo
+HOSTIP=14
+transfer
+
+echo "--------------------"
+echo "- SyncAll Complete -"
+echo "--------------------"
+exit
