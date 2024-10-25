@@ -1,9 +1,0 @@
-#!/bin/sh
-
-set -e
-
-# Anacron script to defrag / and /home partitions.
-
-exec e4defrag / /home >/dev/null 2>&1
-
-exit

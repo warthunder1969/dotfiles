@@ -1,0 +1,163 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+  "modules": [
+      "break",
+      {
+          "type": "custom",
+          "format": "\u001b[35m┌──────────────────────Hardware──────────────────────┐"
+      },
+
+      {
+          "type": "host",
+            "key": "System",
+            "keyColor": "35",
+            "format": "{2}",
+ },
+        {
+          "type": "cpu",
+          "key": "CPU",
+          "keyColor": "35"
+      },
+      {
+          "type": "gpu",
+          "key": "GPU",
+          "keyColor": "35"
+      },
+      {
+          "type": "memory",
+          "key": "RAM",
+          "keyColor": "35"
+      },
+      {
+          "type": "disk",
+          "key": "Storage",
+          "keyColor": "35",
+      },
+
+      {
+          "type": "custom",
+          "format": "\u001b[35m└────────────────────────────────────────────────────┘"
+      },
+      "break",
+      {
+          "type": "custom",
+          "format": "\u001b[32m┌──────────────────────Software──────────────────────┐"
+      },
+      {
+          "type": "os",
+            "key": "Distro",
+            "keyColor": "32",  // = color1
+      },
+      {
+          "type": "kernel",
+          "key": "Kernel",
+          "keyColor": "32"
+      },
+      {
+          "type": "packages",
+          "key": "Packages",
+          "keyColor": "32"
+      },
+      {
+          "type": "shell",
+          "key": "Shell",
+          "keyColor": "32"
+      },
+
+      {
+          "type": "wm",
+          "key": "WM",
+          "keyColor": "32"
+      },
+ 
+      {
+          "type": "DE",
+          "key": "DE",
+          "keyColor": "32"
+      },
+      {
+          "type": "wmtheme",
+          "key": "Theme",
+          "keyColor": "32"
+      },
+      {
+          "type": "icons",
+          "key": "Icons",
+          "keyColor": "32",
+      },
+      {
+          "type": "cursor",
+          "key": "Cursor",
+          "keyColor": "32", 
+      },
+      {
+          "type": "custom",
+          "format": "\u001b[32m└────────────────────────────────────────────────────┘"
+      },
+      "break",
+      {
+          "type": "custom",
+          "format": "\u001b[34m┌────────────────────Uptime / Age────────────────────┐"
+      },
+
+        {
+            "type": "uptime",
+            "keyColor": "blue"
+        },
+
+        {
+            "type": "command",
+            "shell": "/bin/bash",
+            "key": "Today",
+            "text": "~/.config/fastfetch/date-cur.sh",
+            "keyColor": "blue"
+        },
+
+        {
+            "type": "command",
+            "shell": "/bin/bash",
+            "key": "Install Date",
+            "text": "~/.config/fastfetch/date-bir.sh",
+            "keyColor": "blue"
+        },
+        
+
+      {
+          "type": "command",
+          "key": "Install Age",
+          "keyColor": "blue",
+          "text": "birth_install=$(stat -c %W /); current=$(date +%s); time_progression=$((current - birth_install)); days_difference=$((time_progression / 86400)); echo $days_difference days"
+      },
+
+
+        {
+            "type": "command",
+            "shell": "/bin/bash",
+            "key": "Challenge Length",
+            "text": "~/.config/fastfetch/challenge.sh",
+            "keyColor": "blue"
+        },
+        {
+            "type": "command",
+            "shell": "/bin/bash",
+            "key": "Progress",
+            "text": "~/.config/fastfetch/date-prog.sh",
+            "keyColor": "blue"
+        },
+        {
+            "type": "command",
+            "shell": "/bin/bash",
+            "key": "Difference",
+            "text": "~/.config/fastfetch/date-rem.sh",
+            "keyColor": "blue"
+        },
+
+
+      {
+          "type": "custom",
+          "format": "\u001b[34m└────────────────────────────────────────────────────┘"
+      },
+        "colors",
+      "break"
+  ]
+}

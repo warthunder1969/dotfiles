@@ -1,5 +1,0 @@
-[Desktop Entry]
-Name=Shortcut name
-Exec=xdg-open https://example.com/
-Type=Application
-Icon=applications-internet

@@ -1,0 +1,33 @@
+{
+    "show-notifications": {
+        "type": "switch",
+        "default": false,
+        "description": "Show notifications",
+        "value": false
+    },
+    "show-silent-notifications": {
+        "type": "switch",
+        "default": false,
+        "description": "Silence system notification sound",
+        "value": false
+    },
+    "show-caps-lock-indicator": {
+        "type": "switch",
+        "default": false,
+        "description": "Show caps lock indicator",
+        "value": true
+    },
+    "show-num-lock-indicator": {
+        "type": "switch",
+        "default": false,
+        "description": "Show num lock indicator",
+        "value": true
+    },
+    "show-scr-lock-indicator": {
+        "type": "switch",
+        "default": false,
+        "description": "Show scr lock indicator",
+        "value": true
+    },
+    "__md5__": "0debb2b634c80e1885ada24e39cd6715"
+}
