@@ -13,21 +13,22 @@ read -p "Enter your choice: " choice
 case $choice in
     1)
         echo "You chose Deb Package"
-        sudo apt install curl
-
-        sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
-
-        echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list
+        sudo apt install -y wget apt-transport-https
+‍
+        sudo wget -O /usr/share/keyrings/element-io-archive-keyring.gpg https://packages.element.io/debian/element-io-archive-keyring.gpg
+‍
+        echo "deb [signed-by=/usr/share/keyrings/element-io-archive-keyring.gpg] https://packages.element.io/debian/ default main" | sudo tee /etc/apt/sources.list.d/element-io.list
 
         sudo apt update
-        sudo apt install brave-browser
+
+        sudo apt install element-desktop
         echo "Package Installed"
         ;;
     2)
         echo "You chose Flatpak"
         sudo apt install flatpak
         flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-        flatpak install flathub com.brave.Browser
+        flatpak install flathub im.riot.Riot
         echo "Package Installed"
         ;;
     3)
