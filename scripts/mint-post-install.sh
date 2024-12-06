@@ -18,7 +18,7 @@ echo "************************************"
 echo "Installing Native System Packages"
 echo "************************************"
 
-sudo nala install git nfs-common gparted xsensors cheese bashtop micro xsct flameshot chromium -y
+sudo nala install git gparted xsensors cheese bashtop micro xsct flameshot -y
 
 # Upgrade What's left
 echo "*******************"
@@ -32,7 +32,7 @@ echo "**************************"
 echo "Doing Debloat & Autoremove"
 echo "**************************"
 
-sudo nala remove -y transmission-gtk hypnotix
+sudo nala remove -y transmission-gtk hypnotix gnome-calendar
 sudo nala autoremove -y
 
 # Install Flatpaks & Overrides
@@ -44,8 +44,3 @@ flatpak install -y flathub com.discordapp.Discord com.google.Chrome im.riot.Riot
 
 sudo flatpak override --device=dri
 sudo flatpak override --filesystem=home
-flatpak --user override --filesystem=/home/$USER/.icons/:ro
-flatpak --user override --filesystem=/usr/share/icons/:ro
-
-
-flatpak override --user --env XCURSOR_THEME=$((gsettings get org.cinnamon.desktop.interface cursor-theme) | (sed 's/^.//;s/.$//')) && flatpak override --user --env XCURSOR_SIZE=$(gsettings get org.cinnamon.desktop.interface cursor-size)
