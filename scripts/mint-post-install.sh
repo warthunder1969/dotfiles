@@ -8,17 +8,17 @@ sudo apt-get install nala -y
 sudo nala update
 
 # Multimedia CODECs
-echo "***********************"
-echo "Installing Media Codecs"
-echo "***********************"
-sudo nala install mint-meta-codecs -y
+echo "*********************************"
+echo "Installing Media Codecs and Fonts"
+echo "*********************************"
+sudo nala install mint-meta-codecs ubuntu-restricted-extras ttf-mscorefonts-installer -y
 
 # Install Native System Packages
 echo "************************************"
 echo "Installing Native System Packages"
 echo "************************************"
 
-sudo nala install git gparted xsensors cheese bashtop micro xsct flameshot -y
+sudo nala install git gparted xsensors cheese btop speedtest-cli micro xsct flameshot vlc nextcloud-desktop duf -y
 
 # Upgrade What's left
 echo "*******************"
@@ -40,7 +40,7 @@ echo "*******************"
 echo "Installing Flatpaks"
 echo "*******************"
 
-flatpak install -y flathub com.discordapp.Discord com.google.Chrome im.riot.Riot com.notesnook.Notesnook
+flatpak install -y flathub com.discordapp.Discord com.google.Chrome im.riot.Riot com.notesnook.Notesnook flathub org.localsend.localsend_app
 
 sudo flatpak override --device=dri
 sudo flatpak override --filesystem=home
