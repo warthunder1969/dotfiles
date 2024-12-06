@@ -10,7 +10,7 @@
           "type": "host",
           "key": "System",
            "keyColor": "34",
-            "format": "{5} {1}"
+            "format": "{5} {2}"
       },
 
         {
