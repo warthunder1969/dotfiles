@@ -1,0 +1,11 @@
+headerbar {
+    min-height: 42px;
+}
+
+headerbar button.titlebutton,
+headerbar button.titlebutton image {
+    min-width: 30px;
+    min-height: 30px;
+    -gtk-icon-transform: scale(1.5);
+    background-size: 28px 28px;
+}
