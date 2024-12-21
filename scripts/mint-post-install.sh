@@ -11,14 +11,14 @@ sudo nala update
 echo "*********************************"
 echo "Installing Media Codecs and Fonts"
 echo "*********************************"
-sudo nala install mint-meta-codecs ubuntu-restricted-extras ttf-mscorefonts-installer -y
+sudo nala install mint-meta-codecs ubuntu-restricted-extras -y
 
 # Install Native System Packages
 echo "************************************"
 echo "Installing Native System Packages"
 echo "************************************"
 
-sudo nala install git gparted xsensors cheese btop speedtest-cli micro xsct flameshot vlc nextcloud-desktop duf -y
+sudo nala install git gparted xsensors cheese btop speedtest-cli micro xsct flameshot vlc nextcloud-desktop duf caffeine -y
 
 # Upgrade What's left
 echo "*******************"
