@@ -8,17 +8,17 @@ sudo apt-get install nala -y
 sudo nala update
 
 # Multimedia CODECs
-echo "***********************"
-echo "Installing Media Codecs"
-echo "***********************"
-sudo nala install mint-meta-codecs -y
+echo "*********************************"
+echo "Installing Media Codecs and Fonts"
+echo "*********************************"
+sudo nala install mint-meta-codecs ubuntu-restricted-extras -y
 
 # Install Native System Packages
 echo "************************************"
 echo "Installing Native System Packages"
 echo "************************************"
 
-sudo nala install git nfs-common gparted xsensors cheese bashtop micro xsct flameshot chromium -y
+sudo nala install git gparted xsensors cheese btop speedtest-cli micro xsct flameshot vlc nextcloud-desktop duf caffeine -y
 
 # Upgrade What's left
 echo "*******************"
@@ -32,7 +32,7 @@ echo "**************************"
 echo "Doing Debloat & Autoremove"
 echo "**************************"
 
-sudo nala remove -y transmission-gtk hypnotix
+sudo nala remove -y transmission-gtk hypnotix gnome-calendar
 sudo nala autoremove -y
 
 # Install Flatpaks & Overrides
@@ -40,12 +40,7 @@ echo "*******************"
 echo "Installing Flatpaks"
 echo "*******************"
 
-flatpak install -y flathub com.discordapp.Discord com.google.Chrome im.riot.Riot com.notesnook.Notesnook
+flatpak install -y flathub com.discordapp.Discord com.google.Chrome im.riot.Riot com.notesnook.Notesnook flathub org.localsend.localsend_app
 
 sudo flatpak override --device=dri
 sudo flatpak override --filesystem=home
-flatpak --user override --filesystem=/home/$USER/.icons/:ro
-flatpak --user override --filesystem=/usr/share/icons/:ro
-
-
-flatpak override --user --env XCURSOR_THEME=$((gsettings get org.cinnamon.desktop.interface cursor-theme) | (sed 's/^.//;s/.$//')) && flatpak override --user --env XCURSOR_SIZE=$(gsettings get org.cinnamon.desktop.interface cursor-size)
