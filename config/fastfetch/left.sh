@@ -12,5 +12,6 @@ left=$(( ($(date -d "$end" +%s) - $(date -d "$today" +%s)) / (60*60*24) ))
 
 
 #Main Output
-echo $challenge
+echo $left days
+
 

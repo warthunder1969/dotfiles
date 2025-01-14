@@ -161,55 +161,6 @@
           "format": "\u001b[33m└────────────────────────────────────────────────────┘"
       },
 
-      {
-          "type": "custom",
-          "format": "\u001b[35m┌──────────────────── Challenge ─────────────────────┐"
-      },
-
-      {
-          "type": "command",
-          "key": "Challenge: ",
-          "keyColor": "35",
-          "text": "/home/war/.config/fastfetch/challenge.sh"
-      },
-
-
-      {
-          "type": "command",
-          "key": " ├Start",
-          "keyColor": "35",
-          "text": "/home/war/.config/fastfetch/start.sh"
-      },
-
-
-      {
-          "type": "command",
-          "key": " ├End",
-          "keyColor": "35",
-          "text": "/home/war/.config/fastfetch/end.sh"
-      },
-
-
-      {
-          "type": "command",
-          "key": " ├Progress",
-          "keyColor": "35",
-          "text": "/home/war/.config/fastfetch/prog.sh"
-      },
-
-
-      {
-          "type": "command",
-          "key": " └Left",
-          "keyColor": "35",
-          "text": "/home/war/.config/fastfetch/left.sh"
-      },
-
-      {
-          "type": "custom",
-          "format": "\u001b[35m└────────────────────────────────────────────────────┘"
-      },
-
       "break"
   ]
 }
