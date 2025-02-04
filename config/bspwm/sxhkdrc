@@ -4,7 +4,7 @@ super + b
 super + shift + b
 	firefox-esr -private-window
 
-super + Return
+super + t
 	tilix
 
 # rofi launchers
