@@ -28,7 +28,7 @@ Compatability from my testing I've seen that my scripts currently work on the fo
 3. Now paroose and do with the files as you please. The directory structure is as follows:
    - `config`  - any non-specific configuration files
    - `scripts` - any scripts that I have written that I plan to use. I will eventually include any setup scripts I use on a non-public git repo here once they are of "good" quality or have been tested well enough
-   - `themes`
+   - `themes` - any appearance related items that I might need or use. 
 
 ## Support
 Good Luck :) Provided as-is no warranty. 
