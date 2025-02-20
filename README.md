@@ -22,7 +22,7 @@ Compatability from my testing I've seen that my scripts currently work on the fo
 
 ## Installation
 1. Clone this Repository:
-   `git clone https://github.com/jma1795/dotfiles.git`
+   `git clone https://github.com/warthunder1969/dotfiles.git`
 2. cd into the cloned directory:
    `cd dotfiles`
 3. Now paroose and do with the files as you please. The directory structure is as follows:
