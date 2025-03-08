@@ -160,10 +160,6 @@ CYAN="\\[\\e[1;36m\\]"
 WHITE="\\[\\e[1;37m\\]"
 ENDC="\\[\\e[0m\\]"
 
-#Powerline configuration
-if [ -f /usr/share/powerline/bindings/bash/powerline.sh ]; then
-  powerline-daemon -q
-  POWERLINE_BASH_CONTINUATION=1
-  POWERLINE_BASH_SELECT=1
-  source /usr/share/powerline/bindings/bash/powerline.sh
-fi
+# Set a two-line prompt. If accessing via ssh include 'ssh-session' message.
+if [[ -n "$SSH_CLIENT" ]]; then ssh_message="-ssh_session"; fi
+PS1=" ${GREEN}\u${WHITE}@${YELLOW}\h:${RED}${ssh_message} ${WHITE} ${BLUE}\w ${CYAN}\$${ENDC} "
