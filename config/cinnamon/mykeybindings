@@ -1,0 +1,23 @@
+[/]
+custom-list=['custom0']
+
+[custom-keybindings/custom0]
+binding=['Menu']
+command='flameshot gui'
+name='Flameshot'
+
+[media-keys]
+terminal=['<Primary><Alt>t', '<Super>t']
+
+[wm]
+move-to-workspace-1=['<Shift><Alt>exclam']
+move-to-workspace-2=['<Shift><Alt>at']
+move-to-workspace-3=['<Shift><Alt>numbersign']
+move-to-workspace-4=['<Shift><Alt>dollar']
+switch-to-workspace-1=['<Alt>1']
+switch-to-workspace-2=['<Alt>2']
+switch-to-workspace-3=['<Alt>3']
+switch-to-workspace-4=['<Alt>4']
+switch-to-workspace-left=['<Alt>Left']
+switch-to-workspace-right=['<Alt>Right']
+switch-to-workspace-up=['<Control><Alt>Up', '<Alt>w']
