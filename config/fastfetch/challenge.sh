@@ -1,16 +1,25 @@
-#!/bin/bash
+# See this wiki page for more info:
+# https://github.com/dylanaraps/neofetch/wiki/Customizing-Info
+# Challenge script by TechnoDaft#0647
 
-#Challenge
-today=$(date +%Y-%m-%d)
-challenge_length=30 #this should be the length in days
-challenge=$(echo "$challenge_length days")
-start2=2024-12-03 # should be in YYYY-MM-DD format
-start=$(date -d$(ls -alct / --time-style=full-iso|tail -1|awk '{print $6}') +'%Y-%m-%d')
-end=$(date -d "$start + $challenge_length days" '+%Y-%m-%d')
-progress=$(( ($(date -d "$today" +%s) - $(date -d "$start" +%s)) / (60*60*24) ))
-left=$(( ($(date -d "$end" +%s) - $(date -d "$today" +%s)) / (60*60*24) ))
+# All the Timing information
+let Minute=60
+let Hour=3600
+let Day=86400
+let Week=604800
 
+# Year_days=365.25 days # 4 years (1461 days cause leap year) Divided by 4
+# Month_days=30.4375 days # Year Divided by 12
+let Month=2629800
+let Year=31557600
 
-#Main Output
-echo $challenge
+# Year = 365 days, Month = 30 days.
+# let Month=2592000
+# let Year=31536000
 
+# Calculation of everything needed
+let current=$(date +%s)
+let birth_install=$(stat -c %W /) # Comment out if using the custom Epoch
+let challenge=(Day *730)
+let challenge_length=(challenge / Day)
+echo 2 Years
