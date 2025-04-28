@@ -42,12 +42,12 @@
         "break",
 
         {
-            "type": "wm",
+            "type": "de",
             "key": " DE/WM",
             "keyColor": "blue"
         },
         {
-            "type": "lm",
+            "type": "wm",
             "key": "├󰧨",
             "keyColor": "blue"
         },
@@ -72,7 +72,7 @@
             "type": "host",
             "key": "󰌢 PC",
             "keyColor": "yellow",
-            "format": "{2}"
+            "format": "{1}"
         },
         {
             "type": "cpu",
