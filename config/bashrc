@@ -92,11 +92,12 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 # Aliases
-alias ..='cd ..' 
-alias ...='cd ../..' 
 alias install='sudo nala install'
-alias dup='sudo nala upgrade'
-alias uplist='apt list --upgradable'
+alias remove='sudo nala remove'
+alias nuke='sudo nala purge'
+alias update='sudo nala upgrade'
+alias search='nala search'
+alias list='nala list --upgradable'
 alias dump='sudo apt autoremove'
 alias l='exa -ll --color=always --group-directories-first'
 alias ls='exa -al --header --icons --group-directories-first'
@@ -104,16 +105,11 @@ alias df='df -h'
 alias free='free -h'
 alias myip="ip -f inet address | grep inet | grep -v 'lo$' | cut -d ' ' -f 6,13 && curl ifconfig.me && echo ' external ip'"
 alias x="exit"
+alias vpn="twingate status && twingate resources"
+alias status="df -h / && du -sh /mnt/ && free -h"
 # Dotfiles & Files
 alias bs='micro ~/.bashrc'
 alias reload='source ~/.bashrc'
-alias v="nvim"
-alias vv="nvim ."
-alias e="micro"
-alias g.="cd ~/.config"
-alias gd="cd ~/Downloads"
-alias gdw="cd ~/.config/suckless/dwm"
-alias gds="cd ~/.config/suckless/slstatus"
 # Git aliases
 alias gp="git push -u origin main"
 alias gsave="git commit -m 'save'"
@@ -160,6 +156,8 @@ CYAN="\\[\\e[1;36m\\]"
 WHITE="\\[\\e[1;37m\\]"
 ENDC="\\[\\e[0m\\]"
 
-# Set a two-line prompt. If accessing via ssh include 'ssh-session' message.
-if [[ -n "$SSH_CLIENT" ]]; then ssh_message="-ssh_session"; fi
-PS1=" ${GREEN}\u${WHITE}@${YELLOW}\h:${RED}${ssh_message} ${WHITE} ${BLUE}\w ${CYAN}\$${ENDC} "
+# Set a line prompt. If accessing via ssh include 'ssh-session' message.
+if [[ -n "$SSH_CLIENT" ]]; then ssh_message="${RED}-ssh"; fi
+#PS1="${GREEN}\u${WHITE}@${GREEN}\h${GREEN}${ssh_message}${WHITE}:${YELLOW}\w ${WHITE}\$${ENDC} "
+PS1="${YELLOW}\u@\h\a${RED}[${BLUE}\w${RED}]${ssh_message}${WHITE}\$: ${GREEN}"
+
