@@ -115,9 +115,28 @@
         },
         {
         "type": "command",
-        "key": "  └",
+        "key": "│ ├",
         "keyColor": "magenta",
         "text": "echo $(( ($(date +%s) - $(stat -c %W /)) / 86400 )) days old",
+        },
+        {
+        "type": "command",
+        "key": "│ └",
+        "keyColor": "magenta",
+        "text": "stat -c %y / | cut -d' ' -f1",
+        },
+        {
+        "type": "command",
+        "key": " Challenge",
+        "keyColor": "cyan",
+        "text": "echo '2 Years'",
+        },
+        
+        {
+        "type": "command",
+        "key": "  └",
+        "keyColor": "cyan",
+            "text": "birth_install=$(stat -c %W /); current=$(date +%s); time_progression=$((current - birth_install)); days_difference=$((time_progression / 86400)); days_difference=$((time_progression / 86400)); days_remain=$((730 - days_difference)); echo $days_remain days left"
         },
         "break",
         ]
