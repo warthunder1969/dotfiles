@@ -15,7 +15,7 @@
     "type": "os",
     "key": "  DISTRO",
     "keyColor": "yellow",
-    "format": "{pretty-name}"
+    "format": "{3}"
     },
     {
     "type": "kernel",
@@ -37,14 +37,14 @@
     "type": "de",
     "key": " DE",
     "keyColor": "blue"
-    }, 
-    
+    },
+
     {
     "type": "wm",
     "key": "│ ├󰧨",
     "keyColor": "blue"
     },
-    
+
     {
     "type": "lm",
     "key": "│ ├󱋩",
@@ -73,7 +73,7 @@
     {
     "type": "host",
     "key": "󰌢 SYSTEM",
-    "format": "{5} {2}",
+    "format": "{5} {3}",
     "keyColor": "green"
     },
     {
@@ -117,13 +117,13 @@
     "type": "command",
     "key": "│ ├",
     "keyColor": "magenta",
-    "text": "echo $(( ($(date +%s) - $(stat -c %W /)) / 86400 )) days old",
+    "text": "echo $(( ($(date +%s) - $(stat -c %W /)) / 86400 )) days ago",
     },
     {
     "type": "command",
     "key": "│ └",
     "keyColor": "magenta",
-    "text": "stat -c %y / | cut -d' ' -f1",
+    "text": "stat -c %y /home | cut -d' ' -f1",
     },
     {
     "type": "command",
@@ -131,12 +131,12 @@
     "keyColor": "cyan",
     "text": "echo '2 Years'",
     },
-    
+
     {
     "type": "command",
     "key": "  └",
     "keyColor": "cyan",
-        "text": "birth_install=$(stat -c %W /); current=$(date +%s); time_progression=$((current - birth_install)); days_difference=$((time_progression / 86400)); days_difference=$((time_progression / 86400)); days_remain=$((730 - days_difference)); echo $days_remain days left"
+        "text": "birth_install=$(stat -c %W /home); current=$(date +%s); time_progression=$((current - birth_install)); days_difference=$((time_progression / 86400)); days_difference=$((time_progression / 86400)); days_remain=$((730 - days_difference)); echo $days_remain days left"
     },
     "break",
     ]
