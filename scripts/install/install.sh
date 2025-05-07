@@ -19,15 +19,16 @@ themes="$HOME/.theme"
 
 # Make some Directories
 
-mkdir -p $HOME/{Downloads,Documents,Pictures,Music,Templates,Videos,$icons,$themes}
+mkdir -p $icons
+mkdir -p $themes
 
 # Native Packages via Apt
-
-sudo apt install -y $(< "$packages") 
+sudo apt update
+sudo apt install -y $(< $packages) 
 
 # Flatpaks
 
-flatpak install -y $(< "$flatpaks")
+flatpak install -y $(< $flatpaks)
 
 # Pull down Dotfiles
 
@@ -39,11 +40,13 @@ git clone $dotfiles
 
 cp -r $HOME/dotfiles/config/gtk-3.0 $config
 cp -r $HOME/dotfiles/config/fastfetch $config
-cp -r $HOME/dotfiles/config/bashrc $HOME/.bashrc $HOME
+cp -r $HOME/dotfiles/config/bashrc $HOME/.bashrc
 cp -r $HOME/dotfiles/scripts/tools/*.sh $scripts
 cp -r $HOME/dotfiles/themes/logos/*.png $icons
 #cp -r $HOME/dotfiles/themes/Mintyz.zip $themes
 #dpkg -i $HOME/dotfiles/themes/Mint/*.deb
+
+# Load in cinnamon settings through dconf
 
 dconf load /org/cinnamon/desktop/keybindings/ < $HOME/dotfiles/config/cinnamon/keybinds
 dconf load /org/cinnamon/ < $HOME/dotfiles/config/cinnamon/cinnamon
