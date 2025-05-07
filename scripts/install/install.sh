@@ -43,14 +43,17 @@ cp -r $HOME/dotfiles/config/fastfetch $config
 cp -r $HOME/dotfiles/config/bashrc $HOME/.bashrc
 cp -r $HOME/dotfiles/scripts/tools/*.sh $scripts
 cp -r $HOME/dotfiles/themes/logos/*.png $icons
-#cp -r $HOME/dotfiles/themes/Mintyz.zip $themes
-#dpkg -i $HOME/dotfiles/themes/Mint/*.deb
 
 # Load in cinnamon settings through dconf
 
 dconf load /org/cinnamon/desktop/keybindings/ < $HOME/dotfiles/config/cinnamon/keybinds
 dconf load /org/cinnamon/ < $HOME/dotfiles/config/cinnamon/cinnamon
 #figure out how to do applets, probably some wget nonsense
+
+#Set Theme to Dark
+gsettings set org.cinnamon.desktop.interface icon-theme "Mint-Y"
+gsettings set org.cinnamon.desktop.interface gtk-theme "Mint-Y-Dark"
+gsettings set org.cinnamon.theme name "Mint-Y-Dark"
 
 #Nerd Fonts
 wget -P ~/.local/share/fonts https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/JetBrainsMono.zip \
