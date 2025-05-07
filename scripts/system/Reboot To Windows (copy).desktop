@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+Name=System Windows
+GenericName=Reboot to Windows
+Comment=Trigger Systemd to Reboot to Windows
+Icon=mintstick-logo-windows
+Exec=sudo grub-reboot 3 && sudo reboot
+Terminal=false
+Categories=System;
+PrefersNonDefaultGPU=false
+Name[en_US]=Reboot To Windows.desktop
+GenericName[en_US]=Reboot to Windows Desktop
+Comment[en_US]=Trigger Grub to Reboot into Windows

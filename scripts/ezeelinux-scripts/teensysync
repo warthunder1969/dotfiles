@@ -1,0 +1,131 @@
+#!/bin/bash
+
+# teensysync -- Sync to teensy file server. (V. 1.0) (September, 20, 2020)
+# By Joe Collins. (www.ezeelinux.com GNU/General Public License version 2.0)
+
+# Functions:
+
+file_sync() {
+
+# Run rsync command to sync files:
+
+echo "Syncing files to teensy file server..."
+sleep 1.5
+rsync -av --delete --progress Audio bin Chart\ Hits\ Archive Desktop Documents \
+Downloads Music Pictures Videos 192.168.0.12:/home/joe/
+
+    # Check status of rsync exit:
+    if [ "$?" == "0" ]; then
+        echo "Files all synced!"
+    else
+        echo "error: teensysync: Something went wrong! Try running sync again..." >&2
+        echo "--If errors persist, check network integrity and disk(s) status." >&2
+        exit 1
+    fi
+
+}
+
+settings_sync() {
+
+# Grab settings and put them in "teensysync-settings-backup" on teensy:
+
+rsync -av --delete --progress .thunderbird .you_got_mail.wav .face \
+.config/google-chrome .config/libreoffice .local/share/rhythmbox .ssh/id_rsa \
+.ssr 192.168.0.12:/home/joe/teensysync-settings-backup/
+
+# Checking staus of rsync exit:
+    if [ "$?" == "0" ]; then
+        echo "Settings all synced!"
+    else
+        echo "error: teensysync: Something went wrong! Try running sync again..." >&2
+        echo "--If errors persist, check network integrity and disk(s) status." >&2
+        exit 1
+    fi
+
+}
+
+all_done() {
+
+# Display "All Done!" message and exit program:
+
+echo "-------------"
+echo "- All Done! -"
+echo "-------------"
+
+exit
+
+}
+
+teensysync_menu_mode() {
+
+# teensysync menu.
+
+cat << _EOF_
+
+Main Menu: What would you like to do?
+
+Press the number of your choice:
+
+    1 - Sync Files and Settings.
+    2 - Sync Files only.
+    3 - Sync Settings only
+
+    0 - Exit.
+
+_EOF_
+
+# Wait for user to make a choice and run chosen functions:
+
+read -n 1 -s choice;
+
+	case $choice in
+		1) file_sync;echo "...Moving on to Settings sync.";settings_sync;
+            all_done;;
+		2) file_sync;;
+        3) settings_sync;;
+		0) echo $'\n'$"Exiting... Goodbye!";;
+        *) echo "Not a valid choice: Please try again.";sleep 2;clear;
+            echo "teensysync -- Sync to teensy file server. (V. 1.0)";
+            teensysync_menu_mode;;
+	esac
+
+exit
+
+}
+
+# Execution.
+
+# Tell 'em who we are...
+
+echo "teensysync -- Sync to teensy file server. (V. 1.0)"
+
+# Make sure teensy is online, exit if it's not:
+
+echo "Checking for teensy server..."
+ping -c 3 192.168.0.12 >/dev/null 2>&1
+
+    # Checking exit status of ping:
+    if [ "$?" != "0" ]; then
+        echo "...teensy is NOT online! Exiting..." >&2
+        exit 1
+    fi
+
+# Check for --menu argument and run in menu mode if found:
+
+if [ "$1" == "--menu" ]; then
+    teensysync_menu_mode
+fi
+
+# Check for invalid argument, exit if found:
+
+if  [ -n "$1"  ]; then
+    echo "teesnysync: error: Invalid argument. Try 'teensysync --menu'" >&2
+    exit 1
+fi
+
+# Run main functions:
+
+file_sync
+echo "...Moving on to Settings sync."
+settings_sync
+all_done

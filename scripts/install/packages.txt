@@ -1,0 +1,17 @@
+btop
+caffeine
+cheese
+cmatrix
+eza
+flameshot
+git
+gparted
+micro
+nala
+nextcloud-desktop
+nvtop
+power-profiles-daemon
+speedtest-cli
+tilix
+vlc
+xsensors

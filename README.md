@@ -16,8 +16,6 @@ Compatability from my testing I've seen that my scripts currently work on the fo
 | ----------------------------| -------- | 
 | Linux Mint                  | 22       | 
 | Linux Mint [Debian Edition] | 6        | 
-| MX Linux*                   | 23       | 
-| Pop_OS! [NVCx and NVDx]     | 22.04    | 
 | Debian [Stable]             | 12       | 
 
 ## Installation

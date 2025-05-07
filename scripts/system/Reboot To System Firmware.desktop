@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=System Firmware
+GenericName=Reboot to Firmware
+Comment=Trigger Systemd to Reboot to System Firmware Setup
+Icon=system-reboot
+Exec=systemctl reboot --firmware-setup
+Terminal=false
+Categories=System;
+PrefersNonDefaultGPU=false
+Name[en_US]=Reboot To System Firmware

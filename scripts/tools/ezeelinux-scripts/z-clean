@@ -1,9 +1,0 @@
-#!/bin/sh
-
-set -e
-
-# Anacron script to remove old packages from apt cache.
-
-exec apt-get autoclean >/dev/null 2>&1
-
-exit

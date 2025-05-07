@@ -1,0 +1,15 @@
+
+
+Ok, to force the kernel to use amdgpu for pre-polaris gpu's (such as OP's), add this to your grub kernel line (requires 4.13 or later kernel):
+
+amdgpu.si_support=1 radeon.si_support=0 or amdgpu.cik_support=1 radeon.cik_support=0
+
+Then blacklist radeon module by adding this to your /etc/modules or creating a new file in /etc/modprobe.d/ containing this line:
+
+blacklist radeon
+
+Then do this:
+
+sudo update-grub
+
+Reboot, and you'll be using amdgpu. Hope this helps! :D

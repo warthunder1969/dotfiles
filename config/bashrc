@@ -145,8 +145,7 @@ if ! shopt -oq posix; then
 fi
 
 # PS1 Customization
-#PS1="\[\e[32m\]\h\[\e[m\]\[\e[36m\]@\[\e[m\]\[\e[34m\]\u\[\e[m\] \W \$ " 
-# Colour codes
+# ----- Define a few Colors
 RED="\\[\\e[1;31m\\]"
 GREEN="\\[\\e[1;32m\\]"
 YELLOW="\\[\\e[1;33m\\]"
@@ -157,7 +156,5 @@ WHITE="\\[\\e[1;37m\\]"
 ENDC="\\[\\e[0m\\]"
 
 # Set a line prompt. If accessing via ssh include 'ssh-session' message.
-if [[ -n "$SSH_CLIENT" ]]; then ssh_message="${RED}-ssh"; fi
-#PS1="${GREEN}\u${WHITE}@${GREEN}\h${GREEN}${ssh_message}${WHITE}:${YELLOW}\w ${WHITE}\$${ENDC} "
-PS1="${YELLOW}\u@\h\a${RED}[${BLUE}\w${RED}]${ssh_message}${WHITE}\$: ${GREEN}"
-
+if [[ -n "$SSH_CLIENT" ]]; then ssh_message="${BLUE}-ssh"; fi
+PS1="$RED[$MAGENTA\u@\h$RED]$GREEN${ssh_message}$WHITE:$RED[$GREEN\w$RED]$WHITE\$$ENDC "
