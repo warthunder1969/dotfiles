@@ -19,11 +19,11 @@ themes="$HOME/.theme"
 
 # Make some Directories
 
-mkdir -p $HOME/{Downloads,Documents,Pictures,Music,Templates,Videos, $icons,$themes}
+mkdir -p $HOME/{Downloads,Documents,Pictures,Music,Templates,Videos,$icons,$themes}
 
 # Native Packages via Apt
 
-sudo apt install -yy $(< "$packages") 
+sudo apt install -y $(< "$packages") 
 
 # Flatpaks
 
