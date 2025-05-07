@@ -48,7 +48,14 @@ cp -r $HOME/dotfiles/themes/logos/*.png $icons
 
 dconf load /org/cinnamon/desktop/keybindings/ < $HOME/dotfiles/config/cinnamon/keybinds
 dconf load /org/cinnamon/ < $HOME/dotfiles/config/cinnamon/cinnamon
-#figure out how to do applets, probably some wget nonsense
+#Cinnamon Applets (doesn't work yet)
+#wget --directory-prefix=$config/cinnamon/spices/ https://cinnamon-spices.linuxmint.com/files/applets/scripts@paucapo.com.zip
+#wget --directory-prefix=$config/cinnamon/spices/ https://cinnamon-spices.linuxmint.com/files/applets/notification-mute@jgillula.zip
+#wget --directory-prefix=$config/cinnamon/spices/ https://cinnamon-spices.linuxmint.com/files/applets/weather@mockturtl.zip
+#unzip $config/cinnamon/spices/scripts@paucapo.com.zip
+#unzip $config/cinnamon/spices/notification-mute@jgillula.zip
+#unzip $config/cinnamon/spices/weather@mockturtl.zip
+#rm $config/cinnamon/spices/*.zip
 
 #Set Theme to Dark
 gsettings set org.cinnamon.desktop.interface icon-theme "Mint-Y"
