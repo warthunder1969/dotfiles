@@ -1,0 +1,63 @@
+#!/bin/bash
+
+# SyncIt - A script to sync to local machines on SSH enabled network.
+# Put the last digits of the local IP as argument to sync directories.
+# By Joe Collins. (www.ezeelinux.com GNU/General Public License version 2.0)
+
+# Check for arguments before running script:
+
+if  [ -z "$1"  ]; then
+    echo "SyncIt Error: No argument. No host IP. You Suck!" >&2
+    exit 1
+fi
+
+#  Declare functions and variables:
+
+NETIP=192.168.0.
+HOSTIP=$1
+
+transfer_status () {
+    # Exit script if transfer fails.
+    if [ "$?" != "0" ]; then
+        echo "SyncIt Error: Target host not available on network! Try again." >&2
+        exit 1
+    fi
+}
+
+# Start syncing:
+
+echo $'\n'$"SyncIt: Synchronizing directories..."
+
+echo $'\n'$"Syncing bin..."
+rsync -av --delete /home/"$USER"/bin/ "$NETIP""$HOSTIP":bin/
+transfer_status
+
+echo $'\n'$"Syncing Desktop..."
+rsync -av --delete /home/"$USER"/Desktop/ "$NETIP""$HOSTIP":Desktop/
+transfer_status
+
+echo $'\n'$"Syncing Documents..."
+rsync -av --delete /home/"$USER"/Documents/ "$NETIP""$HOSTIP":Documents/
+transfer_status
+
+#echo $'\n'$"Syncing Downloads..."
+#rsync -av --delete /home/"$USER"/Downloads/ "$NETIP""$HOSTIP":Downloads/
+#transfer_status
+
+echo $'\n'$"Syncing Music..."
+rsync -av --delete /home/"$USER"/Music/ "$NETIP""$HOSTIP":Music/
+transfer_status
+
+echo $'\n'$"Syncing Pictures..."
+rsync -av --delete /home/"$USER"/Pictures/ "$NETIP""$HOSTIP":Pictures/
+transfer_status
+
+#echo $'\n'$"Syncing Videos..."
+#rsync -av --delete /home/"$USER"/Videos/ "$NETIP""$HOSTIP":Videos/
+#transfer_status
+
+echo "---------------------------
+- All directories synced! -
+---------------------------"
+
+exit

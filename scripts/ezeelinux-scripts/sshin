@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# SSH login shorthand command: "sshin (last two digits of IP)"
+# By Joe Collins. (www.ezeelinux.com GNU/General Public License version 2.0)
+
+ssh -X 192.168.0."$1"
+

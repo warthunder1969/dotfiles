@@ -1,0 +1,37 @@
+#!/bin/bash
+echo "##########################"
+echo -ne "Envycontrol version " && envycontrol -v
+echo -ne "Current Mode:" && envycontrol -q
+echo "##########################"
+# Display menu options
+echo -ne "****" && echo -ne "Change Mode?" && echo "****" 
+echo "1. Integrated"
+echo "2. Hybrid"
+echo "3. Nvidia"
+echo "4. Exit"
+
+# Read user input
+read -p "Enter your choice: " choice
+
+# Process user choice
+case $choice in
+    1)
+        echo "Switching to $choice"
+       sudo  envycontrol -s integrated
+        ;;
+    2)
+        echo "Switching to $choice"
+               sudo  envycontrol -s hybrid
+        ;;
+    3)
+        echo "Switching to $choice"
+                sudo envycontrol -s nvidia
+        ;;
+    4)
+        echo "Exiting..."
+        exit 0
+        ;;
+    *)
+        echo "Invalid choice. Please try again."
+        ;;
+esac

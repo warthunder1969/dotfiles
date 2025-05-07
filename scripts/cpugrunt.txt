@@ -1,0 +1,10 @@
+# Currently Active CPU Governor 
+cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+
+#Currently Available CPU Governors
+cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_governors
+
+#Preformance
+echo performance | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
+#Powersavings
+echo powersave | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor

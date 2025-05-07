@@ -1,0 +1,2 @@
+sudo cp /usr/lib/x86_64-linux-gnu/tls/libnvidia-tls.so.390.157 /var/lib/flatpak/runtime/org.freedesktop.Platform.GL.nvidia-390-157/x86_64/1.4/active/files/extra/libnvidia-tls.so.390.157
+flatpak mask org.freedesktop.Platform.GL.nvidia-390-157

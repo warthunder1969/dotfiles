@@ -1,0 +1,5 @@
+com.brave.Browser
+com.discordapp.Discord
+com.google.Chrome
+com.notesnook.Notesnook
+org.localsend.localsend_app

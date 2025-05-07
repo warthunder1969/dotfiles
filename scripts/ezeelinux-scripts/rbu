@@ -1,0 +1,94 @@
+#!/bin/bash
+
+# RGU -- R(emote)BU (Version 1.0) by Joe Collins (November, 2019)
+# Script to facilitate remote BU backups through ssh.
+# Note: BU Drive must be mounted at /mnt or script won't run.
+# This script will NOT create host directories. Run BU from
+# host machine first to do that.
+# (www.ezeelinux.com GNU/General Public License version 2.0)
+#
+# ...And away we go!
+
+# Tell 'em who we are...
+
+echo "RBU -- R(emote)BU (Version 1.0)"
+
+# Declare static variables:
+
+user=$USER
+
+host=$HOSTNAME
+
+# Check for BU_Backups directory at /mnt:
+
+echo "Checking if BU_Drive is mounted at /mnt..."
+
+if [ ! -d /mnt/BU_Backups ]; then
+
+	echo "RBU Error: BU_Drive not mounted at /mnt! Exiting..." >&2
+	exit 1
+
+fi
+
+# Check for remote host's backup directory:
+
+echo "Checking for $host's backup directory..."
+
+if [ ! -d /mnt/BU_Backups/$host ]; then
+
+	echo "RBU Error: Remote host $host's directory not in BU_Backups! Exiting..." >&2
+	echo "Run regular BU program from local login on $host to create it." >&2
+	exit 1
+
+fi
+
+echo "...Ready!"
+echo "BU_Drive is mounted at /mnt and backup directories are present."
+
+# Turning on sudo privileges:
+
+echo "Checking for sudo privileges..."
+sudo ls >/dev/null
+
+# Run BU Backup:
+
+echo "Backing up /etc and /home to BU_Drive/BU_Backups/$host/..."
+sudo rsync -aH --delete --info=progress2 /etc /home \
+/mnt/BU_Backups/$host/
+
+# Check for status of backup and exit:
+
+if [ "$?" == "0" ]; then
+
+    # Clear any accidental input during backup:
+    read -t 1 -n 10000 discard
+
+    echo "------------------"
+    echo "- All backed up! -"
+    echo "------------------"
+
+    # Remove old and create new timestamp file:
+    rm -f /mnt/BU_Backups/$host/BU\ Backup* >/dev/null 2>&1
+    touch /mnt/BU_Backups/$host/"BU Backup was successful: $(date)"
+
+    echo "Wait! Syncing Drives..."
+    sync
+    echo "...done"
+    echo "It's safe to remove the USB drive now."
+    exit
+
+else
+
+    # Clear any accidental input during backup:
+    read -t 1 -n 10000 discard
+
+    # Remove old and create new timestamp file:
+    rm -f /mnt/BU_Backups/$host/BU\ Backup* >/dev/null 2>&1
+    touch /mnt/BU_Backups/$host/"BU Backup had some errors: $(date)"
+
+    echo "There were errors! Try running the command again to correct them." >&2
+    echo "- If errors persist then you may have corrupt files or failing hardware." >&2
+    exit 1
+
+fi
+

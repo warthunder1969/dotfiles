@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# Alias to remove old kernels from CentOS: "oldkernrm" 
+# By Joe Collins. (www.ezeelinux.com GNU/General Public License version 2.0)
+
+# Check for 'package-cleanup' and warn user if not installed:
+
+which package-cleanup >/dev/null
+if [ "$?" != "0" ]; then
+    echo "oldkernrm error: The package-cleanup utility is not installed!" >&2
+    echo "Run 'sudo yum install yum-utils' and try again." >&2
+    exit 1
+fi
+
+# Run command to remove all but the running kernel:
+
+sudo package-cleanup --oldkernels --count=1
+
