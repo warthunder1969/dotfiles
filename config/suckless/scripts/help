@@ -1,0 +1,38 @@
+#!/bin/bash
+
+dwm_keybindings_file="$HOME/.config/suckless/dwm/keybindings.txt"
+sxhkdrc_file="$HOME/.config/suckless/sxhkd/sxhkdrc"
+
+# Read DWM keybindings (first section)
+dwm_bindings=$(awk -F'\t' '
+    { printf "DWM  |%-30s|%-40s\n", $1, $2 }
+' "$dwm_keybindings_file")
+
+# Parse sxhkdrc keybindings (second section)
+sxhkd_bindings=$(awk '
+    /^[a-z]/ && last { 
+        printf "SXHKD|%-30s|%-40s\n", $0, last 
+    }
+    { last="" } 
+    /^#/ { last=substr($0, 3) }' "$sxhkdrc_file")
+
+# Combine with DWM first
+combined_bindings="$dwm_bindings"$'\n'"$sxhkd_bindings"
+
+# Format for rofi display
+formatted_keybindings=$(echo "$combined_bindings" | column -t -s '|')
+
+# Show combined list in rofi
+selected=$(echo "$formatted_keybindings" | rofi -dmenu -normal-window -i -p "Keybindings" -line-padding 4 -hide-scrollbar -theme ~/.config/suckless/rofi/keybinds.rasi)
+
+# Check if user selected something
+if [ -n "$selected" ]; then
+    # Determine if it's from SXHKD (and executable)
+    source=$(echo "$selected" | awk '{print $1}')
+    if [[ "$source" == "SXHKD" ]]; then
+        command=$(echo "$selected" | awk -F'|' '{print $3}' | xargs)
+        if [ -n "$command" ]; then
+            nohup $command &>/dev/null &
+        fi
+    fi
+fi

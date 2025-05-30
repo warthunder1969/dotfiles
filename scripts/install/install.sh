@@ -8,7 +8,10 @@
 # wget
 # curl
 
-# Variables
+sudo apt update
+sudo apt install -y git wget curl
+
+## Variables
 config="$HOME/.config"
 dotfiles="http://github.com/warthunder1969/dotfiles.git"
 packages="./packages.txt"
@@ -26,11 +29,20 @@ mkdir -p $themes
 sudo apt update
 sudo apt install -y $(< $packages) 
 
-# Flatpaks
+#Install Non-Native Packages via DPKG
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+wget https://github.com/th-ch/youtube-music/releases/download/v3.9.0/youtube-music_3.9.0_amd64.deb
+wget https://github.com/fastfetch-cli/fastfetch/releases/download/2.44.0/fastfetch-linux-amd64.deb
+sudo dpkg -i *.deb
+
+## Flatpaks
 
 flatpak install -y $(< $flatpaks)
+#set flaptak gloal permissions
+sudo flatpak override --device=dri
+sudo flatpak override --filesystem=home
 
-# Pull down Dotfiles
+## Dotfiles
 
 cd $HOME
 
@@ -48,16 +60,8 @@ cp -r $HOME/dotfiles/themes/logos/*.png $icons
 
 dconf load /org/cinnamon/desktop/keybindings/ < $HOME/dotfiles/config/cinnamon/keybinds
 dconf load /org/cinnamon/ < $HOME/dotfiles/config/cinnamon/cinnamon
-#Cinnamon Applets (doesn't work yet)
-#wget --directory-prefix=$config/cinnamon/spices/ https://cinnamon-spices.linuxmint.com/files/applets/scripts@paucapo.com.zip
-#wget --directory-prefix=$config/cinnamon/spices/ https://cinnamon-spices.linuxmint.com/files/applets/notification-mute@jgillula.zip
-#wget --directory-prefix=$config/cinnamon/spices/ https://cinnamon-spices.linuxmint.com/files/applets/weather@mockturtl.zip
-#unzip $config/cinnamon/spices/scripts@paucapo.com.zip
-#unzip $config/cinnamon/spices/notification-mute@jgillula.zip
-#unzip $config/cinnamon/spices/weather@mockturtl.zip
-#rm $config/cinnamon/spices/*.zip
 
-#Set Theme to Dark
+## Themes
 gsettings set org.cinnamon.desktop.interface icon-theme "Mint-Y"
 gsettings set org.cinnamon.desktop.interface gtk-theme "Mint-Y-Dark"
 gsettings set org.cinnamon.theme name "Mint-Y-Dark"

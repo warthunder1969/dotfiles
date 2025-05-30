@@ -95,7 +95,8 @@ alias l='ls -CF'
 alias install='sudo nala install'
 alias remove='sudo nala remove'
 alias nuke='sudo nala purge'
-alias update='sudo nala upgrade'
+alias update='sudo nala upgrade &&  flatpak update -y && cinnamon-spice-updater --update-all'
+alias refresh='sudo nala update'
 alias search='nala search'
 alias list='nala list --upgradable'
 alias dump='sudo apt autoremove'
@@ -156,5 +157,5 @@ WHITE="\\[\\e[1;37m\\]"
 ENDC="\\[\\e[0m\\]"
 
 # Set a line prompt. If accessing via ssh include 'ssh-session' message.
-if [[ -n "$SSH_CLIENT" ]]; then ssh_message="${BLUE}-ssh"; fi
-PS1="$RED[$MAGENTA\u@\h$RED]$GREEN${ssh_message}$WHITE:$RED[$GREEN\w$RED]$WHITE\$$ENDC "
+if [[ -n "$SSH_CLIENT" ]]; then ssh_message="${MAGENTA}-ssh"; fi
+PS1="$YELLOW[$GREEN\u@\h$YELLOW]$RED${ssh_message}$WHITE:$YELLOW[$BLUE\w$YELLOW]$WHITE\$$ENDC "

@@ -1,63 +1,20 @@
-#!/bin/bash
-# Display menu options
+#source: https://www.techrepublic.com/article/how-to-enable-usb-in-virtualbox/
+#Install the latest version of VirtualBox
 
-echo "How do you want to install Virutalbox?"
-echo "1. Repository Version"
-echo "2. Oracle Repository"
-echo "3. Raw Download"
-echo "4. Exit"
+#add the necessary repository with the command:
 
-# Read user input
-read -p "Enter your choice: " choice
+sudo add-apt-repository "deb http://download.virtualbox.org/virtualbox/debian contrib"
 
-# Process user choice
-case $choice in
-    1)
-        echo "You chose Option 1"
-        sudo apt install virtualbox virtualbox-ext-pack virtualbox-guest-additions-iso -y
-        ;;
-    2)
-        echo "You chose Option 2"
-# Get the codename of the current distribution
-        DISTRO_CODENAME=$(lsb_release -cs)
-# Define the repository you want to add
-        REPO_URL="deb [arch=amd64 signed-by=/usr/share/keyrings/oracle-virtualbox-2016.gpg] https://download.virtualbox.org/virtualbox/debian ${DISTRO_CODENAME} contrib"
-        
+#Where UBUNTU-RELEASE is the version of Ubuntu you are using. If you’re unsure which version of Ubuntu you have installed, issue the command lsb_release -a.
 
-        
-        echo "$REPO_URL" | sudo tee /etc/apt/sources.list.d/virtualbox.list
-# Get Oracle public key for verifying the signatures
-        wget -O- https://www.virtualbox.org/download/oracle_vbox_2016.asc | sudo gpg --yes --output /usr/share/keyrings/oracle-virtualbox-2016.gpg --dearmor
+#Next, download and install the signature key for the repository with the command:
 
+wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
 
-wget -O- https://www.virtualbox.org/download/oracle_vbox_2016.asc | sudo gpg --yes --output /usr/share/keyrings/oracle-virtualbox-2016.gpg --dearmor
+#Now, you can install the latest release with the following commands:
 
-# Update the package list
-        sudo apt update
-        sudo apt-get install virtualbox-7.1
-        ;;
-    3)
-        echo "You chose Option 3"
-        wget https://download.virtualbox.org/virtualbox/7.1.8/virtualbox-7.1_7.1.8-168469~Debian~bookworm_amd64.deb
-dkpg -i virtualbox-*.deb
-        ;;
-    4)
-        echo "Exiting..."
-        exit 0
-        ;;
-    *)
-        echo "Invalid choice. Please try again."
-        ;;
-#warn the user to reboot due to dkms modules
-echo "you will need to reboot"
-esac 
+sudo apt-get update
 
-
-
-
-
-
-
-
+sudo apt install virtualbox-7.1
 
 

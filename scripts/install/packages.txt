@@ -1,5 +1,5 @@
 btop
-caffeine
+bashtop
 cheese
 cmatrix
 eza
