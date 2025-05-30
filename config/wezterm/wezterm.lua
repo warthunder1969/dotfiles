@@ -3,17 +3,17 @@
 local wezterm = require "wezterm"
 local act = wezterm.action
 
--- GitHub Dark inspired color palette (streamlined)
+-- Tango Dark inspired color palette (streamlined)
 local colors = {
   fg = "#ffffff",
-  bg = "#444444",
+  bg = "#1a1a1a",
   comment = "#8b949e",
-  red = "#f44336",
-  green = "#8fce00",
-  yellow = "#ce7e00",
-  blue = "#2986cc",
+  red = "#ef2929",
+  green = "#4e9a06",
+  yellow = "#ff9c00",
+  blue = "#3465a4",
   magenta = "#c90076",
-  cyan = "#29bacc",
+  cyan = "#81b9f9",
   selection = "#ff9c00",
   caret = "#ff9c00",
   invisibles = "#2f363d",

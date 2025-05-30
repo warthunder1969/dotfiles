@@ -158,4 +158,4 @@ ENDC="\\[\\e[0m\\]"
 
 # Set a line prompt. If accessing via ssh include 'ssh-session' message.
 if [[ -n "$SSH_CLIENT" ]]; then ssh_message="${MAGENTA}-ssh"; fi
-PS1="$YELLOW[$GREEN\u@\h$YELLOW]$RED${ssh_message}$WHITE:$YELLOW[$BLUE\w$YELLOW]$WHITE\$$ENDC "
+PS1="$YELLOW[$GREEN\u@\h$YELLOW]$RED${ssh_message}$WHITE:$YELLOW[$BLUE\w$YELLOW]\n$WHITE\$$ENDC: "
