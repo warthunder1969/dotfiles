@@ -1,11 +1,12 @@
 [/]
 command-history=['r']
-enabled-applets=['panel1:left:0:menu@cinnamon.org:0', 'panel1:left:1:separator@cinnamon.org:1', 'panel1:right:4:systray@cinnamon.org:3', 'panel1:right:6:xapp-status@cinnamon.org:4', 'panel1:right:14:notifications@cinnamon.org:5', 'panel1:right:7:removable-drives@cinnamon.org:7', 'panel1:right:8:keyboard@cinnamon.org:8', 'panel1:right:9:favorites@cinnamon.org:9', 'panel1:right:10:network@cinnamon.org:10', 'panel1:right:11:sound@cinnamon.org:11', 'panel1:right:12:power@cinnamon.org:12', 'panel1:right:13:calendar@cinnamon.org:13', 'panel1:right:15:cornerbar@cinnamon.org:14', 'panel1:right:3:scripts@paucapo.com:16', 'panel1:right:1:weather@mockturtl:17', 'panel1:right:2:panel-launchers@cinnamon.org:19', 'panel1:left:2:grouped-window-list@cinnamon.org:23', 'panel1:right:5:inhibit@cinnamon.org:27']
-favorite-apps=['mintinstall.desktop', 'cinnamon-settings.desktop', 'com.gexperts.Tilix.desktop', 'com.notesnook.Notesnook.desktop:flatpak', 'virtualbox.desktop']
+enabled-applets=['panel1:left:0:menu@cinnamon.org:0', 'panel1:left:1:separator@cinnamon.org:1', 'panel1:right:4:systray@cinnamon.org:3', 'panel1:right:6:xapp-status@cinnamon.org:4', 'panel1:right:14:notifications@cinnamon.org:5', 'panel1:right:7:removable-drives@cinnamon.org:7', 'panel1:right:8:keyboard@cinnamon.org:8', 'panel1:right:9:favorites@cinnamon.org:9', 'panel1:right:10:network@cinnamon.org:10', 'panel1:right:11:sound@cinnamon.org:11', 'panel1:right:12:power@cinnamon.org:12', 'panel1:right:13:calendar@cinnamon.org:13', 'panel1:right:15:cornerbar@cinnamon.org:14', 'panel1:right:3:scripts@paucapo.com:16', 'panel1:right:1:weather@mockturtl:17', 'panel1:left:2:grouped-window-list@cinnamon.org:23', 'panel1:right:5:inhibit@cinnamon.org:27']
+favorite-apps=['mintinstall.desktop', 'cinnamon-settings.desktop', 'com.gexperts.Tilix.desktop', 'com.notesnook.Notesnook.desktop:flatpak', 'virtualbox.desktop', 'youtube-music.desktop', 'com.bitwarden.desktop.desktop:flatpak']
 next-applet-id=28
 panel-edit-mode=false
-panel-zone-icon-sizes='[{"panelId": 1, "left": 0, "center": 0, "right": 32}]'
-panel-zone-symbolic-icon-sizes='[{"panelId": 1, "left": 28, "center": 28, "right": 32}]'
+panel-launchers=['DEPRECATED']
+panel-zone-icon-sizes='[{"panelId": 1, "left": 0, "center": 0, "right": 28}]'
+panel-zone-symbolic-icon-sizes='[{"panelId": 1, "left": 28, "center": 28, "right": 28}]'
 panels-height=['1:45']
 
 [desktop/applications/calculator]
@@ -18,7 +19,7 @@ exec-arg='--'
 [desktop/interface]
 clock-use-24h=false
 cursor-size=32
-text-scaling-factor=1.2
+text-scaling-factor=1.0
 toolkit-accessibility=true
 
 [desktop/keybindings]
@@ -35,16 +36,27 @@ name='Flameshot'
 screensaver=['<Control><Alt>l', '<Super>l']
 screenshot-clip=@as []
 terminal=['<Primary><Alt>t', '<Super>t']
+www=['<Super>b']
+email=['<Super>m']
+calculator=['<Alt>c']
 
 [desktop/keybindings/wm]
+activate-window-menu=@as []
 move-to-workspace-1=['<Shift><Alt>exclam']
 move-to-workspace-2=['<Shift><Alt>at']
 move-to-workspace-3=['<Shift><Alt>numbersign']
 move-to-workspace-4=['<Shift><Alt>dollar']
 switch-to-workspace-1=['<Alt>1']
+switch-to-workspace-10=['<Alt>0']
 switch-to-workspace-2=['<Alt>2']
 switch-to-workspace-3=['<Alt>3']
 switch-to-workspace-4=['<Alt>4']
+switch-to-workspace-5=['<Alt>5']
+switch-to-workspace-6=['<Alt>6']
+switch-to-workspace-7=['<Alt>7']
+switch-to-workspace-8=['<Alt>8']
+switch-to-workspace-9=['<Alt>9']
+switch-to-workspace-down=['<Alt>Down']
 switch-to-workspace-left=['<Alt>Left']
 switch-to-workspace-right=['<Alt>Right']
 switch-to-workspace-up=['<Control><Alt>Up', '<Alt>w']
@@ -89,12 +101,14 @@ swipe-up-3='TOGGLE_EXPO::::start'
 swipe-up-4='VOLUME_UP::end'
 tap-3='MEDIA_PLAY_PAUSE::end'
 
+[muffin]
+tile-maximize=true
+
 [settings-daemon/peripherals/keyboard]
 numlock-state='on'
 
 [settings-daemon/plugins/color]
 night-light-enabled=true
-night-light-last-coordinates=(40.4251, -74.002300000000005)
 night-light-temperature=uint32 2700
 
 [settings-daemon/plugins/power]
@@ -103,4 +117,7 @@ lid-close-battery-action='suspend'
 sleep-display-ac=1800
 sleep-display-battery=1800
 sleep-inactive-ac-timeout=0
-sleep-inactive-battery-timeout=0
+sleep-inactive-battery-timeout=1800
+
+[theme]
+name='Mint-Y-Dark'
