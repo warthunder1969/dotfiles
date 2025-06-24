@@ -1,0 +1,107 @@
+#####################
+# Application keybindings #
+#####################
+
+# Launch Browser (Firefox-esr)
+super + b
+    firefox-esr
+    
+# Launch Private Browser (Firefox Incognito Mode)
+super + shift + b
+	firefox -private-window
+
+# Launch Rofi Application Menu
+super + space
+   	rofi -show drun -modi drun -line-padding 4 -hide-scrollbar -show-icons -theme ~/.config/suckless/rofi/config.rasi
+   	
+# Launch Floating Quake Terminal (Tilix)
+super + shift + Return
+    tilix --quake
+
+# help with shortcuts
+# tilix -e ~/.config/suckless/sxhkd/keyhelper.sh
+super + h
+	~/.config/suckless/scripts/help
+	
+# Reload sxhkd (Hotkey Daemon)
+super + Escape
+	pkill -USR1 -x sxhkd; notify-send 'sxhkd' 'Reloaded config'
+
+# DWM Layout Menu	
+super + shift + l
+    ~/.config/suckless/scripts/dwm-layout-menu.sh
+
+# Launch File Manager (Thunar)
+super + f
+	thunar
+
+# Launch Geany (Text Editor)
+super + e
+	geany
+
+# Launch GIMP (Image Editor)
+super + g
+	gimp
+	
+# super + c
+# 	google-chrome
+
+# Launch Discord	
+super + d
+	Discord
+
+# Launch OBS (Screen Recording/Streaming)
+super + o
+	obs
+	
+# Increase Volume (Custom Script)
+super + Insert
+    ~/.config/suckless/scripts/changevolume up
+
+# Decrease Volume (Custom Script)   
+super + Delete
+	~/.config/suckless/scripts/changevolume down
+	
+# Toggle Mute (Custom Script)
+super + m
+	~/.config/suckless/scripts/changevolume mute
+	
+# Dedicated Key for Volume Up
+XF86AudioRaiseVolume
+	~/.config/suckless/scripts/changevolume up
+	
+# Dedicated Key for Volume Down
+XF86AudioLowerVolume
+	~/.config/suckless/scripts/changevolume down
+	
+# Dedicated Key for Mute
+XF86AudioMute
+	~/.config/suckless/scripts/changevolume mute
+
+# Increase Screen Brightness
+XF86MonBrightnessUp
+	xbacklight +10
+
+# Decrease Screen Brightness
+XF86MonBrightnessDown
+	xbacklight -10
+	
+# Take a Screenshot (Region Select)
+super + Print
+	flameshot gui --path ~/Screenshots/
+
+# Take a Fullscreen Screenshot
+Print
+	flameshot full --path ~/Screenshots/
+	
+# Enable Redshift (Night Light)
+super + alt + r
+	~/.config/suckless/scripts/redshift-on
+
+# Disable Redshift (Night Light)
+super + alt + b
+	~/.config/suckless/scripts/redshift-off
+
+# Power Off/Reboot
+super + x 
+	~/.config/suckless/scripts/power

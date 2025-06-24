@@ -1,7 +1,0 @@
-deb https://mirrors.advancedhosters.com/linuxmint/packages faye main upstream import backport 
-
-deb http://ftp.us.debian.org/debian bookworm main contrib non-free non-free-firmware
-deb http://ftp.us.debian.org/debian bookworm-updates main contrib non-free non-free-firmware
-deb http://security.debian.org/ bookworm-security main contrib non-free non-free-firmware
-
-deb http://ftp.us.debian.org/debian bookworm-backports main contrib non-free non-free-firmware

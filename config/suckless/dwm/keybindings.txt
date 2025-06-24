@@ -1,0 +1,20 @@
+super + Return	Launch Terminal
+super + p	Run dmenu
+super + q	Close Window
+super + shift + r	Restart DWM
+super + shift + q	Quit DWM
+super + ctrl + b	Toggle Bar
+super + right	Focus Next Window
+super + left	Focus Previous Window
+super + shift + right	Move Window Right
+super + shift + left	Move Window Left
+super + ctrl + right	Resize Window Right
+super + ctrl + left	Resize Window Left
+ctrl + shift + right	Next Tag
+ctrl + shift + left	Previous Tag
+super + tab	Last Tag
+ctrl + alt + right	Move to Next Tag
+ctrl + alt + left	Move to Prev Tag
+super + shift + space	Toggle Floating
+super + v	Scratchpad Volume
+super + r	Scratchpad Ranger

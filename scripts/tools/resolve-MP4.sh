@@ -5,6 +5,8 @@
 #RAW COMMAND: 
 #ffmpeg -i "file" -c:v mpeg2video -vf "fps=30" -q:v 1 -c:a pcm_s16le "file.mov"
 
+notify-send "Encoding Started"
+
 mkdir transcoded; 
 
 for i in *.mp4;
@@ -18,3 +20,5 @@ for i in *.MP4;
     echo "$name"
     ffmpeg -i "$i" -c:v mpeg2video -vf "fps=30" -q:v 1 -c:a pcm_s16le "transcoded/${name}.mov"
 done
+
+notify-send "Script finished" "The process has completed successfully."

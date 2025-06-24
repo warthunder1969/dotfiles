@@ -73,7 +73,7 @@
     {
     "type": "host",
     "key": "󰌢 SYSTEM",
-    "format": "{5} {2}",
+    "format": "{5} {3}",
     "keyColor": "green"
     },
     {

@@ -1,10 +1,10 @@
 #!/bin/bash
-echo "##########################"
+echo " "
 echo -ne "Envycontrol version " && envycontrol -v
 echo -ne "Current Mode:" && envycontrol -q
-echo "##########################"
+echo " "
 # Display menu options
-echo -ne "****" && echo -ne "Change Mode?" && echo "****" 
+echo -ne " " && echo -ne "Change Mode?" && echo " " 
 echo "1. Integrated"
 echo "2. Hybrid"
 echo "3. Nvidia"

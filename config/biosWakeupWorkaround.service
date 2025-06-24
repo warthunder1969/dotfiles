@@ -1,0 +1,9 @@
+[Unit]
+Description=Workaround for ASUS ROG B550 bios sleep/wakeup bug
+
+[Service]
+Type=oneshot
+ExecStart=/bin/sh -c 'echo XHC0 > /proc/acpi/wakeup'
+ExecStart=/bin/sh -c 'echo XHC1 > /proc/acpi/wakeup'
+[Install]
+WantedBy = multi-user.target
