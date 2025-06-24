@@ -3,7 +3,7 @@
 local wezterm = require "wezterm"
 local act = wezterm.action
 
--- Tango Dark inspired color palette (streamlined)
+-- Tango Dark inspired color palette
 local colors = {
   fg = "#ffffff",
   bg = "#1a1a1a",
@@ -104,7 +104,7 @@ config.font_size = 12
 config.term = "xterm-256color"
 config.warn_about_missing_glyphs = false
 
--- GitHub Dark inspired color scheme application
+-- Color scheme application
 config.colors = {
   foreground = colors.fg,
   background = colors.bg,

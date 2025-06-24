@@ -92,14 +92,14 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 # Aliases
-alias install='sudo nala install'
-alias remove='sudo nala remove'
+alias in='sudo nala install'
+alias re='sudo nala remove'
 alias nuke='sudo nala purge'
-alias update='sudo nala upgrade &&  flatpak update -y && cinnamon-spice-updater --update-all'
-alias refresh='sudo nala update'
-alias search='nala search'
-alias list='nala list --upgradable'
-alias dump='sudo apt autoremove'
+alias dup='sudo nala upgrade &&  flatpak update -y && cinnamon-spice-updater --update-all'
+alias rup='sudo nala update'
+alias se='nala search'
+alias lst='nala list --upgradable'
+alias ar='sudo apt autoremove'
 alias l='exa -ll --color=always --group-directories-first'
 alias ls='exa -al --header --icons --group-directories-first'
 alias df='df -h'
@@ -107,10 +107,12 @@ alias free='free -h'
 alias myip="ip -f inet address | grep inet | grep -v 'lo$' | cut -d ' ' -f 6,13 && curl ifconfig.me && echo ' external ip'"
 alias x="exit"
 alias vpn="twingate status && twingate resources"
-alias status="df -h / && du -sh /mnt/ && free -h"
+alias stat="df -h / && du -sh /mnt/ && free -h"
 # Dotfiles & Files
 alias bs='micro ~/.bashrc'
+alias ed='micro'
 alias reload='source ~/.bashrc'
+alias dots='cd ~/Nextcloud/Projects/Linux/dotfiles'
 # Git aliases
 alias gp="git push -u origin main"
 alias gsave="git commit -m 'save'"
@@ -118,8 +120,6 @@ alias gs="git status"
 alias gc="git clone"
 alias tr="tree"
 alias ff="fastfetch"
-
-
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -158,4 +158,7 @@ ENDC="\\[\\e[0m\\]"
 
 # Set a line prompt. If accessing via ssh include 'ssh-session' message.
 if [[ -n "$SSH_CLIENT" ]]; then ssh_message="${MAGENTA}-ssh"; fi
-PS1="$YELLOW[$GREEN\u@\h$YELLOW]$RED${ssh_message}$WHITE:$YELLOW[$BLUE\w$YELLOW]\n$WHITE\$$ENDC: "
+PS1="$YELLOW[$GREEN\u@\h$YELLOW]$RED${ssh_message}$WHITE:$YELLOW[$BLUE\w$YELLOW]$WHITE\$$ENDC: "
+
+#Starship
+eval "$(starship init bash)"

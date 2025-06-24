@@ -1,0 +1,25 @@
+# Inserts a blank line between shell prompts
+add_newline = false
+
+[character]
+success_symbol = "[](green bold)"
+error_symbol = "[](red bold)"
+
+[username]
+style_user = 'yellow bold'
+style_root = 'red bold'
+format = '[$user]($style)'
+disabled = false
+show_always = true
+
+[hostname]
+ssh_only = false
+ssh_symbol = "-ssh"
+format = '[@](yellow bold)[$hostname](yellow bold)[$ssh_symbol](purple bold):'
+disabled = false
+
+[directory]
+style = 'blue bold'
+format = "[❮](blue bold)[$path]($style)[$read_only]($read_only_style)[❯](blue bold) "
+truncation_length = 0
+fish_style_pwd_dir_length = 1

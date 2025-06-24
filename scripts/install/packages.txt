@@ -1,7 +1,10 @@
+htop
 btop
-bashtop
+nvtop
 cheese
 cmatrix
+grsync
+dconf-editor
 eza
 flameshot
 git
@@ -9,9 +12,7 @@ gparted
 micro
 nala
 nextcloud-desktop
-nvtop
 power-profiles-daemon
 speedtest-cli
-tilix
 vlc
-xsensors
+spotify-client
