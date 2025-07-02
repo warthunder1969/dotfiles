@@ -24,10 +24,8 @@ Compatability I only garuntee compatability with "Works on My Machine TM" but th
 
 those platforms shoudl give you a nice time. I primarily work with apt and flaptak so take that for what you will.
 ## Installation
-1. Clone this Repository:
-   `git clone https://github.com/warthunder1969/dotfiles.git`
-2. cd into the cloned directory:
-   `cd dotfiles`
+1. Clone this Repository
+2. Go into the cloned directory
 3. Now paroose and do with the files as you please. The directory structure is as follows:
    - `config`  - any non-specific configuration files
    - `scripts` - any scripts that I have written that I plan to use. I will eventually include any setup scripts I use on a non-public git repo here once they are of "good" quality or have been tested well enough before they hit here
