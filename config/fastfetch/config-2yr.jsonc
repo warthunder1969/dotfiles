@@ -114,5 +114,25 @@
             "keyColor": "green"
         },
     "break",
+    
+    {
+            "type": "command",
+            "key": " Challenges",
+            "keyColor": "cyan",
+            "text": "echo '30 Day  |6 Month  | 2 Year  | 4 Year '",
+    },
+    {
+            "type": "command",
+            "key": "├󱕗",
+            "keyColor": "cyan",
+            "text": "birth_install=$(stat -c %W /home); current=$(date +%s); time_progression=$((current - birth_install)); days_difference=$((time_progression / 86400)); days_difference=$((time_progression / 86400)); days_remain=$((731 - days_difference)); echo $days_difference days done"
+    },
+    {
+    "type": "command",
+    "key": "└󱑆",
+    "keyColor": "cyan",
+        "text": "birth_install=$(stat -c %W /home); current=$(date +%s); time_progression=$((current - birth_install)); days_difference=$((time_progression / 86400)); days_difference=$((time_progression / 86400)); days_remain=$((731 - days_difference)); echo $days_remain days left"
+    },
+    "break",
   ]
 }

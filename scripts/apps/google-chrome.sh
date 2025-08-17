@@ -36,6 +36,9 @@ fi
 
 echo "Google Chrome installed successfully!"
 
+#Updating the repository key
+wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+
 # Clean up the downloaded .deb file
 echo "Cleaning up downloaded package..."
 rm google-chrome-stable_current_amd64.deb

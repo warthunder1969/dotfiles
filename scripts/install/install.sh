@@ -15,6 +15,7 @@ sudo apt upgrade -y
 config="$HOME/.config"
 dotfiles="http://github.com/warthunder1969/dotfiles.git"
 packages="./packages.txt"
+debloat="./debloat.txt"
 flatpaks="./flatpaks.txt"
 dependencies="./dependencies.txt"
 scripts="$HOME/.local/share/nemo/scripts"
@@ -30,11 +31,13 @@ mkdir -p $themes
 sudo apt update
 xargs sudo apt-get -y install < $packages
 xargs sudo apt-get -y install < $dependencies
+xargs sudo apt-get purge --ignore-missing --auto-remove -y < $debloat
 
 #Install Non-Native Packages via DPKG
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 wget https://github.com/fastfetch-cli/fastfetch/releases/download/2.44.0/fastfetch-linux-amd64.deb
 sudo dpkg -i *.deb
+sudo rm -rf *.deb
 
 ## Flatpaks
 xargs flatpak install -y < $flatpaks

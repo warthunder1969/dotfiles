@@ -1,6 +1,8 @@
 htop
 btop
+ncdu
 nvtop
+s-tui
 cheese
 cmatrix
 grsync

@@ -7,11 +7,13 @@ echo "Virtualization isn't available. KVM won't work properly until you do so."
 fi
 
 # Install packages
-sudo apt install qemu qemu-kvm libvirt-bin ubuntu-vm-builder bridge-utils virt-manager
+sudo apt install bridge-utils virt-manager
 
 #Giving Permissions to logged in User
 sudo usermod -aG libvert $USER
 sudo usermod -aG kvm $USER
+sudo groupadd dnsmasq
+sudo usermod -a -G dnsmasq $USER
 
 #System Services
 sudo systemctl start libvirtd

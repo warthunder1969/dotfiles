@@ -6,8 +6,7 @@
 - [Linux Mint Homepage](https://linuxmint.com/ "Linux Mint Homepage")
 - Warthunder's Nerd Cave (where I do many things)
    - [Youtube](https://www.youtube.com/@WarthundersNerdCave "My Youtube Channel")
-   - [Odysee](https://odysee.com/@Lazycatcomputing:b "My Odysee Channel")
-   - [Rumble](https://rumble.com/c/c-6665005 "My Rumble Channel")
+   - Odysee / Rumble Are currently Archived, will remain for the forceable future due to time contraints.
 
 ## Default Prerequisites
 
@@ -16,7 +15,7 @@ System setup and configs for my Linux (and potentially other) systems. I have a 
 - wget
 - curl
 
-Compatability I only garuntee compatability with "Works on My Machine TM" but the TLDR of that is:
+Compatability I don't' garuntee compatability but... "Works on My Machine TM". The TLDR This is what I use and test against:
 
  - Linux Mint                  
  - Linux Mint [Debian Edition]  
