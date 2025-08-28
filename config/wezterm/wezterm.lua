@@ -37,8 +37,8 @@ local config = wezterm.config_builder()
 -- Key bindings configuration
 config.keys = key_binding({
   -- Split and manage panes
-  {"CTRL", "`", act.SplitPane { direction = "Right", size = { Percent = 30 }}},
-  {"CTRL", "Tab", act.SplitPane { direction = "Down", size = { Percent = 30 }}},
+  {"CTRL", "`", act.SplitPane { direction = "Right", size = { Percent = 50 }}},
+  {"CTRL", "Tab", act.SplitPane { direction = "Down", size = { Percent = 50 }}},
   {"CTRL", "Enter", act.SplitHorizontal { domain = 'CurrentPaneDomain' }},
   {"CTRL", "\\", act.SplitVertical { domain = 'CurrentPaneDomain' }},
   {"CTRL", "w", act.CloseCurrentPane { confirm = true }},
@@ -46,7 +46,7 @@ config.keys = key_binding({
   {"CTRL", "RightArrow", act.ActivatePaneDirection 'Right'},
   {"CTRL", "UpArrow", act.ActivatePaneDirection 'Up'},
   {"CTRL", "DownArrow", act.ActivatePaneDirection 'Down'},
-  
+
   -- Tab creation, navigation and management
   {"ALT", "t", act.SpawnTab 'CurrentPaneDomain'},
   {"ALT", "q", act.CloseCurrentTab { confirm = true }},
@@ -70,12 +70,12 @@ config.keys = key_binding({
   {"CTRL|ALT", "8", act.MoveTab(7)},
   {"CTRL|ALT", "LeftArrow", act.MoveTabRelative(-1)},
   {"CTRL|ALT", "RightArrow", act.MoveTabRelative(1)},
-  
+
   -- Copy and paste operations
   {"ALT", "c", act.CopyTo 'ClipboardAndPrimarySelection'},
   {"ALT", "v", act.PasteFrom 'PrimarySelection'},
   {"ALT", "v", act.PasteFrom 'Clipboard'},
-  
+
   -- Font size adjustments
   {"ALT", "+", act.IncreaseFontSize},
   {"ALT", "-", act.DecreaseFontSize},
@@ -100,7 +100,7 @@ config.line_height = 1.1
 config.window_background_opacity = 0.95
 config.enable_scroll_bar = false
 config.use_fancy_tab_bar = true
-config.font_size = 12
+config.font_size = 10
 config.term = "xterm-256color"
 config.warn_about_missing_glyphs = false
 
@@ -115,7 +115,7 @@ config.colors = {
   selection_bg = colors.selection,
   scrollbar_thumb = colors.invisibles,
   split = colors.invisibles,
-  
+
   -- ANSI colors
   ansi = {
     colors.invisibles, colors.red, colors.green, colors.yellow,
@@ -126,7 +126,7 @@ config.colors = {
     colors.comment, "#ff9790", "#6af28c", "#e3b341",
     "#79c0ff", "#d2a8ff", "#56d4dd", "#ffffff",
   },
-  
+
   -- Tab bar styling
   tab_bar = {
     background = colors.bg,
@@ -163,7 +163,7 @@ config.mouse_bindings = {
 
 -- Uncomment for nvidia issues with wayland
 -- Laggy/extra characters
--- 
+--
 -- -- function for nvidia_gpu
 -- local function is_nvidia_gpu()
 --   local handle = io.popen("lspci | grep -i nvidia")
@@ -171,7 +171,7 @@ config.mouse_bindings = {
 --   handle:close()
 --   return result ~= ""
 -- end
--- 
+--
 -- -- NVIDIA optimization settings
 -- config.enable_wayland = not is_nvidia_gpu() -- Disable Wayland if NVIDIA GPU is detected
 -- config.front_end = "OpenGL"  -- More stable than WebGPU with NVIDIA
