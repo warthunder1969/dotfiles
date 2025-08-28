@@ -1,25 +1,24 @@
-# Warthunder's Personal Dotfiles and Configs for Linux Mint
+# Warthunder's Personal Dotfiles and Configs for Linux
 
 ![Linux Mint Logo](https://linuxmint.com/web/img/logo-mono.svg)
 
 ## Important links
 - [Linux Mint Homepage](https://linuxmint.com/ "Linux Mint Homepage")
-- Warthunder's Nerd Cave (where I do many things)
-   - [Youtube](https://www.youtube.com/@WarthundersNerdCave "My Youtube Channel")
-   - Odysee / Rumble Are currently Archived, will remain for the forceable future due to time contraints.
+- [Warthunder's NerdCave on Youtube](https://www.youtube.com/@WarthundersNerdCave "My Youtube Channel")
+   - Odysee / Rumble Are currently MIA due to time contrains, will remain for the forceable future.
 
-## Default Prerequisites
+## Prerequisites
 
 System setup and configs for my Linux (and potentially other) systems. I have a few hanging around but I try to leave their configs here as I can. **Where they will work I can't say but I'm sure alot of my scripts will work just fine on other Ubuntu/Debian platforms. I only test what I run so....** I can say if you've got the following most stuff should work:
+
 - git
 - wget
 - curl
 
-Compatability I don't' garuntee compatability but... "Works on My Machine TM". The TLDR This is what I use and test against:
+Compatability I don't' garuntee compatability but... "Works on My Machine TM". The TLDR This is what I use and test against the latest Mint releases:
 
  - Linux Mint                  
- - Linux Mint [Debian Edition]  
- - Debian [Stable]             
+ - Linux Mint [Debian Edition]              
 
 those platforms shoudl give you a nice time. I primarily work with apt and flaptak so take that for what you will.
 ## Installation
@@ -35,13 +34,13 @@ those platforms shoudl give you a nice time. I primarily work with apt and flapt
 Good Luck :) Provided as-is no warranty. That being said most of the code here "should work" just take that statement with a grain of salt.
 
 ## Roadmap
-This will change / evolve over time as I find better ways of doing things. I don't know that I will specific releases just this codebase will evolve as I need it to
+This will change / evolve over time as I find better ways of doing things. I don't know that I will specific releases just this codebase will evolve as I need it to.
 
 ## Contributing
 Not really doing contributions on this project but if you have suggestions feel free. I will have other projects that I will be taking suggestions for.
 
 ## Authors and acknowledgment
-Working on that
+WIP. I'll give credit where I can, when I can. 
 
 ## License
 GNU General Public License - The GNU General Public License is a series of widely used free software licenses or copyleft that guarantee end users the four freedoms to run, study, share, and modify the software. TLDR Do what you want with my code here, just let others know where you got it from if you would be so kind.
