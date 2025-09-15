@@ -10,7 +10,7 @@
         "default": "",
         "description": "Scripts directory",
         "select-dir": true,
-        "value": "/home/war/.local/share/nemo/scripts"
+        "value": "file:///home/war/Nextcloud/Projects/Linux/dotfiles/scripts"
     },
     "head_icon": {
         "type": "header",
@@ -27,7 +27,7 @@
         "default": "",
         "description": "Icon (empty to hide the icon)",
         "dependency": "customicon",
-        "value": "gksu-root-terminal"
+        "value": "final-term"
     },
     "showtitle": {
         "type": "checkbox",

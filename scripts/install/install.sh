@@ -15,7 +15,6 @@ sudo apt upgrade -y
 config="$HOME/.config"
 dotfiles="http://github.com/warthunder1969/dotfiles.git"
 packages="./packages.txt"
-debloat="./debloat.txt"
 flatpaks="./flatpaks.txt"
 dependencies="./dependencies.txt"
 scripts="$HOME/.local/share/nemo/scripts"
@@ -31,7 +30,6 @@ mkdir -p $themes
 sudo apt update
 xargs sudo apt-get -y install < $packages
 xargs sudo apt-get -y install < $dependencies
-xargs sudo apt-get purge --ignore-missing --auto-remove -y < $debloat
 
 #Install Non-Native Packages via DPKG
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
@@ -59,19 +57,21 @@ cp -r $HOME/dotfiles/config/fastfetch $config
 cp -r $HOME/dotfiles/config/bashrc $HOME/.bashrc
 cp -r $HOME/dotfiles/config/starship.toml $config
 cp -r $HOME/dotfiles/scripts/tools/*.sh $scripts
-cp -r $HOME/dotfiles/themes/icons/*.png $icons
+cp -r $HOME/dotfiles/themes/icons/lm-logo-*.png $icons
+dconf load /com/gexperts/Tilix/ < $HOME/dotfiles/config/tilix.dconf
 
 # Load in cinnamon settings through dconf
 
-dconf load /org/cinnamon/desktop/keybindings/ < $HOME/dotfiles/config/cinnamon/keybinds
 dconf load /org/cinnamon/ < $HOME/dotfiles/config/cinnamon/cinnamon
+dconf load /org/cinnamon/desktop/keybindings/ < $HOME/dotfiles/config/cinnamon/keybindings
+
 #cinnamon --replace &
 ## Themes
 gsettings set org.cinnamon.desktop.interface icon-theme "Mint-Y"
 gsettings set org.cinnamon.desktop.interface gtk-theme "Mint-Y-Dark"
 gsettings set org.cinnamon.theme name "Mint-Y-Dark"
 
-#Nerd Fonts
+#Fonts
 wget -P ~/.local/share/fonts https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/JetBrainsMono.zip \
 && cd ~/.local/share/fonts \
 && unzip JetBrainsMono.zip \

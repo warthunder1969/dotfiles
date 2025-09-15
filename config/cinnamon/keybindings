@@ -1,0 +1,46 @@
+[/]
+custom-list=['custom0']
+looking-glass-keybinding=@as []
+show-desklets=['<Shift><Super>d']
+
+[custom-keybindings/custom0]
+binding=['<Primary>Control_R']
+command='flameshot gui'
+name='Flameshot'
+
+[custom-keybindings/custom1]
+binding=['<Super>s']
+command='/usr/bin/catfish'
+name='File Search'
+
+[[media-keys]
+calculator=['<Primary>c']
+email=['<Super>m']
+help=['<Super>h']
+screensaver=['<Super>l', 'XF86ScreenSaver']
+search=['<Super>s']
+terminal=['<Super>t']
+www=['<Super>b']
+
+[wm]
+activate-window-menu=@as []
+move-to-center=['<Primary><Shift>KP_Begin']
+move-to-corner-ne=['<Primary><Shift>KP_Page_Up']
+move-to-corner-nw=['<Primary><Shift>KP_Home']
+move-to-corner-se=['<Primary><Shift>KP_Next']
+move-to-corner-sw=['<Primary><Shift>KP_End']
+move-to-side-n=['<Primary><Shift>KP_Up']
+move-to-side-s=['<Primary><Shift>KP_Down']
+move-to-side-w=['<Primary><Shift>KP_Insert']
+move-to-workspace-1=['<Shift><Super>exclam']
+move-to-workspace-2=['<Shift><Super>at']
+move-to-workspace-3=['<Shift><Super>numbersign']
+move-to-workspace-4=['<Shift><Super>dollar']
+switch-to-workspace-1=['<Alt>1']
+switch-to-workspace-2=['<Alt>2']
+switch-to-workspace-3=['<Alt>3']
+switch-to-workspace-4=['<Alt>4']
+switch-to-workspace-down=['<Alt>Down']
+switch-to-workspace-left=['<Alt>Left']
+switch-to-workspace-right=['<Alt>Right']
+switch-to-workspace-up=['<Alt>Up']

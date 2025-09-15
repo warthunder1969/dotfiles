@@ -1,7 +1,7 @@
 # Warthunder's Personal Dotfiles and Configs for Linux
 
 ![Linux Mint Logo](https://linuxmint.com/web/img/logo-mono.svg)
-
+System setup and configs for my linux systems. I have a few hanging around but I try to leave their configs here as I can.
 ## Important links
 - [Linux Mint Homepage](https://linuxmint.com/ "Linux Mint Homepage")
 - [Warthunder's NerdCave on Youtube](https://www.youtube.com/@WarthundersNerdCave "My Youtube Channel")
@@ -15,19 +15,21 @@ System setup and configs for my Linux (and potentially other) systems. I have a 
 - wget
 - curl
 
-Compatability I don't' garuntee compatability but... "Works on My Machine TM". The TLDR This is what I use and test against the latest Mint releases:
+## Compatability
+ I don't' garuntee compatability but... "Works on My Machine TM". The TLDR This is what I use and test against the latest Mint releases:
 
  - Linux Mint                  
  - Linux Mint [Debian Edition]              
 
 those platforms shoudl give you a nice time. I primarily work with apt and flaptak so take that for what you will.
+
 ## Installation
 1. Clone this Repository
 2. Go into the cloned directory
 3. Now paroose and do with the files as you please. The directory structure is as follows:
    - `config`  - any non-specific configuration files
    - `scripts` - any scripts that I have written that I plan to use. I will eventually include any setup scripts I use on a non-public git repo here once they are of "good" quality or have been tested well enough before they hit here
-    - `pkgs`  - You'll likely never see this, unless I plan to upload tarballs or deb for packages I can't get in a repo. This will likely be empty or nonexistant publically.
+    - `pkgs`  - Where I have some raw configs, or things that don't fit anywhere else. You'll likely never see much here, there is always a better place.
    - `themes` - any appearance related items that I might need or use. This will include fonts, themes, icons etc. I'm not much for ricing one's computer but it'll be here. I'm a very simple man: Dark Theme + a nice accent color. 
 
 ## Support

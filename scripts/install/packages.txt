@@ -18,3 +18,5 @@ power-profiles-daemon
 speedtest-cli
 vlc
 spotify-client
+keepassxc
+catfish

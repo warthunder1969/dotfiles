@@ -1,23 +1,12 @@
 [/]
-alttab-switcher-delay=100
-desktop-effects-workspace=true
-enabled-applets=['panel1:left:0:menu@cinnamon.org:0', 'panel1:left:1:separator@cinnamon.org:1', 'panel1:left:2:grouped-window-list@cinnamon.org:2', 'panel1:right:6:systray@cinnamon.org:3', 'panel1:right:7:xapp-status@cinnamon.org:4', 'panel1:right:14:notifications@cinnamon.org:5', 'panel1:right:8:removable-drives@cinnamon.org:7', 'panel1:right:9:keyboard@cinnamon.org:8', 'panel1:right:10:network@cinnamon.org:10', 'panel1:right:11:sound@cinnamon.org:11', 'panel1:right:12:power@cinnamon.org:12', 'panel1:right:13:calendar@cinnamon.org:13', 'panel1:right:15:cornerbar@cinnamon.org:14', 'panel1:right:4:scripts@paucapo.com:16', 'panel1:right:2:weather@mockturtl:17', 'panel1:right:5:inhibit@cinnamon.org:18', 'panel1:center:0:workspace-switcher@cinnamon.org:30']
-enabled-extensions=['OsdWithNumber@JosephMcc', 'gTile@shuairan']
-favorite-apps=['mintinstall.desktop', 'cinnamon-settings.desktop', 'com.gexperts.Tilix.desktop', 'com.notesnook.Notesnook.desktop:flatpak']
-hotcorner-layout=['expo:false:0', 'scale:false:0', 'scale:false:0', 'desktop:false:0']
-next-applet-id=31
+command-history=['r']
+enabled-applets=['panel1:left:0:menu@cinnamon.org:0', 'panel1:left:1:separator@cinnamon.org:1', 'panel1:right:4:systray@cinnamon.org:3', 'panel1:right:6:xapp-status@cinnamon.org:4', 'panel1:right:14:notifications@cinnamon.org:5', 'panel1:right:7:removable-drives@cinnamon.org:7', 'panel1:right:8:keyboard@cinnamon.org:8', 'panel1:right:9:favorites@cinnamon.org:9', 'panel1:right:10:network@cinnamon.org:10', 'panel1:right:11:sound@cinnamon.org:11', 'panel1:right:12:power@cinnamon.org:12', 'panel1:right:13:calendar@cinnamon.org:13', 'panel1:right:15:cornerbar@cinnamon.org:14', 'panel1:right:3:scripts@paucapo.com:16', 'panel1:right:1:weather@mockturtl:17', 'panel1:left:2:grouped-window-list@cinnamon.org:23', 'panel1:right:5:inhibit@cinnamon.org:27']
+favorite-apps=['mintinstall.desktop', 'cinnamon-settings.desktop', 'com.gexperts.Tilix.desktop', 'com.notesnook.Notesnook.desktop:flatpak', 'virtualbox.desktop', 'youtube-music.desktop', 'com.bitwarden.desktop.desktop:flatpak']
+next-applet-id=28
 panel-edit-mode=false
 panel-launchers=['DEPRECATED']
-panel-zone-icon-sizes='[{"panelId": 1, "left": 0, "center": 0, "right": 28}, {"left": 0, "center": 0, "right": 0, "panelId": 2}, {"left": 0, "center": 0, "right": 0, "panelId": 3}]'
-panel-zone-symbolic-icon-sizes='[{"panelId": 1, "left": 28, "center": 28, "right": 26}, {"left": 28, "center": 28, "right": 28, "panelId": 2}, {"left": 28, "center": 28, "right": 28, "panelId": 3}]'
-panel-zone-text-sizes='[{"panelId":1,"left":0,"center":0,"right":0},{"left":0,"center":0,"right":0,"panelId":2},{"left":0,"center":0,"right":0,"panelId":3}]'
-panels-autohide=['1:false', '2:false', '3:false']
-panels-enabled=['1:0:bottom', '2:1:bottom', '3:2:bottom']
-panels-height=['1:45', '2:48', '3:48']
-panels-hide-delay=['1:0', '2:0', '3:0']
-panels-show-delay=['1:0', '2:0', '3:0']
-show-media-keys-osd='small'
-window-effect-speed=1
+panel-zone-icon-sizes='[{"panelId": 1, "left": 0, "center": 0, "right": 28}]'
+panel-zone-symbolic-icon-sizes='[{"panelId": 1, "left": 28, "center": 28, "right": 28}]'
 panels-height=['1:45']
 
 [desktop/applications/calculator]
@@ -77,7 +66,6 @@ autorun-never=false
 
 [desktop/notifications]
 bottom-notifications=true
-display-notifications=true
 notification-duration=4
 
 [desktop/peripherals/keyboard]
@@ -121,7 +109,7 @@ numlock-state='on'
 
 [settings-daemon/plugins/color]
 night-light-enabled=true
-night-light-temperature=uint32 3500
+night-light-temperature=uint32 2700
 
 [settings-daemon/plugins/power]
 lid-close-ac-action='suspend'
