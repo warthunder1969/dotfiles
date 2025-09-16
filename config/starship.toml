@@ -23,20 +23,20 @@ style_user = "bold orange"
 
 [hostname]
 disabled = false
-format = "[$hostname]($style) []($style) "
+format = "[$hostname]($style) []($style) "
 ssh_only = false
 style = "bold orange"
-ssh_symbol = " "
+ssh_symbol = " "
 
 [directory]
 style = "cyan"
-truncate_to_repo = true
+truncate_to_repo = false
 truncation_length = 0
 truncation_symbol = "repo: "
-read_only = ""
+read_only = " "
 
 [sudo]
-disabled = false
+disabled = true
 
 [cmd_duration]
 disabled = false
@@ -55,7 +55,7 @@ pipestatus = true
 symbol = "✖"
 not_executable_symbol = ""
 not_found_symbol = ""
-sigint_symbol = "󰟾"
+sigint_symbol = "✖"
 signal_symbol = ""
 
 [os]
@@ -65,7 +65,7 @@ style = "bold green"
 
 [character]
 error_symbol = ""
-success_symbol = "[ 󰿅 ](bold green)"
+success_symbol = "[  ](bold green)"
 
 # SYMBOLS
 [os.symbols]
@@ -94,39 +94,3 @@ Ubuntu = " "
 Unknown = " "
 Void = " "
 Windows = "󰍲 "
-
-[package]
-symbol = "󰏗 "
-
-[perl]
-symbol = " "
-
-[php]
-symbol = " "
-
-[pijul_channel]
-symbol = " "
-
-[python]
-symbol = " "
-
-[rlang]
-symbol = "󰟔 "
-
-[ruby]
-symbol = " "
-
-[rust]
-symbol = "󱘗 "
-
-[scala]
-symbol = " "
-
-[swift]
-symbol = " "
-
-[zig]
-symbol = " "
-
-[gradle]
-symbol = " "
