@@ -1,12 +1,24 @@
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
-
 # If not running interactively, don't do anything
-case $- in
-    *i*) ;;
-      *) return;;
-esac
+[[ $- != *i* ]] && return
+
+# Load starship prompt if starship is installed
+if [ -x /usr/bin/starship ]; then
+	__main() {
+		local major="${BASH_VERSINFO[0]}"
+		local minor="${BASH_VERSINFO[1]}"
+
+		if ((major > 4)) || { ((major == 4)) && ((minor >= 1)); }; then
+			source <("/usr/bin/starship" init bash --print-full-init)
+		else
+			source /dev/stdin <<<"$("/usr/bin/starship" init bash --print-full-init)"
+		fi
+	}
+	__main
+	unset -f __main
+fi
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
@@ -87,40 +99,56 @@ fi
 # colored GCC warnings and errors
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
-# Stock Aliases
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
-# Aliases
+## Aliases
+
+# Replace ls with eza
+if [[ -x /usr/bin/eza ]]; then
+  alias ls='eza -al --color=always --group-directories-first --icons'     # preferred listing
+  alias la='eza -a --color=always --group-directories-first --icons'      # all files and dirs
+  alias ll='eza -l --color=always --group-directories-first --icons'      # long format
+  alias lt='eza -aT --color=always --group-directories-first --icons'     # tree listing
+  alias l.='eza -ald --color=always --group-directories-first --icons .*' # show only dotfiles
+fi
+
+# Common use
+alias grubup="sudo update-grub"
+alias fixapt="sudo apt --fix-broken install"
+alias fixpkg="sudo dpkg --configure -a"
+alias fixmis="sudo apt update --fix-missing"
+alias tarnow='tar -acf '
+alias untar='tar -zxvf '
+alias l='dir --color=auto'
+alias hw='hwinfo --short'
+alias df='df -h'
+alias x="exit"
+
+# Package Management
+alias upd='sudo nala upgrade &&  flatpak update -y && cinnamon-spice-updater --update-all'
+alias up='sudo nala update && nala list --upgradable && flatpak remote-ls --updates'
 alias in='sudo nala install'
 alias re='sudo nala remove'
 alias nuke='sudo nala purge'
-alias dup='sudo nala upgrade &&  flatpak update -y && cinnamon-spice-updater --update-all'
-alias rup='sudo nala update'
 alias se='nala search'
-alias lst='nala list --upgradable'
-alias ar='sudo apt autoremove'
-alias l='exa -ll --color=always --group-directories-first'
-alias ls='exa -al --header --icons --group-directories-first'
-alias df='df -h'
-alias free='free -h'
-alias myip="ip -f inet address | grep inet | grep -v 'lo$' | cut -d ' ' -f 6,13 && curl ifconfig.me && echo ' external ip'"
-alias x="exit"
-alias vpn="twingate status && twingate resources"
-alias stat="df -h / && du -sh /mnt/ && free -h"
+alias clean='sudo nala autoremove && flatpak uninstall --unused'
+
+# Get fastest mirrors
+alias mirror="nala fetch"
+
 # Dotfiles & Files
 alias bs='micro ~/.bashrc'
 alias ed='micro'
 alias reload='source ~/.bashrc'
 alias dots='cd ~/Nextcloud/Projects/Linux/dotfiles'
-# Git aliases
-alias gp="git push -u origin main"
-alias gsave="git commit -m 'save'"
-alias gs="git status"
-alias gc="git clone"
-alias tr="tree"
 alias ff="fastfetch"
 alias nf="fastfetch"
+alias cf="cpufetch"
+alias gf="gpufetch"
+
+# Other
+alias free='free -h'
+alias myip="ip -f inet address | grep inet | grep -v 'lo$' | cut -d ' ' -f 6,13 && curl ifconfig.me && echo ' external ip'"
+alias vpn="tailscale status && tailscale resources"
+alias stat="df -h / && du -sh /mnt/ && free -h"
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -145,3 +173,4 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+eval "$(starship init bash)"

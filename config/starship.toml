@@ -1,25 +1,132 @@
-# Inserts a blank line between shell prompts
-add_newline = false
+palette = "dracula"
 
-[character]
-success_symbol = "[](green bold)"
-error_symbol = "[](red bold)"
+# Define Dracula color palette
+[palettes.dracula]
+background = "#282a36"
+current_line = "#44475a"
+foreground = "#f8f8f2"
+comment = "#6272a4"
+cyan = "#8be9fd"
+green = "#50fa7b"
+orange = "#ffb86c"
+pink = "#ff79c6"
+purple = "#bd93f9"
+red = "#ff5555"
+yellow = "#f1fa8c"
 
+## FIRST LINE/ROW: Info & Status
 [username]
-style_user = 'yellow bold'
-style_root = 'red bold'
-format = '[$user]($style)'
-disabled = false
+format = " [$user]($style)[@]($style)"
 show_always = true
+style_root = "bold red"
+style_user = "bold orange"
 
 [hostname]
-ssh_only = false
-ssh_symbol = "-ssh"
-format = '[@](yellow bold)[$hostname](yellow bold)[$ssh_symbol](purple bold):'
 disabled = false
+format = "[$hostname]($style) []($style) "
+ssh_only = false
+style = "bold orange"
+ssh_symbol = " "
 
 [directory]
-style = 'blue bold'
-format = "[❮](blue bold)[$path]($style)[$read_only]($read_only_style)[❯](blue bold) "
+style = "cyan"
+truncate_to_repo = true
 truncation_length = 0
-fish_style_pwd_dir_length = 1
+truncation_symbol = "repo: "
+read_only = ""
+
+[sudo]
+disabled = false
+
+[cmd_duration]
+disabled = false
+style="bold pink"
+format = "took [$duration]($style)"
+show_milliseconds = false
+show_notifications = false
+min_time_to_notify = 30_000
+
+## SECOND LINE/ROW: Prompt
+[status]
+disabled = false
+format = '[\[$symbol$status_common_meaning$status_signal_name$status_maybe_int\]]($style)'
+map_symbol = true
+pipestatus = true
+symbol = "✖"
+not_executable_symbol = ""
+not_found_symbol = ""
+sigint_symbol = "󰟾"
+signal_symbol = ""
+
+[os]
+disabled = false
+format = ' [$symbol]($style)'
+style = "bold green"
+
+[character]
+error_symbol = ""
+success_symbol = "[ 󰿅 ](bold green)"
+
+# SYMBOLS
+[os.symbols]
+Alpine = " "
+AlmaLinux = " "
+Android = " "
+Arch = " "
+CentOS = " "
+Debian = " "
+EndeavourOS = " "
+Fedora = " "
+Garuda = "󰛓 "
+Linux = " "
+Macos = " "
+Manjaro = " "
+Mint = "󰣭"
+openSUSE = " "
+Pop = " "
+Raspbian = " "
+Redhat = " "
+RedHatEnterprise = " "
+RockyLinux = " "
+Solus = "󰠳 "
+SUSE = " "
+Ubuntu = " "
+Unknown = " "
+Void = " "
+Windows = "󰍲 "
+
+[package]
+symbol = "󰏗 "
+
+[perl]
+symbol = " "
+
+[php]
+symbol = " "
+
+[pijul_channel]
+symbol = " "
+
+[python]
+symbol = " "
+
+[rlang]
+symbol = "󰟔 "
+
+[ruby]
+symbol = " "
+
+[rust]
+symbol = "󱘗 "
+
+[scala]
+symbol = " "
+
+[swift]
+symbol = " "
+
+[zig]
+symbol = " "
+
+[gradle]
+symbol = " "
