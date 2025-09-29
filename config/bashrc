@@ -123,13 +123,16 @@ alias df='df -h'
 alias x="exit"
 
 # Package Management
-alias upd='sudo nala upgrade &&  flatpak update -y && cinnamon-spice-updater --update-all'
-alias up='sudo nala update && nala list --upgradable && flatpak remote-ls --updates'
+alias up='sudo nala upgrade &&  flatpak update -y && cinnamon-spice-updater --update-all && sudo mintupdate-cli --refresh-cache update'
+alias rf='sudo nala update && nala list --upgradable && flatpak remote-ls --updates'
 alias in='sudo nala install'
 alias re='sudo nala remove'
 alias nuke='sudo nala purge'
 alias se='nala search'
-alias clean='sudo nala autoremove && flatpak uninstall --unused'
+alias cl='sudo nala autoremove && flatpak uninstall --unused'
+alias fn='flatpak install'
+alias fr='flatpak remove'
+alias fe='nala search'
 
 # Get fastest mirrors
 alias mirror="nala fetch"
@@ -140,7 +143,7 @@ alias ed='micro'
 alias reload='source ~/.bashrc'
 alias dots='cd ~/Nextcloud/Projects/Linux/dotfiles'
 alias ff="fastfetch"
-alias nf="fastfetch"
+alias nf="neofetch"
 alias cf="cpufetch"
 alias gf="gpufetch"
 

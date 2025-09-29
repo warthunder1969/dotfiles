@@ -1,74 +1,87 @@
 # See this wiki page for more info:
 # https://github.com/dylanaraps/neofetch/wiki/Customizing-Info
+# Challenge script by TechnoDaft#0647
 
-# Get the Install Timestamp (in seconds since epoch)
-install_timestamp="$(stat -c %W /)"
+# All the Timing information
+let Minute=60
+let Hour=3600
+let Day=86400
+let Week=604800
 
-# Get Today's Timestamp
-current_timestamp="$(date +%s)"
+# Year_days=365.25 days # 4 years (1461 days cause leap year) Divided by 4
+# Month_days=30.4375 days # Year Divided by 12
+let Month=2629800
+let Year=31557600
 
-# Print the formatted today's  date
-today_date() {
-    # Format the timestamp from stat into a readable date (e.g., 'Wed 12 Jan 2022')
-    date -d "@$current_timestamp" +"%x"
-}
+# Year = 365 days, Month = 30 days.
+# let Month=2592000
+# let Year=31536000
 
-# Print the formatted installation date
-get_install_date() {
-    # Format the timestamp from stat into a readable date (e.g., 'Wed 12 Jan 2022')
-    date -d "@$install_timestamp" +"%x"
-}
-# Print the days since installation
-get_days_since_install() {
-    # Calculate the difference in seconds, then convert to days (86400 seconds in a day)
-    days=$(( (current_timestamp - install_timestamp) / 86400 ))
-    printf "%s days ago" "$days "
-}
+# Calculation of everything needed
+time1="7/8/2023"  #Challenge Star Date
+time2="7/8/2025"
+# Convert the time strings to Unix timestamps
+timestamp1=$(date -d "$time1" +%s)
+timestamp2=$(date -d "$time2" +%s)
 
-# Print the system's age in years and days
-get_system_age() {
-    # Seconds in a year (approximate for simplicity)
-    seconds_in_year=$((365 * 86400))
-    
-    # Calculate difference in seconds
-    age_seconds=$((current_timestamp - install_timestamp))
-    
-    # Calculate years and remaining days
-    years=$((age_seconds / seconds_in_year))
-    remaining_days=$(( (age_seconds % seconds_in_year) / 86400 ))
-    
-    # Print the result
-    printf "%s years, %s days" "$years" "$remaining_days"
-}
+let current=$(date +%s)
+let birth_install=$(stat -c %W /)
+let challenge=(Day *30)
+let challenge_length=(challenge / Day)
+let challenge_complete=(birth_install + challenge)
+let diff_left=(challenge_complete - current)
+let diff_done=(current - birth_install)
 
+# Calculate the time difference in seconds
+time_difference=$((timestamp2 - current))
+daysdone=$((current - timestamp1))
+daysdone2=$((current - birth_install))
+# Convert the time difference to days (86400 seconds in a day)
+days_difference=$((time_difference / 86400))
+days_difference2=$((daysdone2 / 86400))
+
+progression=$((daysdone / 86400))
+
+
+
+let Days_done=(diff_done / Day)
+let Days_left=(diff_left / Day)
 
 print_info() {
 
- prin "$(color 3) "
-    info "${c3}󰣭 OS" distro
-    info "${c3}""${c3}├ Kernel:" kernel
-    info "${c3}""${c3}├󰏖 Packages:" packages
- 	prin "${c3}├ Installed:" "$(echo) $(get_install_date)"
-    prin "${c3}├󰃶 Today:" "$(echo) $(today_date)"
-	prin "${c3}└󰥕 Age:" "$(echo) $(get_days_since_install)"
- prin "$(color 3) "
+ prin "$(color 4)┌────────────────── Hardware ───────────────┐"
+    info "${c4}System:" model
+    info "${c4}""${c4} ├CPU:" cpu
+    info "${c4}""${c4} ├GPU:" gpu
+    info "${c4}""${c4} ├RAM:" memory
+    info "${c4}""${c4} ╰Storage:" disk
+ prin "$(color 4)╰───────────────────────────────────────────┘"
 
- prin "$(color 4) "
-    info "${c4}󰟀 DE:" de
-    info "${c4}""${c4}├󰧨 Window Manager:" wm
-    info "${c4}""${c4}├󰉼 System Theme:" theme
-    info "${c4}""${c4}└󰸉 System Icons:" icons
+ prin "$(color 2)┌────────────────── Software ───────────────┐"
+    info "${c1}Distro:" distro
+    info "${c1}""${c1} ├Kernel:" kernel
+    info "${c1}""${c1} ├Packages:" packages
+    info "${c1}""${c1} ├Shell:" shell
+    info "${c1}""${c1} ├WM:" wm
+    info "${c1}""${c1} ├DE:" de
+    info "${c1}""${c1} ╰Terminal:" term    
+ prin "$(color 4)╰───────────────────────────────────────────┘"
    
-prin "$(color 1) "
-    info "${c1}󰇅 PC:" model
-    info "${c1}""${c1}├󰻠 CPU:" cpu
-    info "${c1}""${c1}├󰑭 RAM:" memory
-    info "${c1}""${c1}├󰉉 Disk:" disk
-    info "${c1}""${c1}└󰍛 GPU:" gpu
+prin "$(color 6)╭──────────────────── Theme ────────────────┐"
+    info "${c6}Theme:" theme
+    info "${c1}""${c6} ├Icons:" icons
+    info "${c1}""${c6} ├Packages:" packages
+    info "${c1}""${c6} ╰Shell:" shell
+ prin "$(color 6)╰───────────────────────────────────────────┘"
 
-   
+ prin "$(color 3)╭────────────────────── Age ────────────────┐"
+info "${c3}Uptime:" uptime
+ prin "${c3} ├Installed:" "$(echo $birth_install | awk '{print strftime("%m/%d/%Y",$1)}')"
+    prin "${c3} ├Current:" "$(echo $current | awk '{print strftime("%m/%d/%Y",$1)}')"
+prin "${c3} ╰Installed:" "$(echo "$days_difference2 days ago")"
+ prin "$(color 3)╰───────────────────────────────────────────┘"  
+    
 }
-
 
 
 ##--------- Title

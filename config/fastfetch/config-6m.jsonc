@@ -29,7 +29,7 @@
             "type": "command",
             "key": "├ Installed",
             "keyColor": "yellow",
-            "text": "stat -c %y /home | cut -d' ' -f1",
+            "text": "stat -c %w /home | cut -d' ' -f1",
     },
     {
             "type": "command",
@@ -42,7 +42,7 @@
             "type": "command",
             "key": "└󰥕 Age",
             "keyColor": "yellow",
-            "text": "echo $(( ($(date +%s) - $(stat -c %W /)) / 86400 )) days old",
+            "text": "echo $(( ($(date +%s) - $(stat -c %W /)) / 86400 )) days ago",
     },
             "break",
         {
