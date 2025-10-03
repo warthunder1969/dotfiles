@@ -123,7 +123,7 @@ alias df='df -h'
 alias x="exit"
 
 # Package Management
-alias up='sudo nala upgrade &&  flatpak update -y && cinnamon-spice-updater --update-all && sudo mintupdate-cli --refresh-cache update'
+alias up='sudo nala upgrade && sudo flatpak update -y && cinnamon-spice-updater --update-all && sudo mintupdate-cli --refresh-cache update'
 alias rf='sudo nala update && nala list --upgradable && flatpak remote-ls --updates'
 alias in='sudo nala install'
 alias re='sudo nala remove'
@@ -140,7 +140,7 @@ alias mirror="nala fetch"
 # Dotfiles & Files
 alias bs='micro ~/.bashrc'
 alias ed='micro'
-alias reload='source ~/.bashrc'
+alias rl='source ~/.bashrc'
 alias dots='cd ~/Nextcloud/Projects/Linux/dotfiles'
 alias ff="fastfetch"
 alias nf="neofetch"
@@ -150,8 +150,11 @@ alias gf="gpufetch"
 # Other
 alias free='free -h'
 alias myip="ip -f inet address | grep inet | grep -v 'lo$' | cut -d ' ' -f 6,13 && curl ifconfig.me && echo ' external ip'"
-alias vpn="tailscale status && tailscale resources"
-alias stat="df -h / && du -sh /mnt/ && free -h"
+alias tstat="tailscale status"
+alias tcon="tailscale configure"
+alias tip="tailscale ip -4"
+alias tup="tailscale up || tailscale status"
+alias tdo="tailscale down ||  tailscale status"
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert

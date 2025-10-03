@@ -1,5 +1,4 @@
 com.google.Chrome
-com.brave.Browser
 com.discordapp.Discord
 im.riot.Riot
 io.github.dweymouth.supersonic

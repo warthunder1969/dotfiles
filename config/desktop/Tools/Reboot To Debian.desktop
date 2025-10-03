@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+Name=System Debian
+GenericName=Reboot to Debian
+Comment=Trigger Systemd to Reboot to Debian
+Icon=mintstick-logo-debian
+Exec=sudo grub-reboot 3 && sudo reboot
+Terminal=false
+Categories=System;
+PrefersNonDefaultGPU=false
+Name[en_US]=Reboot To Debian.desktop
+GenericName[en_US]=Reboot to Debian Desktop
+Comment[en_US]=Trigger Grub to Reboot into Debian

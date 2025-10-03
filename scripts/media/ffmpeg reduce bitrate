@@ -1,0 +1,2 @@
+ffmpeg -i 2024-nutshell.mp4 -vf "scale=1200:600" -b:v 7M "2024-nutshell(2).mp4"
+

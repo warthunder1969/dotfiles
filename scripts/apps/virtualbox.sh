@@ -3,18 +3,16 @@
 
 #add the necessary repository with the command:
 
-sudo add-apt-repository "deb http://download.virtualbox.org/virtualbox/debian contrib"
+echo "deb [arch=amd64 signed-by=/usr/share/keyrings/oracle-virtualbox-2016.gpg] https://download.virtualbox.org/virtualbox/debian noble contrib" | sudo tee /etc/apt/sources.list.d/oracle-virtualbox.list > /dev/null
 
-#Where UBUNTU-RELEASE is the version of Ubuntu you are using. If you’re unsure which version of Ubuntu you have installed, issue the command lsb_release -a.
+#Next, download and install the signature key 
 
-#Next, download and install the signature key for the repository with the command:
+wget -O- https://www.virtualbox.org/download/oracle_vbox_2016.asc | sudo gpg --yes --output /usr/share/keyrings/oracle-virtualbox-2016.gpg --dearmor
 
-wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
-
-#Now, you can install the latest release with the following commands:
+#Install the latest release
 
 sudo apt-get update
 
-sudo apt install virtualbox-7.1
+sudo apt install virtualbox-7.2
 
 

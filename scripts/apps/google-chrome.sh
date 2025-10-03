@@ -1,15 +1,18 @@
 #!/bin/bash
-# Installing google chrome via APT
+
+# Google Chrome Install Script
+# Version: 1.0
+# This is for Installing google chrome via APT pkg manager
+
+# Purge all existing Google Files
+sudo rm /usr/share/keyrings/google-chrome.gpg
+sudo rm /etc/apt/sources.list.d/google-chrome.list
+sudo rm /etc/apt/trusted.gpg.d/google.gpg
+sudo rm /etc/apt/trusted.gpg.d/google-chrome.gpg
+
 # Setup the Google signer and repo
-
-cat << EOL >> /etc/apt/sources.list.d/google-chrome.list
-### THIS FILE IS AUTOMATICALLY CONFIGURED ###
-# You may comment out this entry, but any other modifications may be lost.
-deb [arch=amd64] https://dl.google.com/linux/chrome/deb/ stable main
-EOL
-
- sudo /usr/bin/wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/google.gpg >/dev/null
-
+curl -fSsL https://dl.google.com/linux/linux_signing_key.pub | sudo gpg --dearmor | sudo tee /usr/share/keyrings/google-chrome.gpg >> /dev/null
+echo deb [arch=amd64 signed-by=/usr/share/keyrings/google-chrome.gpg] http://dl.google.com/linux/chrome/deb/ stable main | sudo tee /etc/apt/sources.list.d/google-chrome.list
 
 # Install
 sudo apt update

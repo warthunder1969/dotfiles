@@ -23,17 +23,18 @@ style_user = "bold orange"
 
 [hostname]
 disabled = false
-format = "[$hostname]($style) []($style) "
+format = "[$hostname]($style) [$ssh_symbol]($style)"
 ssh_only = false
 style = "bold orange"
-ssh_symbol = " "
+ssh_symbol = "󰌀"
 
 [directory]
 style = "cyan"
 truncate_to_repo = false
 truncation_length = 0
-truncation_symbol = "repo: "
+format = "[❮]($style)[$path]($style)[❯]($style)"
 read_only = " "
+
 
 [sudo]
 disabled = true
@@ -41,7 +42,7 @@ disabled = true
 [cmd_duration]
 disabled = false
 style="bold pink"
-format = "took [$duration]($style)"
+format = " took [$duration]($style)"
 show_milliseconds = false
 show_notifications = false
 min_time_to_notify = 30_000
@@ -49,14 +50,10 @@ min_time_to_notify = 30_000
 ## SECOND LINE/ROW: Prompt
 [status]
 disabled = false
-format = '[\[$symbol$status_common_meaning$status_signal_name$status_maybe_int\]]($style)'
+format = '[\[$symbol\]]($style)'
 map_symbol = true
 pipestatus = true
 symbol = "✖"
-not_executable_symbol = ""
-not_found_symbol = ""
-sigint_symbol = "✖"
-signal_symbol = ""
 
 [os]
 disabled = false
@@ -65,7 +62,7 @@ style = "bold green"
 
 [character]
 error_symbol = ""
-success_symbol = "[  ](bold green)"
+success_symbol = "[ ❯ ](bold green)"
 
 # SYMBOLS
 [os.symbols]
