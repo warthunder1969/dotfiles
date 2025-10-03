@@ -5,7 +5,6 @@ System setup and configs for my linux systems. I have a few hanging around but I
 ## Important links
 - [Linux Mint Homepage](https://linuxmint.com/ "Linux Mint Homepage")
 - [Warthunder's NerdCave on Youtube](https://www.youtube.com/@WarthundersNerdCave "My Youtube Channel")
-   - Odysee / Rumble Are currently MIA due to time contrains, will remain for the forceable future.
 
 ## Prerequisites
 
