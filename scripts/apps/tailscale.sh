@@ -1,8 +1,9 @@
-#binbash
-
+#!/bin/sh
+#Warthunder's Tailscale Installation Script
+#Version 1.2
 
 #Variables
-dependencies="cargo"
+dependencies="curl"
 package="tailscale-systray"
 #Tailscale Linux Install
 #https://tailscale.com/download
@@ -14,3 +15,6 @@ curl -fsSL https://tailscale.com/install.sh | sh
 
 curl -fsSL https://raw.githubusercontent.com/C10udburst/tailscale-systray/master/install.txt | sh
 
+cp ~/.config/autostart/tailscale-systray.desktop ~/.local/share/applications/
+
+exit 

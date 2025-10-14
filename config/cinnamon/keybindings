@@ -13,8 +13,8 @@ binding=['<Super>s']
 command='/usr/bin/catfish'
 name='File Search'
 
-[[media-keys]
-calculator=['<Primary>c']
+[media-keys]
+calculator=['<Super>c']
 email=['<Super>m']
 help=['<Super>h']
 screensaver=['<Super>l', 'XF86ScreenSaver']

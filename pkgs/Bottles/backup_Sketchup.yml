@@ -1,0 +1,91 @@
+Arch: win64
+CompatData: ''
+Creation_Date: '2025-10-06 16:12:46.567595'
+Custom_Path: false
+DLL_Overrides: {}
+DXVK: dxvk-2.7.1
+Environment: Application
+Environment_Variables: {}
+External_Programs:
+    57200cbb-e776-4c08-96aa-d2f511831831:
+        arguments: ''
+        auto_discovered: true
+        executable: SketchUp.exe
+        folder: /home/war/.var/app/com.usebottles.bottles/data/bottles/bottles/Sketchup/drive_c/Program
+            Files/SketchUp/SketchUp 2017
+        icon: com.usebottles.bottles-program
+        id: 57200cbb-e776-4c08-96aa-d2f511831831
+        name: SketchUp
+        path: C:\Program Files\SketchUp\SketchUp 2017\SketchUp.exe
+Installed_Dependencies:
+- arial32
+- times32
+- courie32
+- mono
+- gecko
+Language: sys
+LatencyFleX: latencyflex-v0.1.1
+NVAPI: dxvk-nvapi-v0.9.0
+Name: Sketchup
+Parameters:
+    custom_dpi: 96
+    decorated: true
+    discrete_gpu: false
+    dxvk: true
+    dxvk_nvapi: false
+    fixme_logs: false
+    fsr: false
+    fsr_quality_mode: none
+    fsr_sharpening_strength: 2
+    fullscreen_capture: false
+    gamemode: false
+    gamescope: false
+    gamescope_borderless: false
+    gamescope_fps: 0
+    gamescope_fps_no_focus: 0
+    gamescope_fullscreen: true
+    gamescope_game_height: 0
+    gamescope_game_width: 0
+    gamescope_scaling: false
+    gamescope_window_height: 0
+    gamescope_window_width: 0
+    latencyflex: false
+    mangohud: false
+    mangohud_display_on_game_start: true
+    mouse_warp: true
+    obsvkc: false
+    pulseaudio_latency: false
+    renderer: gl
+    sandbox: false
+    sync: wine
+    take_focus: false
+    use_be_runtime: true
+    use_eac_runtime: true
+    use_runtime: false
+    use_steam_runtime: false
+    versioning_automatic: false
+    versioning_compression: false
+    versioning_exclusion_patterns: false
+    virtual_desktop: false
+    virtual_desktop_res: 1280x720
+    vkbasalt: false
+    vkd3d: true
+    vmtouch: false
+    vmtouch_cache_cwd: false
+Path: Sketchup
+Runner: soda-9.0-1
+RunnerPath: ''
+Sandbox:
+    share_net: false
+    share_sound: false
+State: 0
+Uninstallers: {}
+Update_Date: '2025-10-06 16:15:01.579215'
+VKD3D: vkd3d-proton-2.14.1
+Versioning: false
+Versioning_Exclusion_Patterns: []
+Windows: win10
+WorkingDir: /home/war/.cxoffice/Trimble_SketchUp_2017/drive_c
+data: {}
+run_in_terminal: false
+session_arguments: ''
