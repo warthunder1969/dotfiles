@@ -58,17 +58,18 @@ The directory structure is as follows:
 ### Getting Help
 Good Luck :) Provided as-is no warranty. That being said most of the code here "should work" just take that statement with a grain of salt.
 
-## Roadmap
-This will change / evolve over time as I find better ways of doing things. I don't know that I will specific releases just this codebase will evolve as I need it to.
-
 ## Contributing
 Not really doing contributions on this project but if you have suggestions feel free. I will have other projects that I will be taking suggestions for.
 
 ## Authors and acknowledgment
-WIP. I'll give credit where I can, when I can. 
+I'll give some mentions here, because I am not in fact a one-man band. I don't know how these people tollerate me but they do. You deserve a shoutout reguardless. Seriously XD.
+   - My Wife
+   - My Brother & Best Friend
+   - NatePick [Nate Pick's Tech World](https://youtube.com/@natepickstechworld?si=4xu6IHjEbihte8tZ)
+   - Matt [TheLinuxCast](https://youtube.com/@thelinuxcast?si=yhx1WL8__LUTMp-m)    
 
 ## License
-GNU General Public License - The GNU General Public License is a series of widely used free software licenses or copyleft that guarantee end users the four freedoms to run, study, share, and modify the software. TLDR Do what you want with my code here, just let others know where you got it from if you would be so kind.
+GNU General Public License - The GNU General Public License is a series of widely used free software licenses or copyleft that guarantee end users the four freedoms to run, study, share, and modify the software. TLDR Do what you want with my code here, just give me credit where its due and pass it along if you think it would be helpful to me. While I am willing to help I don't support anything I upload here for obvious reasons XD... Have fun.
 
 ## Project status
-Personal / hobby time. I won't commit to regular work on this but as my needs change so will the software I use.
+Personal / hobby Project. I can't say I'll commit massive amount of resources to this but I will update as I have time. Eventually will learn how all this git, pull requests and such all work. This repo will grow with me as I do.
