@@ -1,22 +1,22 @@
 # Warthunder's Personal Dotfiles and Configs for Linux
 ```
-             ...-:::::-...                  󰣭 OS Linux Mint
-          .-MMMMMMMMMMMMMMM-.               ├ Linux
-      .-MMMM`..-:::::::-..`MMMM-.           ├󰏖 Packages Debs, Flatpaks, Appimages
-    .:MMMM.:MMMMMMMMMMMMMMM:.MMMM:.         ├󰅐 Using Linux since 2015
-   -MMM-M---MMMMMMMMMMMMMMMMMMM.MMM-        ├ Daily Driving Linux since 2021
- `:MMM:MM`  :MMMM:....::-...-MMMM:MMM:`     └󰃶 First Distro: Zorin OS
+             ...-:::::-...                  OS Linux Mint
+          .-MMMMMMMMMMMMMMM-.               ├ Linux
+      .-MMMM`..-:::::::-..`MMMM-.           ├ Packages Debs, Flatpaks, Appimages
+    .:MMMM.:MMMMMMMMMMMMMMM:.MMMM:.         ├ Using Linux since 2015
+   -MMM-M---MMMMMMMMMMMMMMMMMMM.MMM-        ├ Daily Driving Linux since 2021
+ `:MMM:MM`  :MMMM:....::-...-MMMM:MMM:`     └ First Distro: Zorin OS
  :MMM:MMM`  :MM:`  ``    ``  `:MMM:MMM:     
-.MMM.MMMM`  :MM.  -MM.  .MM-  `MMMM.MMM.    󰟀 DE Cinnamon
-:MMM:MMMM`  :MM.  -MM-  .MM:  `MMMM-MMM:    ├󰧨 Display Manager X11 (For Now)
-:MMM:MMMM`  :MM.  -MM-  .MM:  `MMMM:MMM:    ├󰉼 System Theme Mint-Y
-:MMM:MMMM`  :MM.  -MM-  .MM:  `MMMM-MMM:    └󰸉 System Icons Mint-Y
+.MMM.MMMM`  :MM.  -MM.  .MM-  `MMMM.MMM.    DE Cinnamon
+:MMM:MMMM`  :MM.  -MM-  .MM:  `MMMM-MMM:    ├ Display Manager X11 (For Now)
+:MMM:MMMM`  :MM.  -MM-  .MM:  `MMMM:MMM:    ├ System Theme Mint-Y
+:MMM:MMMM`  :MM.  -MM-  .MM:  `MMMM-MMM:    └ System Icons Mint-Y
 .MMM.MMMM`  :MM:--:MM:--:MM:  `MMMM.MMM.    
- :MMM:MMM-  `-MMMMMMMMMMMM-`  -MMM-MMM:     󰇅 PC Too Many (I don't have a problem I swear!)
-  :MMM:MMM:`                `:MMM:MMM:      ├󰻠 CPU AMD/Intel/ARM
-   .MMM.MMMM:--------------:MMMM.MMM.       └󰍛 GPU Intel/AMD/NVIDIA
+ :MMM:MMM-  `-MMMMMMMMMMMM-`  -MMM-MMM:     PC Too Many (I don't have a problem I swear!)
+  :MMM:MMM:`                `:MMM:MMM:      ├ CPU AMD/Intel/ARM
+   .MMM.MMMM:--------------:MMMM.MMM.       └ GPU Intel/AMD/NVIDIA
      '-MMMM.-MMMMMMMMMMMMMMM-.MMMM-'         
-       '.-MMMM``--:::::--``MMMM-.'          󰔠 TLC Challenges 30 Day  |6 Month  | 2 Year  | 4 Year 
+       '.-MMMM``--:::::--``MMMM-.'          TLC Challenges 30 Day [+] |6 Month [+] | 2 Year [+] | 4 Year [*]
             '-MMMMMMMMMMMMM-'               
                ``-:::::-``                                                           
 ```
