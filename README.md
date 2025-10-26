@@ -17,8 +17,8 @@ System setup and configs for my Linux (and potentially other) systems. I have a 
 ## Compatability
  I don't' garuntee compatability but... "Works on My Machine TM". The TLDR This is what I use and test against the latest Mint releases:
 
- - Linux Mint                  
- - Linux Mint [Debian Edition]              
+ - [Linux Mint](https://linuxmint.com/download.php)            
+ - [Linux Mint Debian Edition](https://linuxmint.com/download_lmde.php)        
 
 those platforms shoudl give you a nice time. I primarily work with apt and flaptak packages so take that for what you will. Most Debian or Ubuntu based distros shouldn't struggle with what you find here.
 
