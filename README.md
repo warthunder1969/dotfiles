@@ -65,8 +65,8 @@ Not really doing contributions on this project but if you have suggestions feel 
 I'll give some mentions here, because I am not in fact a one-man band. I don't know how these people tollerate me but they do. You deserve a shoutout reguardless. Seriously XD.
    - My Wife
    - My Brother & Best Friend
-   - NatePick [Nate Pick's Tech World](https://youtube.com/@natepickstechworld?si=4xu6IHjEbihte8tZ)
-   - Matt [TheLinuxCast](https://youtube.com/@thelinuxcast?si=yhx1WL8__LUTMp-m)    
+   - NatePick @ [Nate Pick's Tech World](https://youtube.com/@natepickstechworld?si=4xu6IHjEbihte8tZ)
+   - Matt @ [TheLinuxCast](https://youtube.com/@thelinuxcast?si=yhx1WL8__LUTMp-m)    
 
 ## License
 GNU General Public License - The GNU General Public License is a series of widely used free software licenses or copyleft that guarantee end users the four freedoms to run, study, share, and modify the software. TLDR Do what you want with my code here, just give me credit where its due and pass it along if you think it would be helpful to me. While I am willing to help I don't support anything I upload here for obvious reasons XD... Have fun.
