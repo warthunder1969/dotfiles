@@ -1,0 +1,58 @@
+compact = false
+
+[modules]
+hostname = true
+username = true
+uptime = true
+distro = true
+kernel = true
+desktop = true
+window_manager = true
+theme = true
+cpu = true
+gpu = true
+memory = true
+disk = true
+system_age = true
+nix_generations = false
+shell = false
+
+[[custom_scripts]]
+name = "Packages"
+command = "dpkg -l | grep -c '^ii'"
+enabled = true
+label_color = "yellow" 
+
+[[custom_scripts]]
+name = "Flatpaks"
+command = "flatpak list | wc -l"
+enabled = true
+label_color = "yellow"
+
+[display]
+separator = ": "
+label_color = "yellow"
+value_color = "white"
+show_logo = true
+logo = "linuxmint"  # Options: nix, arch, ubuntu, debian, fedoralogo_position = "left"
+logo_position = "top"
+logo_size = 96
+show_border = false
+border_color = "red"
+border_style = "solid"
+column_layout = "two"
+section_breaks = ["Uptime", "Theme", "Disk"]
+
+
+
+[display.label_colors]
+OS = "magenta"
+Kernel = "magenta"
+Uptime = "magenta"
+System_Age = "yellow"
+DE = "red"
+Theme = "red"
+CPU = "green"
+GPU = "green"
+Memory = "green"
+Disk = "green"

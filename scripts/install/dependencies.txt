@@ -1,5 +1,0 @@
-smbclient
-gvfs-backends
-git 
-wget 
-curl

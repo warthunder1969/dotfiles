@@ -20,7 +20,7 @@ System setup and configs for my Linux (and potentially other) systems. I have a 
  - Linux Mint                  
  - Linux Mint [Debian Edition]              
 
-those platforms shoudl give you a nice time. I primarily work with apt and flaptak so take that for what you will.
+those platforms shoudl give you a nice time. I primarily work with apt and flaptak packages so take that for what you will. Most Debian or Ubuntu based distros shouldn't struggle with what you find here.
 
 ## Installation
 1. Clone this Repository

@@ -1,13 +1,14 @@
 [/]
 command-history=['r']
-enabled-applets=['panel1:left:0:menu@cinnamon.org:0', 'panel1:left:1:separator@cinnamon.org:1', 'panel1:right:4:systray@cinnamon.org:3', 'panel1:right:6:xapp-status@cinnamon.org:4', 'panel1:right:14:notifications@cinnamon.org:5', 'panel1:right:7:removable-drives@cinnamon.org:7', 'panel1:right:8:keyboard@cinnamon.org:8', 'panel1:right:9:favorites@cinnamon.org:9', 'panel1:right:10:network@cinnamon.org:10', 'panel1:right:11:sound@cinnamon.org:11', 'panel1:right:12:power@cinnamon.org:12', 'panel1:right:13:calendar@cinnamon.org:13', 'panel1:right:15:cornerbar@cinnamon.org:14', 'panel1:right:3:scripts@paucapo.com:16', 'panel1:right:1:weather@mockturtl:17', 'panel1:left:2:grouped-window-list@cinnamon.org:23', 'panel1:right:5:inhibit@cinnamon.org:27']
-favorite-apps=['mintinstall.desktop', 'cinnamon-settings.desktop', 'com.gexperts.Tilix.desktop', 'com.notesnook.Notesnook.desktop:flatpak', 'virtualbox.desktop', 'youtube-music.desktop', 'com.bitwarden.desktop.desktop:flatpak']
-next-applet-id=28
+enabled-applets=['panel1:left:0:menu@cinnamon.org:0', 'panel1:left:1:separator@cinnamon.org:1', 'panel1:right:5:systray@cinnamon.org:3', 'panel1:right:7:xapp-status@cinnamon.org:4', 'panel1:right:15:notifications@cinnamon.org:5', 'panel1:right:8:removable-drives@cinnamon.org:7', 'panel1:right:9:keyboard@cinnamon.org:8', 'panel1:right:10:favorites@cinnamon.org:9', 'panel1:right:11:network@cinnamon.org:10', 'panel1:right:12:sound@cinnamon.org:11', 'panel1:right:13:power@cinnamon.org:12', 'panel1:right:14:calendar@cinnamon.org:13', 'panel1:right:16:cornerbar@cinnamon.org:14', 'panel1:right:2:weather@mockturtl:17', 'panel1:left:2:grouped-window-list@cinnamon.org:23', 'panel1:right:6:inhibit@cinnamon.org:27', 'panel1:center:0:workspace-switcher@cinnamon.org:28']
+enabled-extensions=['OsdWithNumber@JosephMcc']
+favorite-apps=['mintinstall.desktop', 'cinnamon-settings.desktop', 'com.notesnook.Notesnook.desktop:flatpak', 'com.todoist.Todoist.desktop:flatpak', 'com.gexperts.Tilix.desktop']
+next-applet-id=29
 panel-edit-mode=false
 panel-launchers=['DEPRECATED']
-panel-zone-icon-sizes='[{"panelId": 1, "left": 0, "center": 0, "right": 28}]'
-panel-zone-symbolic-icon-sizes='[{"panelId": 1, "left": 28, "center": 28, "right": 28}]'
-panels-height=['1:45']
+panel-zone-icon-sizes='[{"panelId": 1, "left": 0, "center": 0, "right": 24}]'
+panel-zone-symbolic-icon-sizes='[{"panelId": 1, "left": 28, "center": 28, "right": 24}]'
+panels-height=['1:40']
 
 [desktop/applications/calculator]
 exec='gnome-calculator'
@@ -18,7 +19,11 @@ exec-arg='--'
 
 [desktop/interface]
 clock-use-24h=false
+cursor-blink-time=1200
 cursor-size=28
+cursor-theme='Bibata-Modern-Classic'
+gtk-theme='Mint-Y-Dark'
+icon-theme='Mint-Y'
 text-scaling-factor=1.0
 toolkit-accessibility=true
 
@@ -28,24 +33,39 @@ looking-glass-keybinding=@as []
 show-desklets=['<Shift><Super>d']
 
 [desktop/keybindings/custom-keybindings/custom0]
-binding=['Menu']
+binding=['<Primary>Control_R']
 command='flameshot gui'
 name='Flameshot'
 
+[desktop/keybindings/custom-keybindings/custom1]
+binding=['<Super>s']
+command='/usr/bin/catfish'
+name='File Search'
+
 [desktop/keybindings/media-keys]
-screensaver=['<Control><Alt>l', '<Super>l']
-screenshot-clip=@as []
-terminal=['<Primary><Alt>t', '<Super>t']
-www=['<Super>b']
+calculator=['<Super>c']
 email=['<Super>m']
-calculator=['<Alt>c']
+help=['<Super>h']
+screensaver=['<Super>l', 'XF86ScreenSaver']
+screenshot-clip=@as []
+search=['<Super>s']
+terminal=['<Super>t']
+www=['<Super>b']
 
 [desktop/keybindings/wm]
 activate-window-menu=@as []
-move-to-workspace-1=['<Shift><Alt>exclam']
-move-to-workspace-2=['<Shift><Alt>at']
-move-to-workspace-3=['<Shift><Alt>numbersign']
-move-to-workspace-4=['<Shift><Alt>dollar']
+move-to-center=['<Primary><Shift>KP_Begin']
+move-to-corner-ne=['<Primary><Shift>KP_Page_Up']
+move-to-corner-nw=['<Primary><Shift>KP_Home']
+move-to-corner-se=['<Primary><Shift>KP_Next']
+move-to-corner-sw=['<Primary><Shift>KP_End']
+move-to-side-n=['<Primary><Shift>KP_Up']
+move-to-side-s=['<Primary><Shift>KP_Down']
+move-to-side-w=['<Primary><Shift>KP_Insert']
+move-to-workspace-1=['<Shift><Super>exclam']
+move-to-workspace-2=['<Shift><Super>at']
+move-to-workspace-3=['<Shift><Super>numbersign']
+move-to-workspace-4=['<Shift><Super>dollar']
 switch-to-workspace-1=['<Alt>1']
 switch-to-workspace-10=['<Alt>0']
 switch-to-workspace-2=['<Alt>2']
@@ -59,7 +79,7 @@ switch-to-workspace-9=['<Alt>9']
 switch-to-workspace-down=['<Alt>Down']
 switch-to-workspace-left=['<Alt>Left']
 switch-to-workspace-right=['<Alt>Right']
-switch-to-workspace-up=['<Control><Alt>Up', '<Alt>w']
+switch-to-workspace-up=['<Alt>Up']
 
 [desktop/media-handling]
 autorun-never=false
@@ -105,7 +125,7 @@ tap-3='MEDIA_PLAY_PAUSE::end'
 tile-maximize=true
 
 [settings-daemon/peripherals/keyboard]
-numlock-state='on'
+numlock-state='off'
 
 [settings-daemon/plugins/color]
 night-light-enabled=true

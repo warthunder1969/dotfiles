@@ -146,6 +146,7 @@ alias ff="fastfetch"
 alias nf="neofetch"
 alias cf="cpufetch"
 alias gf="gpufetch"
+alias mf="/home/war/.cargo/bin/mattfetch"
 
 # Other
 alias free='free -h'
