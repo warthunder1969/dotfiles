@@ -1,0 +1,4 @@
+# Insert this line to /etc/apt/sources.list.d/sid-repositories.list
+# we created above.
+# Debian Sid.
+deb http://deb.debian.org/debian/ sid main contrib non-free

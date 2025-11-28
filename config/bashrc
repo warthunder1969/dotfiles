@@ -111,10 +111,10 @@ if [[ -x /usr/bin/eza ]]; then
 fi
 
 # Common use
-alias grubup="sudo update-grub"
-alias fixapt="sudo apt --fix-broken install"
-alias fixpkg="sudo dpkg --configure -a"
-alias fixmis="sudo apt update --fix-missing"
+alias gu="sudo update-grub"
+alias fapt="sudo apt --fix-broken install"
+alias fpkg="sudo dpkg --configure -a"
+alias fmis="sudo apt update --fix-missing"
 alias tarnow='tar -acf '
 alias untar='tar -zxvf '
 alias l='dir --color=auto'
@@ -130,9 +130,9 @@ alias re='sudo nala remove'
 alias nk='sudo nala purge'
 alias se='nala search'
 alias cl='sudo nala autoremove && flatpak uninstall --unused'
-alias fn='flatpak install'
-alias fr='flatpak remove'
-alias fe='nala search'
+alias fin='flatpak install'
+alias fre='flatpak remove'
+alias fse='nala search'
 
 # Get fastest mirrors
 alias mirror="nala fetch"

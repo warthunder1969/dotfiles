@@ -6,7 +6,7 @@ favorite-apps=['mintinstall.desktop', 'cinnamon-settings.desktop', 'com.notesnoo
 next-applet-id=29
 panel-edit-mode=false
 panel-launchers=['DEPRECATED']
-panel-zone-icon-sizes='[{"panelId": 1, "left": 0, "center": 0, "right": 24}]'
+panel-zone-icon-sizes='[{"panelId": 1, "left": 40, "center": -1, "right": 32}, {"left": 0, "center": 0, "right": 0, "panelId": 2}]'
 panel-zone-symbolic-icon-sizes='[{"panelId": 1, "left": 28, "center": 28, "right": 24}]'
 panels-height=['1:40']
 
