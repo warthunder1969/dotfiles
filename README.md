@@ -1,24 +1,28 @@
 # Warthunder's Personal Dotfiles and Configs for Linux
 ```
-             ...-:::::-...                  OS Linux Mint
-          .-MMMMMMMMMMMMMMM-.               ├ Linux
-      .-MMMM`..-:::::::-..`MMMM-.           ├ Packages Debs, Flatpaks, Appimages
-    .:MMMM.:MMMMMMMMMMMMMMM:.MMMM:.         ├ Using Linux since 2015
-   -MMM-M---MMMMMMMMMMMMMMMMMMM.MMM-        ├ Daily Driving Linux since 2021
- `:MMM:MM`  :MMMM:....::-...-MMMM:MMM:`     └ First Distro: Zorin OS
+             ...-:::::-...                OS: Linux Mint & LMDE
+          .-MMMMMMMMMMMMMMM-.              ├ Somewhat Lazy Linux Realist (Touches Grass)
+      .-MMMM`..-:::::::-..`MMMM-.          ├ Packages: DEBs, Flatpaks, Appimages
+    .:MMMM.:MMMMMMMMMMMMMMM:.MMMM:.        ├ Using Linux: since 2015
+   -MMM-M---MMMMMMMMMMMMMMMMMMM.MMM-       ├ Daily Driving Linux: since 2021
+ `:MMM:MM`  :MMMM:....::-...-MMMM:MMM:`    └ First Distro: Zorin OS
  :MMM:MMM`  :MM:`  ``    ``  `:MMM:MMM:     
-.MMM.MMMM`  :MM.  -MM.  .MM-  `MMMM.MMM.    DE Cinnamon
-:MMM:MMMM`  :MM.  -MM-  .MM:  `MMMM-MMM:    ├ Display Manager X11 (For Now)
-:MMM:MMMM`  :MM.  -MM-  .MM:  `MMMM:MMM:    ├ System Theme Mint-Y
-:MMM:MMMM`  :MM.  -MM-  .MM:  `MMMM-MMM:    └ System Icons Mint-Y
+.MMM.MMMM`  :MM.  -MM.  .MM-  `MMMM.MMM.  DE: Cinnamon
+:MMM:MMMM`  :MM.  -MM-  .MM:  `MMMM-MMM:   ├ Display Manager: X11 (For Now)
+:MMM:MMMM`  :MM.  -MM-  .MM:  `MMMM:MMM:   ├ System Theme: Mint-Y
+:MMM:MMMM`  :MM.  -MM-  .MM:  `MMMM-MMM:   └ System Icons: Mint-Y
 .MMM.MMMM`  :MM:--:MM:--:MM:  `MMMM.MMM.    
- :MMM:MMM-  `-MMMMMMMMMMMM-`  -MMM-MMM:     PC Too Many (I don't have a problem I swear!)
-  :MMM:MMM:`                `:MMM:MMM:      ├ CPU AMD/Intel/ARM
-   .MMM.MMMM:--------------:MMMM.MMM.       └ GPU Intel/AMD/NVIDIA
-     '-MMMM.-MMMMMMMMMMMMMMM-.MMMM-'         
-       '.-MMMM``--:::::--``MMMM-.'          TLC Challenges 30 Day [+] |6 Month [+] | 2 Year [+] | 4 Year [*]
+ :MMM:MMM-  `-MMMMMMMMMMMM-`  -MMM-MMM:   PC/Laptop: Too Many, Less than I used to (I don't have a problem I swear!)
+  :MMM:MMM:`                `:MMM:MMM:     ├ Laptops: Thinkpad T15, Thinkpad P53, HP ProBook 440 G9, Dell Latitude 7390 (2in1)
+   .MMM.MMMM:--------------:MMMM.MMM.      ├ Main: AMD Ryzen 7 7700X; 32GB DDR5 RAM; AMD RX6950XT
+     '-MMMM.-MMMMMMMMMMMMMMM-.MMMM-'       ├ CPU: AMD/Intel
+       '.-MMMM``--:::::--``MMMM-.'         └ GPU: Intel/AMD/NVIDIA
             '-MMMMMMMMMMMMM-'               
-               ``-:::::-``                                                           
+               ``-:::::-``                TLC Distro Challenge: 30 Day [+] |6 Month [+] | 2 Year [+] | 4 Year [*]
+                                           ├ Achievements: Gifmaster, Davinci Resolve Working on Intel, AMD & NVIDIA GPUs
+                                           | Converted Wife to Linux (Mint), Homelab 3.0 (TrueNAS) and VMs (Proxmox+ KVM)
+                                           ├ ToDo's: Learn a Language (C/Rust/Python), Improve Scripts, Convert to KVM from 
+                                           └ Virtualbox/VMware, Learn Blender, Reduce Reliance on Windows                
 ```
 System setup and configs for my linux systems. I have a few hanging around but I try to leave their configs here as I can. I've been apart of the TLC community for a few years along with several others. I make my way around having fun in the world of computing. 
 ## Important links / Socials
