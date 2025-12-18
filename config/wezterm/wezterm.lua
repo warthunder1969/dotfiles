@@ -1,51 +1,57 @@
--- ~/.config/wezterm/wezterm.lua
--- Optimized WezTerm configuration for better performance
+--------------------------------------------------------------------------------
+-- 1) Wezterm Config Initialization
+--------------------------------------------------------------------------------
 local wezterm = require "wezterm"
 local act = wezterm.action
+local config = wezterm.config_builder()
 
--- Tango Dark inspired color palette
+--------------------------------------------------------------------------------
+-- 2) Color Palette Definition
+--------------------------------------------------------------------------------
+-- I've defined the 'colors' table here so line 161 (and others) can find it.
 local colors = {
-  fg = "#ffffff",
-  bg = "#1a1a1a",
-  comment = "#8b949e",
-  red = "#ef2929",
-  green = "#4e9a06",
-  yellow = "#ff9c00",
-  blue = "#3465a4",
-  magenta = "#c90076",
-  cyan = "#81b9f9",
-  selection = "#ff9c00",
-  caret = "#ff9c00",
+  bg         = "#282828",
+  fg         = "#ffffff",
+  yellow     = "#ffd500",
+  comment    = "#928374",
+  red        = "#ef2929",
+  caret      = "#ff9c00",
+  selection  = "#ff9c00",
   invisibles = "#2f363d",
+  cyan       = "#43dfc8",
+  blue       = "#3571d9",
+  magenta    = "#d3869b",
+  green      = "#4e9a06",
 }
 
--- Efficient keybinding helper function
+--------------------------------------------------------------------------------
+-- 3) Keybinds
+--------------------------------------------------------------------------------
 local function key_binding(key_table)
   local result = {}
-  for i, binding in ipairs(key_table) do
+  for _, binding in ipairs(key_table) do
     table.insert(result, {
       mods = binding[1] or "ALT",
       key = binding[2],
-      action = binding[3]
+      action = binding[3],
     })
   end
   return result
 end
 
-local config = wezterm.config_builder()
-
--- Key bindings configuration
 config.keys = key_binding({
   -- Split and manage panes
-  {"CTRL", "`", act.SplitHorizontal { domain = 'CurrentPaneDomain' }},
-  {"CTRL", "Tab", act.SplitVertical { domain = 'CurrentPaneDomain' }},
+  {"CTRL", "Enter", act.SplitHorizontal { domain = 'CurrentPaneDomain' }},
+  {"CTRL", "\\", act.SplitVertical { domain = 'CurrentPaneDomain' }},
   {"CTRL", "x", act.CloseCurrentPane { confirm = true }},
+
+  -- Focus on pane by direction
   {"CTRL", "LeftArrow", act.ActivatePaneDirection 'Left'},
   {"CTRL", "RightArrow", act.ActivatePaneDirection 'Right'},
   {"CTRL", "UpArrow", act.ActivatePaneDirection 'Up'},
   {"CTRL", "DownArrow", act.ActivatePaneDirection 'Down'},
 
-  -- Tab creation, navigation and management
+  -- Tab management
   {"ALT", "t", act.SpawnTab 'CurrentPaneDomain'},
   {"ALT", "q", act.CloseCurrentTab { confirm = true }},
   {"ALT", "1", act.ActivateTab(0)},
@@ -56,108 +62,33 @@ config.keys = key_binding({
   {"ALT", "6", act.ActivateTab(5)},
   {"ALT", "7", act.ActivateTab(6)},
   {"ALT", "8", act.ActivateTab(7)},
-  {"CTRL|ALT", "UpArrow", act.ActivateLastTab},
-  {"CTRL|ALT", "DownArrow", act.ActivateLastTab},
-  {"CTRL|ALT", "1", act.MoveTab(0)},
-  {"CTRL|ALT", "2", act.MoveTab(1)},
-  {"CTRL|ALT", "3", act.MoveTab(2)},
-  {"CTRL|ALT", "4", act.MoveTab(3)},
-  {"CTRL|ALT", "5", act.MoveTab(4)},
-  {"CTRL|ALT", "6", act.MoveTab(5)},
-  {"CTRL|ALT", "7", act.MoveTab(6)},
-  {"CTRL|ALT", "8", act.MoveTab(7)},
-  {"CTRL|ALT", "LeftArrow", act.MoveTabRelative(-1)},
-  {"CTRL|ALT", "RightArrow", act.MoveTabRelative(1)},
-
-  -- Copy and paste operations
-  {"ALT", "c", act.CopyTo 'ClipboardAndPrimarySelection'},
-  {"ALT", "v", act.PasteFrom 'PrimarySelection'},
-  {"ALT", "v", act.PasteFrom 'Clipboard'},
-
-  -- Font size adjustments
+  
+  -- Font size
   {"ALT", "+", act.IncreaseFontSize},
   {"ALT", "-", act.DecreaseFontSize},
   {"ALT", "*", act.ResetFontSize},
 })
-config.font = wezterm.font 'Fira Code'
--- You can specify some parameters to influence the font selection;
--- for example, this selects a Bold, Italic font variant.
-config.font =
-  wezterm.font('Fira Code', { weight = 'Bold', italic = false })
--- Tab bar with FiraCode font
-config.window_frame = {
-  font = wezterm.font { family = 'Fira Code', weight = 'Regular' },
-  font_size = 12.0,
-  active_titlebar_bg = colors.bg,
-}
 
--- Performance optimizations
+--------------------------------------------------------------------------------
+-- 4) Build the WezTerm Appearance
+--------------------------------------------------------------------------------
+config.initial_cols = 120
+config.initial_rows = 35
+config.window_background_opacity = 0.90
+config.font_size = 12
+config.font = wezterm.font('JetBrains Mono', { weight = 'Regular' })
+config.default_cursor_style = "BlinkingBlock"
+config.cursor_blink_rate = 500
+config.hide_tab_bar_if_only_one_tab = true
+config.use_fancy_tab_bar = true
+
+-- Performance
+config.front_end = "WebGpu"
+config.webgpu_power_preference = "HighPerformance"
 config.max_fps = 60
 config.animation_fps = 1
-config.line_height = 1.1
-config.window_background_opacity = 0.95
-config.enable_scroll_bar = false
-config.use_fancy_tab_bar = true
-config.font_size = 12
 config.term = "xterm-256color"
 config.warn_about_missing_glyphs = false
-
--- Color scheme application
-config.colors = {
-  foreground = colors.fg,
-  background = colors.bg,
-  cursor_bg = colors.caret,
-  cursor_fg = colors.bg,
-  cursor_border = colors.caret,
-  selection_fg = colors.fg,
-  selection_bg = colors.selection,
-  scrollbar_thumb = colors.invisibles,
-  split = colors.invisibles,
-
-  -- ANSI colors
-  ansi = {
-    colors.invisibles, colors.red, colors.green, colors.yellow,
-    colors.blue, colors.magenta, colors.cyan, colors.fg,
-  },
-  -- Bright ANSI colors
-  brights = {
-    colors.comment, "#ff9790", "#6af28c", "#e3b341",
-    "#79c0ff", "#d2a8ff", "#56d4dd", "#ffffff",
-  },
-
-  -- Tab bar styling
-  tab_bar = {
-    background = colors.bg,
-    active_tab = { bg_color = colors.yellow, fg_color = colors.bg, intensity = "Bold" },
-    inactive_tab = { bg_color = colors.bg, fg_color = colors.comment },
-    inactive_tab_hover = { bg_color = "#21262d", fg_color = colors.caret },
-    new_tab = { bg_color = colors.bg, fg_color = colors.caret, intensity = "Bold" },
-    new_tab_hover = { bg_color = "#21262d", fg_color = colors.red },
-    inactive_tab_edge = colors.invisibles,
-  },
-}
-
--- Mouse interaction bindings
-config.mouse_bindings = {
-  -- Right-click to copy selection
-  {
-    event = { Down = { streak = 1, button = "Right" } },
-    mods = "NONE",
-    action = act.CopyTo("Clipboard"),
-  },
-  -- Middle-click to split horizontally
-  {
-    event = { Down = { streak = 1, button = "Middle" } },
-    mods = "NONE",
-    action = act.SplitHorizontal { domain = "CurrentPaneDomain" },
-  },
-  -- Shift+Middle-click to close pane
-  {
-    event = { Down = { streak = 1, button = "Middle" } },
-    mods = "SHIFT",
-    action = act.CloseCurrentPane { confirm = false },
-  },
-}
 
 -- Uncomment for nvidia issues with wayland
 -- Laggy/extra characters
@@ -177,5 +108,61 @@ config.mouse_bindings = {
 -- config.prefer_egl = true
 -- config.freetype_load_target = "Light"
 -- config.freetype_render_target = "HorizontalLcd"
+
+--------------------------------------------------------------------------------
+-- 5) Color Scheme Application
+--------------------------------------------------------------------------------
+config.colors = {
+  foreground = colors.fg,
+  background = colors.bg,
+  cursor_bg = colors.caret,
+  cursor_fg = colors.bg,
+  cursor_border = colors.caret,
+  selection_fg = colors.fg,
+  selection_bg = colors.selection,
+  scrollbar_thumb = colors.invisibles,
+  split = colors.invisibles,
+
+  ansi = {
+    colors.invisibles, colors.red, colors.green, colors.yellow,
+    colors.blue, colors.magenta, colors.cyan, colors.fg,
+  },
+  
+  tab_bar = {
+    background = colors.bg,
+    active_tab = { bg_color = colors.yellow, fg_color = colors.bg, intensity = "Bold" },
+    inactive_tab = { bg_color = colors.bg, fg_color = colors.comment },
+    new_tab = { bg_color = colors.bg, fg_color = colors.caret, intensity = "Bold" },
+  },
+}
+
+-- Mouse interaction bindings
+config.mouse_bindings = {
+  -- Right-click to copy selection
+  {
+    event = { Down = { streak = 1, button = "Right" } },
+    mods = "NONE",
+    action = act.CopyTo("Clipboard"),
+  },
+  -- Middle-click to split horizontally
+  {
+    event = { Down = { streak = 1, button = "Middle" } },
+    mods = "NONE",
+    action = act.SplitHorizontal { domain = "CurrentPaneDomain" },
+  },
+
+  -- Control+Middle-click to split horizontally
+  {
+    event = { Down = { streak = 1, button = "Middle" } },
+    mods = "CTRL",
+    action = act.SplitVertical { domain = "CurrentPaneDomain" },
+  },
+  -- Shift+Middle-click to close pane
+  {
+    event = { Down = { streak = 1, button = "Middle" } },
+    mods = "SHIFT",
+    action = act.CloseCurrentPane { confirm = false },
+  },
+}
 
 return config
