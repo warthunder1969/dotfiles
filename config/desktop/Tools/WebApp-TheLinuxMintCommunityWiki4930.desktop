@@ -1,0 +1,19 @@
+[Desktop Entry]
+Version=1.0
+Name=The Linux Mint Community Wiki
+Comment=Community written guides and resources for Linux Mint.
+Exec=sh -c 'XAPP_FORCE_GTKWINDOW_ICON="mintstick-logo-linuxmint" firefox --class WebApp-TheLinuxMintCommunityWiki4930 --name WebApp-TheLinuxMintCommunityWiki4930 --profile /home/war/.local/share/ice/firefox/TheLinuxMintCommunityWiki4930 --no-remote "https://mintguide.miraheze.org"'
+Terminal=false
+X-MultipleArgs=false
+Type=Application
+Icon=mintstick-logo-linuxmint
+Categories=GTK;WebApps;
+MimeType=text/html;text/xml;application/xhtml_xml;
+StartupWMClass=WebApp-TheLinuxMintCommunityWiki4930
+StartupNotify=true
+X-WebApp-Browser=Firefox
+X-WebApp-URL=https://mintguide.miraheze.org
+X-WebApp-CustomParameters=
+X-WebApp-Navbar=false
+X-WebApp-PrivateWindow=false
+X-WebApp-Isolated=true

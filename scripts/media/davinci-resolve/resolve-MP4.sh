@@ -5,7 +5,7 @@
 #RAW COMMAND: 
 #ffmpeg -i "file" -c:v mpeg2video -vf "fps=30" -q:v 1 -c:a pcm_s16le "file.mov"
 
-notify-send "Encoding Started"
+notify-send "Encoding Started" "The process has begun."
 
 mkdir transcoded; 
 

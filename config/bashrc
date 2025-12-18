@@ -123,7 +123,7 @@ alias df='df -h'
 alias x="exit"
 
 # Package Management
-alias up='sudo nala upgrade && sudo flatpak update -y && cinnamon-spice-updater --update-all && sudo mintupdate-cli --refresh-cache update'
+alias up='sudo nala upgrade && sudo flatpak update -y && cinnamon-spice-updater --update-all && sudo mintupdate-cli refresh-cache'
 alias rf='sudo nala update && nala list --upgradable && flatpak remote-ls --updates'
 alias in='sudo nala install'
 alias re='sudo nala remove'

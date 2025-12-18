@@ -37,11 +37,9 @@ local config = wezterm.config_builder()
 -- Key bindings configuration
 config.keys = key_binding({
   -- Split and manage panes
-  {"CTRL", "`", act.SplitPane { direction = "Right", size = { Percent = 50 }}},
-  {"CTRL", "Tab", act.SplitPane { direction = "Down", size = { Percent = 50 }}},
-  {"CTRL", "Enter", act.SplitHorizontal { domain = 'CurrentPaneDomain' }},
-  {"CTRL", "\\", act.SplitVertical { domain = 'CurrentPaneDomain' }},
-  {"CTRL", "w", act.CloseCurrentPane { confirm = true }},
+  {"CTRL", "`", act.SplitHorizontal { domain = 'CurrentPaneDomain' }},
+  {"CTRL", "Tab", act.SplitVertical { domain = 'CurrentPaneDomain' }},
+  {"CTRL", "x", act.CloseCurrentPane { confirm = true }},
   {"CTRL", "LeftArrow", act.ActivatePaneDirection 'Left'},
   {"CTRL", "RightArrow", act.ActivatePaneDirection 'Right'},
   {"CTRL", "UpArrow", act.ActivatePaneDirection 'Up'},
@@ -85,22 +83,22 @@ config.font = wezterm.font 'Fira Code'
 -- You can specify some parameters to influence the font selection;
 -- for example, this selects a Bold, Italic font variant.
 config.font =
-  wezterm.font('JetBrains Mono', { weight = 'Bold', italic = false })
+  wezterm.font('Fira Code', { weight = 'Bold', italic = false })
 -- Tab bar with FiraCode font
 config.window_frame = {
   font = wezterm.font { family = 'Fira Code', weight = 'Regular' },
-  font_size = 10.0,
+  font_size = 12.0,
   active_titlebar_bg = colors.bg,
 }
 
 -- Performance optimizations
-config.max_fps = 120
+config.max_fps = 60
 config.animation_fps = 1
 config.line_height = 1.1
 config.window_background_opacity = 0.95
 config.enable_scroll_bar = false
 config.use_fancy_tab_bar = true
-config.font_size = 10
+config.font_size = 12
 config.term = "xterm-256color"
 config.warn_about_missing_glyphs = false
 

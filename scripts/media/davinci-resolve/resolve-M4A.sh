@@ -5,7 +5,7 @@
 #RAW COMMAND: 
 #ffmpeg -i show.m4a -c:a libmp3lame -q:a 8 output.mp3
 
-notify-send "Encoding Started"
+notify-send "Encoding Started" "The process has begun."
 
 mkdir transcoded; 
 

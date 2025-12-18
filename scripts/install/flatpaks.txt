@@ -1,10 +1,6 @@
 com.google.Chrome
-one.ablaze.floorp
-com.brave.Browser
-com.discordapp.Discord
+dev.vencord.Vesktop
 im.riot.Riot
 io.github.dweymouth.supersonic
 com.notesnook.Notesnook
 org.localsend.localsend_app
-com.todoist.Todoist
-

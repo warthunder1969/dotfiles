@@ -16,23 +16,23 @@ yellow = "#f1fa8c"
 
 ## FIRST LINE/ROW: Info & Status
 [username]
-format = " [$user]($style)[@]($style)"
+format = "[❮]($style)[$user]($style)[@]($style)"
 show_always = true
 style_root = "bold red"
 style_user = "bold orange"
 
 [hostname]
 disabled = false
-format = "[$hostname]($style) [$ssh_symbol]($style)"
+format = "[$hostname]($style)[$ssh_symbol]($style)[❯]($style) "
 ssh_only = false
 style = "bold orange"
-ssh_symbol = "󰌀"
+ssh_symbol = "󰌀 "
 
 [directory]
 style = "cyan"
 truncate_to_repo = false
 truncation_length = 0
-format = "[❮]($style)[$path]($style)[❯]($style)"
+format = "[➤ ](bold orange)[❮]($style)[$path]($style)[❯]($style)"
 read_only = " "
 
 
@@ -47,22 +47,14 @@ show_milliseconds = false
 show_notifications = false
 min_time_to_notify = 30_000
 
-## SECOND LINE/ROW: Prompt
-[status]
-disabled = false
-format = '[\[$symbol\]]($style)'
-map_symbol = true
-pipestatus = true
-symbol = "✖"
-
 [os]
 disabled = false
-format = ' [$symbol]($style)'
+format = '[└]($style)[$symbol]($style)'
 style = "bold green"
 
 [character]
 error_symbol = ""
-success_symbol = "[ ❯ ](bold green)"
+success_symbol = "[ ➤](bold green)"
 
 # SYMBOLS
 [os.symbols]
