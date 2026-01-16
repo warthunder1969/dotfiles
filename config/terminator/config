@@ -1,31 +1,41 @@
 [global_config]
-  suppress_multiple_term_dialog = True
+  geometry_hinting = True
+  tab_position = hidden
+  broadcast_default = all
   always_split_with_profile = True
+  putty_paste_style_source_clipboard = True
+  link_single_click = True
 [keybindings]
 [profiles]
   [[default]]
+    audible_bell = True
     background_color = "#2e2e33"
     background_darkness = 0.9
     background_type = transparent
-    cursor_shape = ibeam
+    backspace_binding = automatic
     cursor_fg_color = "#000000"
     cursor_bg_color = "#aaaaaa"
-    font = Fira Code 12
+    font = JetBrainsMono Nerd Font Propo 12
     foreground_color = "#ffffff"
+    show_titlebar = False
     palette = "#000000:#cc0000:#4e9a06:#c4a000:#3465a4:#75507b:#06989a:#d3d7cf:#555753:#ef2929:#8ae234:#fce94f:#729fcf:#ad7fa8:#34e2e2:#eeeeec"
+    login_shell = True
     use_system_font = False
+    use_theme_colors = True
     bold_is_bright = True
     title_hide_sizetext = True
   [[warthunder]]
+    audible_bell = True
     background_color = "#2e2e33"
     background_darkness = 0.9
     background_type = transparent
-    cursor_shape = ibeam
     cursor_fg_color = "#000000"
     cursor_bg_color = "#aaaaaa"
-    font = Fira Code 12
+    font = JetBrainsMonoNL Nerd Font Mono 12
     foreground_color = "#ffffff"
+    show_titlebar = False
     palette = "#000000:#cc0000:#4e9a06:#c4a000:#3465a4:#75507b:#06989a:#d3d7cf:#555753:#ef2929:#8ae234:#fce94f:#729fcf:#ad7fa8:#34e2e2:#eeeeec"
+    login_shell = True
     use_system_font = False
     use_theme_colors = True
     bold_is_bright = True

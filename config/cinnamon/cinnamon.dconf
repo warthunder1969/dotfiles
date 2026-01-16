@@ -1,20 +1,26 @@
 [/]
+alttab-switcher-delay=100
 command-history=['r']
+desklet-snap-interval=25
 enabled-applets=['panel1:left:0:menu@cinnamon.org:0', 'panel1:left:1:separator@cinnamon.org:1', 'panel1:right:5:systray@cinnamon.org:3', 'panel1:right:7:xapp-status@cinnamon.org:4', 'panel1:right:15:notifications@cinnamon.org:5', 'panel1:right:8:removable-drives@cinnamon.org:7', 'panel1:right:9:keyboard@cinnamon.org:8', 'panel1:right:10:favorites@cinnamon.org:9', 'panel1:right:11:network@cinnamon.org:10', 'panel1:right:12:sound@cinnamon.org:11', 'panel1:right:13:power@cinnamon.org:12', 'panel1:right:14:calendar@cinnamon.org:13', 'panel1:right:16:cornerbar@cinnamon.org:14', 'panel1:right:2:weather@mockturtl:17', 'panel1:left:2:grouped-window-list@cinnamon.org:23', 'panel1:right:6:inhibit@cinnamon.org:27', 'panel1:center:0:workspace-switcher@cinnamon.org:28']
+enabled-desklets=@as []
 enabled-extensions=['OsdWithNumber@JosephMcc']
-favorite-apps=['mintinstall.desktop', 'cinnamon-settings.desktop', 'com.notesnook.Notesnook.desktop:flatpak', 'com.todoist.Todoist.desktop:flatpak', 'com.gexperts.Tilix.desktop']
+favorite-apps=['mintinstall.desktop', 'cinnamon-settings.desktop', 'com.notesnook.Notesnook.desktop:flatpak', 'org.wezfurlong.wezterm.desktop', 'org.gnome.Calculator.desktop']
 next-applet-id=29
 panel-edit-mode=false
 panel-launchers=['DEPRECATED']
-panel-zone-icon-sizes='[{"panelId": 1, "left": 40, "center": -1, "right": 32}, {"left": 0, "center": 0, "right": 0, "panelId": 2}]'
+panel-zone-icon-sizes='[{"panelId": 1, "left": 36, "center": -1, "right": 28}, {"left": 0, "center": 0, "right": 0, "panelId": 2}]'
 panel-zone-symbolic-icon-sizes='[{"panelId": 1, "left": 28, "center": 28, "right": 24}]'
-panels-height=['1:40']
+panels-height=['1:45']
+
+[desktop/a11y/applications]
+screen-keyboard-enabled=true
 
 [desktop/applications/calculator]
 exec='gnome-calculator'
 
 [desktop/applications/terminal]
-exec='tilix'
+exec='wezterm start --cwd .'
 exec-arg='--'
 
 [desktop/interface]
@@ -22,8 +28,8 @@ clock-use-24h=false
 cursor-blink-time=1200
 cursor-size=28
 cursor-theme='Bibata-Modern-Classic'
-gtk-theme='Mint-Y-Dark'
-icon-theme='Mint-Y'
+gtk-theme='Mint-Y-Dark-Blue'
+icon-theme='Mint-Y-Blue'
 text-scaling-factor=1.0
 toolkit-accessibility=true
 
@@ -100,8 +106,14 @@ speed=0.0
 [desktop/peripherals/touchpad]
 speed=0.0
 
+[desktop/screensaver]
+layout-group=0
+
 [desktop/sound]
 event-sounds=false
+
+[desktop/wm/preferences]
+min-window-opacity=30
 
 [gestures]
 enabled=true
@@ -122,14 +134,16 @@ swipe-up-4='VOLUME_UP::end'
 tap-3='MEDIA_PLAY_PAUSE::end'
 
 [muffin]
+draggable-border-width=10
 tile-maximize=true
 
 [settings-daemon/peripherals/keyboard]
-numlock-state='off'
+numlock-state='on'
 
 [settings-daemon/plugins/color]
 night-light-enabled=true
-night-light-temperature=uint32 2700
+night-light-schedule-mode='always'
+night-light-temperature=uint32 3700
 
 [settings-daemon/plugins/power]
 lid-close-ac-action='suspend'
@@ -140,4 +154,4 @@ sleep-inactive-ac-timeout=0
 sleep-inactive-battery-timeout=1800
 
 [theme]
-name='Mint-Y-Dark'
+name='Mint-Y-Dark-Blue'

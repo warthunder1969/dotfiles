@@ -1,3 +1,9 @@
+"$schema" = "https://starship.rs/config-schema.json"
+
+# -------------------------
+# Theme
+# -------------------------
+
 palette = "dracula"
 
 # Define Dracula color palette
@@ -14,49 +20,40 @@ purple = "#bd93f9"
 red = "#ff5555"
 yellow = "#f1fa8c"
 
-## FIRST LINE/ROW: Info & Status
+# -------------------------
+# Prompt format
+# -------------------------
+format = """
+┌─ $username$hostname$os$directory$cmd_duration
+└─➤ $character
+"""
+# -------------------------
+# Username
+# -------------------------
 [username]
-format = "[❮]($style)[$user]($style)[@]($style)"
-show_always = true
-style_root = "bold red"
+format = "[┌─ ](purple)[$user]($style)[$read_only]($style)"
 style_user = "bold orange"
+style_root = "bold red"
+show_always = true
 
+# -------------------------
+# Hostname
+# -------------------------
 [hostname]
 disabled = false
-format = "[$hostname]($style)[$ssh_symbol]($style)[❯]($style) "
 ssh_only = false
+format = "[@$hostname]($style)"
 style = "bold orange"
-ssh_symbol = "󰌀 "
+ssh_symbol = "[ 󰌀 ] "
 
-[directory]
-style = "cyan"
-truncate_to_repo = false
-truncation_length = 0
-format = "[➤ ](bold orange)[❮]($style)[$path]($style)[❯]($style)"
-read_only = " "
-
-
-[sudo]
-disabled = true
-
-[cmd_duration]
-disabled = false
-style="bold pink"
-format = " took [$duration]($style)"
-show_milliseconds = false
-show_notifications = false
-min_time_to_notify = 30_000
-
+# -------------------------
+# OS
+# -------------------------
 [os]
 disabled = false
-format = '[└]($style)[$symbol]($style)'
-style = "bold green"
+format = "[└─]($style)"
+style = "bold purple"
 
-[character]
-error_symbol = ""
-success_symbol = "[ ➤](bold green)"
-
-# SYMBOLS
 [os.symbols]
 Alpine = " "
 AlmaLinux = " "
@@ -70,7 +67,7 @@ Garuda = "󰛓 "
 Linux = " "
 Macos = " "
 Manjaro = " "
-Mint = "󰣭"
+Mint = "󰣭 "
 openSUSE = " "
 Pop = " "
 Raspbian = " "
@@ -83,3 +80,31 @@ Ubuntu = " "
 Unknown = " "
 Void = " "
 Windows = "󰍲 "
+# Add other symbols as desired
+
+# -------------------------
+# Directory
+# -------------------------
+[directory]
+truncation_length = 6
+format = "[: ](bold white)[$path](bold bright-cyan)"
+read_only = " "
+
+# -------------------------
+# Command duration
+# -------------------------
+[cmd_duration]
+disabled = false
+show_milliseconds = false
+show_notifications = false
+min_time_to_notify = 45000
+format = " [󰔛️ $duration ](bold pink)"
+
+# -------------------------
+# Prompt character
+# -------------------------
+[character]
+success_symbol = "[➤](orange)"
+error_symbol = "[➤](orange)"
+vicmd_symbol = "[➤](orange)"
+

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=btop
+GenericName=CPU Process Monitor
+Type=Application
+Terminal=true
+Exec=btop
+Icon=btop
+Categories=System;Monitor;
+X-AppImage-Integrate=false
+

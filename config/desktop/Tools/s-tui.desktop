@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=s-tui
+Exec=s-tui
+Comment=Terminal-based CPU stress and monitoring utility 
+Terminal=true
+PrefersNonDefaultGPU=false
+Icon=gnome-monitor
+Type=Application
+Name[en_US]=s-tui
