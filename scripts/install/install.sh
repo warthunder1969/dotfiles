@@ -1,15 +1,7 @@
 #!/bin/bash
 # Installer script for Linux Mint. Should work for most Debian or Ubuntu based systems
 #Inspired by TheLinuxCast openSuse Install script
-# Version 3.0
-
-# Basic Setup & Root Check ---
-set -e # Exit immediately if a command fails
-# Ensure the script is run as root
-if [ "$EUID" -ne 0 ]; then 
-  echo "Please run as root (use sudo)"
-  exit
-fi
+# Version 3.2
 
 # Dependencies
 # Ensure whiptail is installed
@@ -23,8 +15,12 @@ dotfiles="https://codeberg.org/warthunder1969/dotfiles.git"
 
 # Define Package Lists
 ## CORE PROFILE
-apt_core=("curl" "git" "wget" "micro" "htop" "btop" "nvtop" "s-tui" "duf" "eza" "nala" "cmatrix" "cpufetch" "ncdu" "speedtest-cli" "guvcview" "dconf-editor" "nextcloud-desktop" "keepassxc" "vlc" "adwaita-qt")
-flat_core=("com.vivaldi.Vivaldi" "com.google.Chrome" "com.github.tchx84.Flatseal" "dev.vencord.Vesktop" "im.riot.Riot" "com.notesnook.Notesnook" "org.localsend.localsend_app")
+apt_core=("curl" "git" "wget" "micro" "htop" "btop" "nvtop" "s-tui" "duf" "eza" "nala" "cmatrix" "cpufetch" "ncdu" "speedtest-cli" "cheese" "vlc" "adwaita-qt")
+flat_core=("com.vivaldi.Vivaldi" "dev.vencord.Vesktop")
+
+## PRODUCTION PROFILE
+apt_prod=("nextcloud-desktop" "keepassxc" "dconf-editor" "virt-viewer")
+flat_prod=("com.google.Chrome" "com.github.tchx84.Flatseal" "io.github.flattool.Warehouse" "im.riot.Riot" "com.bitwarden.desktop" "com.notesnook.Notesnook" "org.localsend.localsend_app")
 
 ## GAMING PROFILE
 apt_gaming=("steam" "libvulkan1" "mesa-vulkan-drivers")
@@ -34,7 +30,8 @@ flat_gaming=("net.lutris.Lutris" "com.heroicgameslauncher.hgl" "net.davidotek.pu
 apt_coding=("build-essential" "python3-pip" "gcc" "cmake")
 flat_coding=("com.vscodium.codium")
 
-
+## VIRTUALIZATION PROFILE
+apt_virt=("bridge-utils" "virt-manager" "virtiofsd" "virtualbox" "virtualbox-guest-additions-iso")
 
 # Function for the Main Menu
 show_main_menu() {
@@ -60,9 +57,11 @@ while true; do
             clear
             CHOICES=$(whiptail --title "System Persona Selection" --checklist \
             "Select the roles for this machine (Space to toggle):" 15 60 3 \
-            "CORE" "Essential Apps, CLI tools & Flatseal" ON \
+            "CORE" "Basic Apps, CLI tools" ON \
+			"PRODUTION" "Essential Apps I Use" ON \
             "GAMING" "Steam + Lutris/Heroic" OFF \
             "CODING" "Compilers + Coding Tools" OFF \
+            "VIRTUALIZATION" "Virtmanager + Virtualbox" OFF \
             3>&1 1>&2 2>&3)
 
             # Exit if Cancel is pressed
@@ -76,6 +75,11 @@ while true; do
                 FINAL_FLAT+=("${flat_core[@]}")
             fi
 
+			if [[ $CHOICES =~ "PROD" ]]; then
+                FINAL_APT+=("${apt_prod[@]}")
+                FINAL_FLAT+=("${flat_prod[@]}")
+            fi
+
             if [[ $CHOICES =~ "GAMING" ]]; then
                 FINAL_APT+=("${apt_gaming[@]}")
                 FINAL_FLAT+=("${flat_gaming[@]}")
@@ -85,6 +89,10 @@ while true; do
                 FINAL_APT+=("${apt_coding[@]}")
                 FINAL_FLAT+=("${flat_coding[@]}")
             fi
+            
+            if [[ $CHOICES =~ "VIRTUALIZATION" ]]; then
+                            FINAL_APT+=("${apt_virt[@]}")
+                        fi
             #Execute
             # Install APT Packages
             if [ ${#FINAL_APT[@]} -gt 0 ]; then
@@ -109,7 +117,7 @@ while true; do
         # Set Reasonable Flaptak gloal permissions
         sudo flatpak override --device=dri
         sudo flatpak override --filesystem=home
-        flatpak override --user --filesystem=xdg-config/gtk-4.0
+        sudo flatpak override --user --filesystem=xdg-config/gtk-4.0
         sudo flatpak override --filesystem=xdg-config/gtk-4.0
 
         #Aquire dotfiles

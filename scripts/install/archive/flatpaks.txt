@@ -1,6 +1,0 @@
-com.google.Chrome
-dev.vencord.Vesktop
-im.riot.Riot
-io.github.dweymouth.supersonic
-com.notesnook.Notesnook
-org.localsend.localsend_app
