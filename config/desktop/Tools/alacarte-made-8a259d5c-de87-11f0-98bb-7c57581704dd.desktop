@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Scantool
+Exec=scantool
+Comment=OBDII Car Diagnostic Software for Linux
+Terminal=false
+PrefersNonDefaultGPU=false
+Icon=scanner
+Type=Application

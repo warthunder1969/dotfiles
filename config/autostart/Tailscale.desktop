@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Exec=tailscale systray &
+X-GNOME-Autostart-enabled=false
+NoDisplay=false
+Hidden=false
+Name[en_US]=Tailscale
+Comment[en_US]=Systray for Tailscale
+X-GNOME-Autostart-Delay=30

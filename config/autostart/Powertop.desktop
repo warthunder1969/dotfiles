@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Exec=sudo powertop --auto-tune
+X-GNOME-Autostart-enabled=true
+NoDisplay=false
+Hidden=false
+Name[en_US]=Powertop Autotune
+Comment[en_US]=Calibrate for Best Power Savings
+X-GNOME-Autostart-Delay=5

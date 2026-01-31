@@ -1,0 +1,2 @@
+#timeformat: %h-%d-%Y  / %I:%M %p
+#dateformat: %A %x

@@ -4,7 +4,7 @@ GenericName=GPU Process Monitor for AMD
 Type=Application
 Terminal=true
 Exec=radeontop
-Icon=amd
+Exec=nvtop
 Categories=System;Monitor;
 X-AppImage-Integrate=false
 
