@@ -1,7 +1,7 @@
  #!/bin/bash
 #Battery Threshold Script my Warthunder. Should work on most Linux systems.
 #All items are not my own work - I combined multiple scripts I found into one
-#Version 3.0
+#Version 3.1
 
 #Dependencies
 # sudo
@@ -11,6 +11,8 @@
 
 ## Variables
 battery="/sys/class/power_supply/BAT0"
+
+upower -i /org/freedesktop/UPower/devices/battery_BAT0
 
 #The Code Starts Here
 
