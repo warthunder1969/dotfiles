@@ -1,16 +1,86 @@
-#!/bin/sh
-# Copyright (c) Tailscale Inc
-# Copyright (c) 2024 The Brave Authors
-# SPDX-License-Identifier: BSD-3-Clause
-#
-# This script installs the Brave browser using the OS's package manager
-# Requires: coreutils, grep, sh and one of sudo/doas/run0/pkexec/sudo-rs
-# Source: https://github.com/brave/install.sh
+#!/bin/bash
+# Installer script for Brave. Should work for most Debian or Ubuntu based systems
+# Version 1.1
 
-GLIBC_VER_MIN="2.26"
-APT_VER_MIN="1.1"
+# Ensure Whiptail is installed
+if ! command -v whiptail &> /dev/null; then
+    apt update && apt install -y newt
+fi
 
-set -eu
+# Show menu and capture selection
+CHOICE=$(whiptail --title "Brave Installer" --menu "Choose your preferred installation method:" 15 60 4 \
+"1" "Official Repository (APT) - Recommended" \
+"2" "Flatpak (Sandboxed via Flathub)" \
+"3" "Exit" 3>&1 1>&2 2>&3)
+
+case $CHOICE in
+    1)
+        echo "Installing via Official Repository..."
+        # Download the keyring and add the repository
+        curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
+        echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main" | tee /etc/apt/sources.list.d/brave-browser-release.list
+        sudo apt update && apt install brave-browser -y
+        ;;
+    2)
+        echo "Installing via Flatpak..."
+        sudo apt update && sudo apt install flatpak -y
+        flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+        flatpak install flathub com.brave.Browser -y
+        ;;
+    *)
+        echo "Installation cancelled."
+        exit 0
+        ;;
+esac
+
+        echo "Installation complete!"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # All the code is wrapped in a main function that gets called at the
 # bottom of the file, so that a truncated partial download doesn't end
@@ -115,16 +185,5 @@ main() {
     else
         echo "Installation complete!"
     fi
-}
 
-# Helpers
-available() { command -v "${1:?}" >/dev/null; }
-first_of() { for c in "${@:?}"; do if available "$c"; then echo "$c"; return 0; fi; done; return 1; }
-show() { (set -x; "${@:?}"); }
-error() { exec >&2; printf "Error: "; printf "%s\n" "${@:?}"; exit 1; }
-newer() { [ "$(printf "%s\n%s" "$1" "$2"|sort -V|head -n1)" = "${2:?}" ]; }
-supported() { newer "$2" "${3:?}" || error "Unsupported ${1:?} version ${2:-<empty>}. Only $1 versions >=$3 are supported."; }
-glibc_supported() { supported glibc "$(ldd --version 2>/dev/null|head -n1|grep -oE '[0-9]+\.[0-9]+$' || true)" "${GLIBC_VER_MIN:?}"; }
-apt_supported() { supported apt "$(apt-get -v|head -n1|cut -d' ' -f2)" "${APT_VER_MIN:?}"; }
 
-main

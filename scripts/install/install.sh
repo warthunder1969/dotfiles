@@ -35,7 +35,7 @@ apt_virt=("bridge-utils" "virt-manager" "virtiofsd" "virtualbox" "virtualbox-gue
 
 # Function for the Main Menu
 show_main_menu() {
-    whiptail --title "Linux Mint Post-Install Tool" --menu "Choose an action:" 15 60 5 \
+    whiptail --title "Warthunder's Post-Install Toolkit" --menu "Choose an action:" 15 60 5 \
     "1" "Update & Upgrade System" \
     "2" "Install Software Suites" \
     "3" "Configure System Settings" \
