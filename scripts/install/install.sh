@@ -15,23 +15,26 @@ dotfiles="https://codeberg.org/warthunder1969/dotfiles.git"
 
 # Define Package Lists
 ## CORE PROFILE
-apt_core=("curl" "git" "wget" "micro" "htop" "btop" "nvtop" "s-tui" "duf" "eza" "nala" "cmatrix" "cpufetch" "ncdu" "speedtest-cli" "cheese" "vlc" "adwaita-qt")
-flat_core=("com.vivaldi.Vivaldi" "dev.vencord.Vesktop")
+apt_core=("curl" "git" "wget" "micro" "htop" "btop" "nvtop" "s-tui" "duf" "eza" "nala" "cmatrix" "cpufetch" "ncdu" "speedtest-cli" "cheese" "vlc")
+flat_core=("dev.vencord.Vesktop")
 
 ## PRODUCTION PROFILE
 apt_prod=("nextcloud-desktop" "keepassxc" "dconf-editor" "virt-viewer")
-flat_prod=("com.google.Chrome" "com.github.tchx84.Flatseal" "io.github.flattool.Warehouse" "im.riot.Riot" "com.bitwarden.desktop" "com.notesnook.Notesnook" "org.localsend.localsend_app")
+flat_prod=("com.google.Chrome" "com.brave.Browser" "com.github.tchx84.Flatseal" "io.github.flattool.Warehouse" "im.riot.Riot" "com.bitwarden.desktop" "com.notesnook.Notesnook" "org.localsend.localsend_app")
 
 ## GAMING PROFILE
 apt_gaming=("steam" "libvulkan1" "mesa-vulkan-drivers")
-flat_gaming=("net.lutris.Lutris" "com.heroicgameslauncher.hgl" "net.davidotek.pupgui2")
+flat_gaming=("net.lutris.Lutris" "com.heroicgameslauncher.hgl" "net.davidotek.pupgui2" "io.github.Faugus.faugus-launcher")
 
 ## CODING PROFILE
 apt_coding=("build-essential" "python3-pip" "gcc" "cmake")
 flat_coding=("com.vscodium.codium")
 
 ## VIRTUALIZATION PROFILE
-apt_virt=("bridge-utils" "virt-manager" "virtiofsd" "virtualbox" "virtualbox-guest-additions-iso")
+apt_virt=("bridge-utils" "virt-manager" "virtiofsd")
+
+## TRAVEL PROFILE
+flat_travel=("com.protonvpn.www")
 
 # Function for the Main Menu
 show_main_menu() {
@@ -62,6 +65,7 @@ while true; do
             "GAMING" "Steam + Lutris/Heroic" OFF \
             "CODING" "Compilers + Coding Tools" OFF \
             "VIRTUALIZATION" "Virtmanager + Virtualbox" OFF \
+            "TRAVEL" "VPNs and Remote Access" OFF \
             3>&1 1>&2 2>&3)
 
             # Exit if Cancel is pressed
