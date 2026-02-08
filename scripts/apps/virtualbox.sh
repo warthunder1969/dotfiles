@@ -50,8 +50,8 @@ echo "$BASE_DISTRO ($BASE_CODENAME)"
 # Function for the Main Menu
 show_main_menu() {
     whiptail --title "VirtualBox Installer" --menu "Choose an action:" 15 60 5 \
-    "1" "Debian/Ubuntu Repo (Stable/Vetted)" \
-    "2" "Oracle Repository (Latest VirtualBox 7.x)" \
+    "1" "Debian/Ubuntu Repo (Broken)" \
+    "2" "Oracle Repository (Latest VirtualBox)" \
     "3" "Exit" 3>&1 1>&2 2>&3
 }
 
@@ -61,8 +61,11 @@ while true; do
 
     case $CHOICE in
         1)
+            echo "This Version of Virtualbox is broken after Kernel 6.14. The DKMS Modules will fail to build. Virtualbox 7.2+ is required for support on 6.17+"
+            echo "Proceed at your own risk. To Cancel Simply Press CTRL+C."
+            read -p "Press enter to continue..."
             echo "Installing Virtualbox..."
-            sudo apt update && sudo apt install virtualbox virtualbox-qt virtualbox-guest-additions-iso virtualbox-ext-pack
+            sudo apt update && sudo apt install virtualbox virtualbox-guest-additions-iso virtualbox-ext-pack
             sudo usermod -aG vboxusers $USER  
             exit 0
             ;;
@@ -70,9 +73,9 @@ while true; do
             echo "Adding Oracle Repository..."
             # Download and add Oracle's GPG key
             wget -qO- https://www.virtualbox.org/download/oracle_vbox_2016.asc | gpg --dearmor -o /usr/share/keyrings/oracle-virtualbox-2016.gpg
-            # Add the repository using the system's codename (e.g., bookworm, jammy)
+            # Add the repository using the system's codename (e.g., noble, trixe)
             echo "deb [arch=amd64 signed-by=/usr/share/keyrings/oracle-virtualbox-2016.gpg] https://download.virtualbox.org/virtualbox/debian $(lsb_release -cs) contrib" | tee /etc/apt/sources.list.d/virtualbox.list
-            sudo apt update && sudo apt install -y virtualbox-7.1
+            sudo apt update && sudo apt install -y virtualbox $ver
             sudo usermod -aG vboxusers $USER  
             echo "VirtualBox (Oracle Repo) installed."
             exit 0
