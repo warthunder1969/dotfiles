@@ -1,7 +1,7 @@
 #!/bin/bash
 # Installer script for Linux Mint. Should work for most Debian or Ubuntu based systems
 #Inspired by TheLinuxCast openSuse Install script
-# Version 3.2
+# Version 3.3
 
 # Dependencies
 # Ensure whiptail is installed
