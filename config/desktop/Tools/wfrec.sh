@@ -56,24 +56,18 @@ fi
 
 # Filename
 while true; do
-    FILENAME=$(whiptail --inputbox "Enter a name for your file (e.g., report.txt):" 8 45 3>&1 1>&2 2>&3)
+    FILENAME=$(whiptail --inputbox "Enter a name for your file (e.g., test.mkv):" 8 45 3>&1 1>&2 2>&3)
     
     # Exit if user cancels
     if [ $? -ne 0 ]; then exit; fi
 
-    # 1. Check for empty input
+    #Check for empty input
     if [ -z "$FILENAME" ]; then
         whiptail --msgbox "Error: Filename cannot be empty." 8 45
         continue
     fi
 
-    # 2. Check for illegal characters (e.g., / \ : * < > |)
-    if [[ "$FILENAME" =~ [/\?%*:\|\"<> ] ]]; then
-        whiptail --msgbox "Error: Filename contains illegal characters or spaces." 8 45
-        continue
-    fi
-
-    # 3. Check if file already exists
+    #Check if file already exists
     FULL_PATH="$LOCATION/$FILENAME"
     if [ -f "$FULL_PATH" ]; then
         whiptail --yesno "Warning: '$FILENAME' already exists. Overwrite it?" 8 45
@@ -105,7 +99,7 @@ Press OK to generate the file or ESC to quit."
 # Display the summary
 if whiptail --title "Final Confirmation" --msgbox "$SUMMARY_TEXT" 12 50; then
     echo "Confirmed. Full Send!"
-    wf-recorder -a width=$WIDTH,height=$HEIGHT -f $LOCATION
+    wf-recorder -a width=$WIDTH,height=$HEIGHT -f $FULL_PATH
 else
     echo "User exited."
     exit 1
