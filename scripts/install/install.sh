@@ -15,12 +15,12 @@ dotfiles="https://codeberg.org/warthunder1969/dotfiles.git"
 
 # Define Package Lists
 ## CORE PROFILE
-apt_core=("curl" "git" "wget" "micro" "htop" "btop" "nvtop" "s-tui" "duf" "eza" "nala" "cmatrix" "cpufetch" "ncdu" "speedtest-cli" "cheese" "vlc" "adwaita-qt")
+apt_core=("curl" "git" "wget" "micro" "htop" "btop" "nvtop" "s-tui" "duf" "eza" "nala" "cmatrix" "cpufetch" "speedtest-cli" "cheese" "vlc")
 flat_core=("com.discordapp.Discord")
 
 ## PRODUCTION PROFILE
 apt_prod=("nextcloud-desktop" "keepassxc" "dconf-editor" "virt-viewer")
-flat_prod=("com.google.Chrome" "com.github.tchx84.Flatseal" "io.github.flattool.Warehouse" "im.riot.Riot" "com.bitwarden.desktop" "com.notesnook.Notesnook" "org.localsend.localsend_app")
+flat_prod=("com.github.tchx84.Flatseal" "io.github.flattool.Warehouse" "im.riot.Riot" "com.bitwarden.desktop" "com.notesnook.Notesnook" "org.localsend.localsend_app")
 
 ## GAMING PROFILE
 apt_gaming=("steam" "libvulkan1" "mesa-vulkan-drivers")
@@ -28,7 +28,7 @@ flat_gaming=("net.lutris.Lutris" "com.heroicgameslauncher.hgl" "net.davidotek.pu
 
 ## CODING PROFILE
 apt_coding=("build-essential" "python3-pip" "gcc" "cmake")
-flat_coding=("com.vscodium.codium")
+flat_coding=("dev.zed.Zed")
 
 ## VIRTUALIZATION PROFILE
 apt_virt=("bridge-utils" "virt-manager" "virtiofsd")
@@ -89,7 +89,7 @@ while true; do
                 FINAL_APT+=("${apt_coding[@]}")
                 FINAL_FLAT+=("${flat_coding[@]}")
             fi
-            
+
             if [[ $CHOICES =~ "VIRTUALIZATION" ]]; then
                             FINAL_APT+=("${apt_virt[@]}")
                         fi
@@ -127,7 +127,7 @@ while true; do
         #Import Core Settings & Keybindings:
         dconf load /org/cinnamon/ < $HOME/dotfiles/config/cinnamon/cinnamon.dconf
         dconf load /org/cinnamon/desktop/keybindings/ < $HOME/dotfiles/config/cinnamon/keybindings.dconf
-		
+
         ## Themes
         gsettings set org.cinnamon.desktop.interface icon-theme "Mint-Y"
         gsettings set org.cinnamon.desktop.interface gtk-theme "Mint-Y-Dark"
@@ -161,4 +161,3 @@ while true; do
             ;;
     esac
 done
-
