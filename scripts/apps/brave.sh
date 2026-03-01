@@ -185,5 +185,3 @@ main() {
     else
         echo "Installation complete!"
     fi
-
-
