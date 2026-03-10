@@ -132,10 +132,7 @@ alias se='nala search'
 alias cl='sudo nala autoremove && flatpak uninstall --unused'
 alias fin='flatpak install'
 alias fre='flatpak remove'
-alias fse='nala search'
-
-# Get fastest mirrors
-alias mirror="nala fetch"
+alias fse='flatpak search'
 
 # Dotfiles & Files
 alias bs='micro ~/.bashrc'
