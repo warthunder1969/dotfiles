@@ -1,41 +1,47 @@
 #!/bin/bash
 # Installer script for Linux Mint. Should work for most Debian or Ubuntu based systems
 #Inspired by TheLinuxCast openSuse Install script
-# Version 3.2
+# Version 3.4
 
-# Dependencies
+# === Dependencies ===
 # Ensure whiptail is installed
 if ! command -v whiptail >/dev/null 2>&1; then
     sudo apt update && sudo apt install -y whiptail
 fi
 
-# Variables
+# Detect package manager(s)
+pkg_detect(){
+  if ! command -v apt >/dev/null 2>&1; then echo "apt not found." >&2; exit 1; fi
+  if ! command -v flatpak >/dev/null 2>&1; then echo "flatpak not found." >&2; exit 1; fi
+}
+
+# === Variables ===
 config="$HOME/.config"
 dotfiles="https://codeberg.org/warthunder1969/dotfiles.git"
 
-# Define Package Lists
-## CORE PROFILE
-apt_core=("curl" "git" "wget" "micro" "htop" "btop" "nvtop" "s-tui" "duf" "eza" "nala" "cmatrix" "cpufetch" "speedtest-cli" "cheese" "vlc")
-flat_core=("com.discordapp.Discord")
+# === Profiles ===
+## CORE
+apt_core=(curl git wget micro htop btop nvtop s-tui duf eza nala cmatrix cpufetch fastfetch cheese vlc fonts-noto fonts-jetbrains-mono)
+flat_core=(com.discordapp.Discord)
 
-## PRODUCTION PROFILE
-apt_prod=("nextcloud-desktop" "keepassxc" "dconf-editor" "virt-viewer")
-flat_prod=("com.github.tchx84.Flatseal" "io.github.flattool.Warehouse" "im.riot.Riot" "com.bitwarden.desktop" "com.notesnook.Notesnook" "org.localsend.localsend_app")
+## PRODUCTION 
+apt_prod=(nextcloud-desktop keepassxc dconf-editor virt-viewer)
+flat_prod=(com.github.tchx84.Flatseal im.riot.Riot com.notesnook.Notesnook org.localsend.localsend_app org.gimp.GIMP)
 
-## GAMING PROFILE
-apt_gaming=("steam" "libvulkan1" "mesa-vulkan-drivers")
-flat_gaming=("net.lutris.Lutris" "com.heroicgameslauncher.hgl" "net.davidotek.pupgui2")
+## GAMING 
+apt_gaming=(steam-installer)
+flat_gaming=(net.lutris.Lutris com.heroicgameslauncher.hgl net.davidotek.pupgui2)
 
-## CODING PROFILE
-apt_coding=("build-essential" "python3-pip" "gcc" "cmake")
-flat_coding=("dev.zed.Zed")
+## CODING 
+apt_coding=(build-essential gcc make python3 python3-pip)
+flat_coding=(com.vscodium.codium)
 
-## VIRTUALIZATION PROFILE
-apt_virt=("bridge-utils" "virt-manager" "virtiofsd")
+## VIRTUALIZATION
+apt_virt=(gnome-boxes qemu-kvm)
 
-# Function for the Main Menu
+# === Main Menu ===
 show_main_menu() {
-    whiptail --title "Linux Mint Post-Install Tool" --menu "Choose an action:" 15 60 5 \
+    whiptail --title "Warthunder's Post-Install Script" --menu "Choose an action:" 15 60 5 \
     "1" "Update & Upgrade System" \
     "2" "Install Software Suites" \
     "3" "Configure System Settings" \
@@ -56,12 +62,12 @@ while true; do
         2)
             clear
             CHOICES=$(whiptail --title "System Persona Selection" --checklist \
-            "Select the roles for this machine (Space to toggle):" 15 60 3 \
+            "Select the profiles for this machine (Space to toggle):" 15 60 5 \
             "CORE" "Basic Apps, CLI tools" ON \
 			"PRODUTION" "Essential Apps I Use" ON \
             "GAMING" "Steam + Lutris/Heroic" OFF \
             "CODING" "Compilers + Coding Tools" OFF \
-            "VIRTUALIZATION" "Virtmanager + Virtualbox" OFF \
+            "VIRTUALIZATION" "Virtual Machine Managers" OFF \
             3>&1 1>&2 2>&3)
 
             # Exit if Cancel is pressed
@@ -89,7 +95,7 @@ while true; do
                 FINAL_APT+=("${apt_coding[@]}")
                 FINAL_FLAT+=("${flat_coding[@]}")
             fi
-
+            
             if [[ $CHOICES =~ "VIRTUALIZATION" ]]; then
                             FINAL_APT+=("${apt_virt[@]}")
                         fi
@@ -117,7 +123,7 @@ while true; do
         # Set Reasonable Flaptak gloal permissions
         sudo flatpak override --device=dri
         sudo flatpak override --filesystem=home
-        sudo flatpak override --user --filesystem=xdg-config/gtk-4.0
+        flatpak override --user --filesystem=xdg-config/gtk-4.0
         sudo flatpak override --filesystem=xdg-config/gtk-4.0
 
         #Aquire dotfiles
@@ -127,20 +133,24 @@ while true; do
         #Import Core Settings & Keybindings:
         dconf load /org/cinnamon/ < $HOME/dotfiles/config/cinnamon/cinnamon.dconf
         dconf load /org/cinnamon/desktop/keybindings/ < $HOME/dotfiles/config/cinnamon/keybindings.dconf
-
+		
         ## Themes
         gsettings set org.cinnamon.desktop.interface icon-theme "Mint-Y"
         gsettings set org.cinnamon.desktop.interface gtk-theme "Mint-Y-Dark"
         gsettings set org.cinnamon.theme name "Mint-Y-Dark"
-        cp -r $HOME/dotfiles/themes/icons/lm-logo-*.png $HOME/.icons
+		##Fonts
+		gsettings set org.cinnamon.desktop.interface font-name "Noto Sans Regular 10"
+		gsettings set org.nemo.desktop font "Noto Sans Regular 12"
+		gsettings set org.cinnamon.desktop.interface monospace-font-name "Noto Sans Mono Regular 10"
+		gsettings set org.cinnamon.desktop.wm.preferences titlebar-font "Noto Sans Bold 10"
+		
+        cp -r $HOME/dotfiles/themes/icons/lm-logo-*.png $HOME/.local/share/icons/
 
         # MS Fonts
         sudo apt install -yy ttf-mscorefonts-installer
         #Nerd Fonts
-        wget -P ~/.local/share/fonts https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/JetBrainsMono.zip \
-        && cd ~/.local/share/fonts \
-        && unzip JetBrainsMono.zip \
-        && rm JetBrainsMono.zip \
+        
+        sudo apt install fonts-noto fonts-jetbrains-mono \
         && fc-cache -fv
             echo "Done!"
             sleep 2
@@ -149,7 +159,6 @@ while true; do
             echo "Cleaning up..."
             sudo apt autoremove -y && sudo apt clean
             flatpak uninstall --unused --delete-data
-            flatpak repair
             read -p "Press enter to continue..."
             ;;
         5|"") # Exit if 5 is chosen or if the user hits 'Cancel'
@@ -161,3 +170,4 @@ while true; do
             ;;
     esac
 done
+
