@@ -1,7 +1,0 @@
-[Desktop Entry]
-Type=Application
-Exec=bash -c "sudo powertop --auto-tune; sudo powertop"
-Terminal=true
-Name[en_US]=Powertop Autotune
-Comment[en_US]=Calibrate for Best Power Savings
-Icon=cs-power

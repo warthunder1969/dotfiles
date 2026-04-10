@@ -1,0 +1,25 @@
+# Appearance
+theme = 0x96f
+font-family = "JetBrains Mono"
+font-size = 12
+background-opacity = 0.9
+window-padding-x = 10
+
+# Behavior
+cursor-style = block
+mouse-hide-while-typing = true
+copy-on-select = clipboard
+
+# Custom Keybindings
+keybind = ctrl+shift+r=reload_config
+keybind = ctrl+shift+o=toggle_tab_overview
+
+# Split Management
+keybind = ctrl+enter=new_split:right
+keybind = ctrl+backslash=new_split:down
+
+# Navigation
+keybind = ctrl+shift+left=goto_split:left
+keybind = ctrl+shift+right=goto_split:right
+keybind = ctrl+shift+up=goto_split:up
+keybind = ctrl+shift+down=goto_split:down

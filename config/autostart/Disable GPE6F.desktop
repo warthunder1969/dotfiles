@@ -1,9 +1,0 @@
-[Desktop Entry]
-Type=Application
-Exec=echo "disable" | sudo tee /sys/firmware/acpi/interrupts/gpe6F
-X-GNOME-Autostart-enabled=true
-NoDisplay=false
-Hidden=false
-Name[en_US]=Disable GPE6F
-Comment[en_US]=Temporary fix for ACPI (GPE iinterrupts) failure
-X-GNOME-Autostart-Delay=5

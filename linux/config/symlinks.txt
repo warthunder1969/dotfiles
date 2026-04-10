@@ -1,0 +1,12 @@
+#ln -sf my_file.txt my_link.txt
+#ln -sf (from) (to)
+
+ln -s my_file.txt my_link.txt
+
+ln -sf ~/Nextcloud/Projects/Linux/dotfiles/config/gtk-3.0/bookmarks /home/war/.config/gtk-3.0/bookmarks
+ln -sf ~/Nextcloud/Projects/Git/dotfiles/config/fastfetch/config.jsonc ~/.config/fastfetch/config.jsonc
+ln -sf ~/Nextcloud/Projects/Git/dotfiles/config/bashrc ~/.bashrc
+ln -sf ~/Nextcloud/Projects/Git/dotfiles/config/starship.toml ~/.config/starship.toml
+
+ln -s ~/Nextcloud/Projects/Git/dotfiles/config/wezterm ~/.config/wezterm
+ln -s~/Nextcloud/Projects/Git/dotfiles/config/ghostty ~/.config/ghostty

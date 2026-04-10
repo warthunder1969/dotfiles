@@ -1,8 +1,0 @@
-[Desktop Entry]
-Name=Wifi QR Code Generator
-Exec=bash -c "\nnmcli dev wifi show; echo 'Press any key to exit...'; read -n 1 -s"
-Comment=Show WIfi SSID and Password + QR Code
-Terminal=true
-PrefersNonDefaultGPU=false
-Icon=qr-creator
-Type=Application
