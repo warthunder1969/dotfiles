@@ -21,12 +21,12 @@ dotfiles="https://codeberg.org/warthunder1969/dotfiles.git"
 
 # === Profiles ===
 ## CORE
-apt_core=(curl git wget micro htop btop nvtop s-tui duf eza nala cmatrix cpufetch fastfetch cheese vlc fonts-noto fonts-jetbrains-mono)
+apt_core=(curl git wget micro htop btop nvtop s-tui duf eza nala cmatrix cpufetch fastfetch cheese vlc fonts-noto fonts-jetbrains-mono fonts-crosextra-carlito fonts-crosextra-caladea)
 flat_core=(com.discordapp.Discord)
 
 ## PRODUCTION 
 apt_prod=(nextcloud-desktop keepassxc dconf-editor virt-viewer)
-flat_prod=(com.github.tchx84.Flatseal im.riot.Riot com.notesnook.Notesnook org.localsend.localsend_app org.gimp.GIMP)
+flat_prod=(com.github.tchx84.Flatseal com.notesnook.Notesnook org.localsend.localsend_app org.gimp.GIMP)
 
 ## GAMING 
 apt_gaming=(steam-installer)
@@ -115,6 +115,29 @@ while true; do
             flatpak install flathub "${FINAL_FLAT[@]}" -y
             fi
 
+			# Non-Repository Packages
+			read -p "Do you want Google Chrome? (y/n): " response
+			
+			if [[ "$response" == "y" || "$response" == "Y" ]]; then
+			  wget -P /tmp https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+			  sudo apt install /tmp/google-chrome-stable_current_amd64.deb
+			  rm /tmp/google-chrome-stable_current_amd64.deb
+			else
+			    echo "Chrome not installed."
+			    exit 1
+			fi
+
+			read -p "Do you want Fluxer? (y/n): " response
+						
+			if [[ "$response" == "y" || "$response" == "Y" ]]; then
+			  wget -OP fluxer.deb /tmp https://api.fluxer.app/dl/desktop/stable/linux/x64/latest/deb
+			  sudo apt install /tmp/fluxer.deb
+			  rm /tmp/fluxer.deb
+			else
+			  echo "Fluxer not installed."
+			exit 1
+			fi
+			
             echo "Done!"
             sleep 2
             ;;
@@ -148,10 +171,7 @@ while true; do
 
         # MS Fonts
         sudo apt install -yy ttf-mscorefonts-installer
-        #Nerd Fonts
-        
-        sudo apt install fonts-noto fonts-jetbrains-mono \
-        && fc-cache -fv
+        fc-cache -fv
             echo "Done!"
             sleep 2
             ;;

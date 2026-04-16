@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=radeontop
+GenericName=GPU Process Monitor for AMD
+Type=Application
+Terminal=true
+Exec=radeontop
+Exec=nvtop
+Categories=System;Monitor;
+X-AppImage-Integrate=false
+Icon=gnome-monitor
+

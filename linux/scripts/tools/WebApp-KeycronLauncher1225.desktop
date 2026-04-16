@@ -1,0 +1,19 @@
+[Desktop Entry]
+Version=1.0
+Name=Keycron Launcher
+Comment=Webb App for Keycron Devices
+Exec=google-chrome-stable --app="https://launcher.keychron.com/#/not-connect" --class=WebApp-KeycronLauncher1225 --name=WebApp-KeycronLauncher1225 --user-data-dir=/home/joe/.local/share/ice/profiles/KeycronLauncher1225
+Terminal=false
+X-MultipleArgs=false
+Type=Application
+Icon=keyboard
+Categories=GTK;WebApps;
+MimeType=text/html;text/xml;application/xhtml_xml;
+StartupWMClass=WebApp-KeycronLauncher1225
+StartupNotify=true
+X-WebApp-Browser=Chrome
+X-WebApp-URL=https://launcher.keychron.com/#/not-connect
+X-WebApp-CustomParameters=
+X-WebApp-Navbar=false
+X-WebApp-PrivateWindow=false
+X-WebApp-Isolated=true

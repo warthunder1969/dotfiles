@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=CPU-X
+Comment=Gathers information on CPU, motherboard and more
+Exec=cpu-x
+Icon=gnome-control-center
+Type=Application
+Categories=GTK;System;
+Terminal=false
+Keywords=CPU;system;core;speed;clock;rate;Intel;AMD;motherboard;

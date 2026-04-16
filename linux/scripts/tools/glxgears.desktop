@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=glxgears
+GenericName=GPU Process Monitor
+Type=Application
+Terminal=true
+Exec=glxgears
+Icon=gnome-graphics
+Categories=System;Monitor;
+X-AppImage-Integrate=false
+
