@@ -37,7 +37,7 @@ dpkg -l | grep -qw curl || sudo apt install -yyq curl
 
 OPTIONS=(
     1 "Appimage"
-    2 "Repository"    
+    2 "Repository (PPA)"    
 )
 
 # Use dialog to display a menu box and capture the user's choice
@@ -66,37 +66,11 @@ case $CHOICE in
      
     2)
         echo "Installing Repository..."
-		Source the ID variable from the os-release file
-		if [ -f /etc/os-release ]; then
-		    . /etc/os-release
-		    OS=$ID
-		fi
-		
-		case $OS in
-		    "ubuntu")
-		        echo "Running on $OS"
-		        
-		        ;;
-		    "debian")
-		        echo "Running on $OS"
-		         #Install Respository
-		        curl -sS https://debian.griffo.io/EA0F721D231FDD3A0A17B9AC7808B4DD62C41256.asc | sudo gpg --dearmor --yes -o /etc/apt/trusted.gpg.d/debian.griffo.io.gpg
-		        echo "deb https://debian.griffo.io/apt $(lsb_release -sc 2>/dev/null) main" | sudo tee /etc/apt/sources.list.d/debian.griffo.io.list
-		        		
-		        ;;
-		    "linuxmint")
-		        echo "Running on $OS"
-		        # Add your Mint commands here
-		        ;;
-		    *)
-		        echo "Operating System: $OS is not specifically supported."
-		        exit 1
-		        ;;
-		esac
 
        	sudo apt update
 		#Install Packages
-		sudo apt install zig ghostty lazygit yazi eza uv fzf zoxide bun tigerbeetle
+        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/mkasberg/ghostty-ubuntu/HEAD/install.sh)"
+		
         echo "Ghostty Installed!"
 
         ;;

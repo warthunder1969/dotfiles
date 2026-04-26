@@ -9,6 +9,8 @@ window-padding-x = 10
 cursor-style = block
 mouse-hide-while-typing = true
 copy-on-select = clipboard
+window-width = 135
+window-height = 45
 
 # Custom Keybindings
 keybind = ctrl+shift+r=reload_config

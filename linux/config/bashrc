@@ -142,17 +142,16 @@ alias dt='cd ~/Nextcloud/Projects/git/dotfiles/linux'
 alias ff="fastfetch"
 alias nf="neofetch"
 alias cf="cpufetch"
-alias gf="gpufetch"
-alias mf="/home/war/.cargo/bin/mattfetch"
+alias lc="bash $HOME/Nextcloud/Projects/git/dotfiles/linux/scripts/tools/system_age.sh"
 alias bat="batcat"
 # Other
 alias free='free -h'
 alias myip="ip -f inet address | grep inet | grep -v 'lo$' | cut -d ' ' -f 6,13 && curl ifconfig.me && echo ' external ip'"
-alias tstat="tailscale status"
+alias tstat="twingate status"
 alias tcon="tailscale configure"
-alias tip="tailscale ip -4"
-alias tup="tailscale up || tailscale status"
-alias tdo="tailscale down ||  tailscale status"
+alias tip="twingate ip -4"
+alias tup="twingate up || twingate status"
+alias tdo="twingate down ||  twingate status"
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
