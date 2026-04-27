@@ -28,14 +28,15 @@ purple = "#bd93f9"
 # Prompt format
 # -------------------------
 format = """
-┌─ $username$hostname$os$directory$cmd_duration
+┌─ $username$hostname$os$directory $git_branch$git_status$cmd_duration
 └─➤ $character
 """
+
 # -------------------------
 # Username
 # -------------------------
 [username]
-format = "[┌─ ](purple)[$user]($style)[$read_only]($style)"
+format = "[┌─ ](bold blue)[$user]($style)[$read_only]($style)"
 style_user = "bold orange"
 style_root = "bold red"
 show_always = true
@@ -46,7 +47,7 @@ show_always = true
 [hostname]
 disabled = false
 ssh_only = false
-format = "[@$hostname]($style)"
+format = "[@$hostname]($style)[: ](bold white)"
 style = "bold orange"
 ssh_symbol = "[ 󰌀 ] "
 
@@ -55,8 +56,8 @@ ssh_symbol = "[ 󰌀 ] "
 # -------------------------
 [os]
 disabled = false
-format = "[└─]($style)"
-style = "bold purple"
+format = "[╰─>]($style)"
+style = "bold blue"
 
 [os.symbols]
 Alpine = " "
@@ -84,14 +85,13 @@ Ubuntu = " "
 Unknown = " "
 Void = " "
 Windows = "󰍲 "
-# Add other symbols as desired
 
 # -------------------------
 # Directory
 # -------------------------
 [directory]
 truncation_length = 6
-format = "[: ](bold white)[$path](bold bright-cyan)"
+format = "[$path](bold bright-blue)"
 read_only = " "
 
 # -------------------------
@@ -108,7 +108,30 @@ format = " [󰔛️ $duration ](bold pink)"
 # Prompt character
 # -------------------------
 [character]
-success_symbol = "[➤](orange)"
-error_symbol = "[➤](orange)"
-vicmd_symbol = "[➤](orange)"
+success_symbol = "[](orange)"
+error_symbol = "[](orange)"
+vicmd_symbol = "[](orange)"
+
+# -------------------------
+# Git Branch
+# -------------------------
+[git_branch]
+symbol = " "
+style = "bold pink"
+# Added a space at the very beginning of the format string
+format = " [on $symbol$branch]($style) " 
+
+[git_status]
+style = "bold red"
+format = "([\\[$all_status$ahead_behind\\]]($style) )"
+conflicted = " "
+ahead = " "
+behind = " "
+diverged = "󱐪 "
+untracked = " "
+stashed = " "
+modified = " "
+staged = '[++\($count\)](green)'
+renamed = " "
+deleted = " "
 
