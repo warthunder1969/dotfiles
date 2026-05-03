@@ -9,6 +9,7 @@ if ! command -v dialog &> /dev/null; then
 fi
 
 # Variables
+package=ghostty
 
 # Define the Title and the Summary Message
 DIALOG_TITLE="WELCOME"
@@ -38,6 +39,7 @@ dpkg -l | grep -qw curl || sudo apt install -yyq curl
 OPTIONS=(
     1 "Appimage"
     2 "Repository (PPA)"    
+    3 "Repository (ButterRepo)"    
 )
 
 # Use dialog to display a menu box and capture the user's choice
@@ -52,7 +54,7 @@ clear
 case $CHOICE in
     1)
         echo "Installing Appimage..."
-        wget https://github.com/pkgforge-dev/ghostty-appimage/releases/download/v1.2.3/Ghostty-1.2.3-x86_64.AppImage
+        wget https://github.com/pkgforge-dev/ghostty-appimage/releases/download/${VERSION}/Ghostty-${VERSION}-${ARCH}.appimage
 		# Grab and Make Executable
 		chmod a+x Ghostty-${VERSION}-${ARCH}.appimage
 		./Ghostty-${VERSION}-${ARCH}.appimage
@@ -70,8 +72,35 @@ case $CHOICE in
        	sudo apt update
 		#Install Packages
         /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/mkasberg/ghostty-ubuntu/HEAD/install.sh)"
-		
-        echo "Ghostty Installed!"
+
+        if dpkg-query -W -f='${Status}' "$package" 2>/dev/null | grep -q "ok installed"; then
+          echo "Ghostty is installed"
+        else
+          echo "Ghostty is not installed"
+        fi
+
+        ;;
+   3)
+        echo "Installing Repository..."
+		sudo rm -f /etc/apt/sources.list.d/helium-deb-repo.list /etc/apt/sources.list.d/zen-deb-repo.list
+		sudo rm -f /usr/share/keyrings/helium-deb-repo.gpg /usr/share/keyrings/zen-deb-repo.gpg
+
+       	# Add repository GPG key
+       	curl -fsSL https://justaguylinux.codeberg.page/butterrepo/key.asc | sudo gpg --dearmor -o /usr/share/keyrings/butterrepo.gpg
+       	
+       	# Add repository to sources
+       	echo "deb [arch=amd64 signed-by=/usr/share/keyrings/butterrepo.gpg] https://justaguylinux.codeberg.page/butterrepo stable main" | sudo tee /etc/apt/sources.list.d/butterrepo.list
+       	
+       	# Update package list
+       	sudo apt update
+       	# Install Packages
+       	sudo apt install $package
+       	
+        if dpkg-query -W -f='${Status}' "$package" 2>/dev/null | grep -q "ok installed"; then
+          echo "Ghostty is installed"
+        else
+          echo "Ghostty is not installed"
+        fi
 
         ;;
 

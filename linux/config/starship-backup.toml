@@ -1,0 +1,137 @@
+"$schema" = "https://starship.rs/config-schema.json"
+
+# -------------------------
+# Theme
+# -------------------------
+
+palette = "gruvbox"
+
+# Define Gruvebox color palette
+[palettes.gruvbox]
+background = '#282828'
+foreground = '#ebdbb2'
+black = '#282828'
+red  = '#cc241d'
+green = '#98971a'
+yellow = '#d79921'
+blue = '#458588'
+magenta = '#b16286'
+cyan = '#689d6a'
+white = '#a89984'
+current_line = "#44475a"
+comment = "#6272a4"
+orange = "#ffb86c"
+pink = "#ff79c6"
+purple = "#bd93f9"
+
+# -------------------------
+# Prompt format
+# -------------------------
+format = """
+┌─ $username$hostname$os$directory $git_branch$git_status$cmd_duration
+└─➤ $character
+"""
+
+# -------------------------
+# Username
+# -------------------------
+[username]
+format = "[┌─ ](bold blue)[$user]($style)[$read_only]($style)"
+style_user = "bold orange"
+style_root = "bold red"
+show_always = true
+
+# -------------------------
+# Hostname
+# -------------------------
+[hostname]
+disabled = false
+ssh_only = false
+format = "[@$hostname]($style)[: ](bold white)"
+style = "bold orange"
+ssh_symbol = "[ 󰌀 ] "
+
+# -------------------------
+# OS
+# -------------------------
+[os]
+disabled = false
+format = "[╰─>]($style)"
+style = "bold blue"
+
+[os.symbols]
+Alpine = " "
+AlmaLinux = " "
+Android = " "
+Arch = " "
+CentOS = " "
+Debian = " "
+EndeavourOS = " "
+Fedora = " "
+Garuda = "󰛓 "
+Linux = " "
+Macos = " "
+Manjaro = " "
+Mint = "󰣭 "
+openSUSE = " "
+Pop = " "
+Raspbian = " "
+Redhat = " "
+RedHatEnterprise = " "
+RockyLinux = " "
+Solus = "󰠳 "
+SUSE = " "
+Ubuntu = " "
+Unknown = " "
+Void = " "
+Windows = "󰍲 "
+
+# -------------------------
+# Directory
+# -------------------------
+[directory]
+truncation_length = 6
+format = "[$path](bold bright-blue)"
+read_only = " "
+
+# -------------------------
+# Command duration
+# -------------------------
+[cmd_duration]
+disabled = false
+show_milliseconds = false
+show_notifications = false
+min_time_to_notify = 45000
+format = " [󰔛️ $duration ](bold pink)"
+
+# -------------------------
+# Prompt character
+# -------------------------
+[character]
+success_symbol = "[](orange)"
+error_symbol = "[](orange)"
+vicmd_symbol = "[](orange)"
+
+# -------------------------
+# Git Branch
+# -------------------------
+[git_branch]
+symbol = " "
+style = "bold pink"
+# Added a space at the very beginning of the format string
+format = " [on $symbol$branch]($style) " 
+
+[git_status]
+style = "bold red"
+format = "([\\[$all_status$ahead_behind\\]]($style) )"
+conflicted = " "
+ahead = " "
+behind = " "
+diverged = "󱐪 "
+untracked = " "
+stashed = " "
+modified = " "
+staged = '[++\($count\)](green)'
+renamed = " "
+deleted = " "
+

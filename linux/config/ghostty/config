@@ -49,8 +49,9 @@
 # resize-overlay-duration = 4s 200ms
 
 # Set the font family and size
-font-family = "JetBrains Mono"
+font-family = "Noto Sans Mono Regular"
 font-size = 12
+term = "xterm-256color"
 
 # Set a built-in theme (list available via ghostty +list-themes)
 theme = Dark+

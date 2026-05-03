@@ -2,7 +2,7 @@
 
 # --- CONFIGURATION ---
 # Set the "specified length" in days (e.g., 365 for a year, 1095 for 3 years)
-TOTAL_LENGTH_DAYS=365
+TOTAL_LENGTH_DAYS=1460
 # ---------------------
 
 # 1. Get the installation date in seconds since epoch.
