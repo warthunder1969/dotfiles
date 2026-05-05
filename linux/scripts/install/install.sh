@@ -21,8 +21,8 @@ dotfiles="https://codeberg.org/warthunder1969/dotfiles.git"
 
 # === Profiles ===
 ## CORE
-apt_core=(curl git wget micro htop btop nvtop s-tui duf eza nala cmatrix cpufetch fastfetch cheese vlc fonts-noto fonts-jetbrains-mono fonts-crosextra-carlito fonts-crosextra-caladea)
-flat_core=(com.discordapp.Discord)
+apt_core=(curl git wget micro htop btop nvtop s-tui duf eza nala cmatrix cpufetch fastfetch cheese vlc gnome-firmware copyq fonts-noto fonts-jetbrains-mono fonts-crosextra-carlito fonts-crosextra-caladea)
+flat_core=(io.github.plrigaux.sysd-manager)
 
 ## PRODUCTION 
 apt_prod=(nextcloud-desktop keepassxc dconf-editor virt-viewer)
@@ -37,7 +37,7 @@ apt_coding=(build-essential gcc make python3 python3-pip)
 flat_coding=(com.vscodium.codium)
 
 ## VIRTUALIZATION
-apt_virt=(gnome-boxes qemu-kvm)
+apt_virt=(virt-manager)
 
 # === Main Menu ===
 show_main_menu() {

@@ -1,0 +1,7 @@
+deb http://packages.linuxmint.com zena main upstream import backport 
+
+deb http://plug-mirror.rcac.purdue.edu/ubuntu noble main restricted universe multiverse
+deb http://plug-mirror.rcac.purdue.edu/ubuntu noble-updates main restricted universe multiverse
+deb http://plug-mirror.rcac.purdue.edu/ubuntu noble-backports main restricted universe multiverse
+
+deb http://security.ubuntu.com/ubuntu/ noble-security main restricted universe multiverse
