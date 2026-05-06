@@ -28,7 +28,7 @@ purple = "#bd93f9"
 # Prompt format
 # -------------------------
 format = """
-┌─ $username$hostname$os$directory $git_branch$git_status$cmd_duration
+$username$hostname$os$directory $cmd_duration
 └─➤ $character
 """
 
@@ -36,7 +36,7 @@ format = """
 # Username
 # -------------------------
 [username]
-format = "[┌─ ](bold blue)[$user]($style)[$read_only]($style)"
+format = "[$user]($style)[$read_only]($style)"
 style_user = "bold orange"
 style_root = "bold red"
 show_always = true
@@ -47,7 +47,7 @@ show_always = true
 [hostname]
 disabled = false
 ssh_only = false
-format = "[@$hostname]($style)[: ](bold white)"
+format = "[@$hostname]($style)[ ](bold white)"
 style = "bold orange"
 ssh_symbol = "[ 󰌀 ] "
 
@@ -56,8 +56,8 @@ ssh_symbol = "[ 󰌀 ] "
 # -------------------------
 [os]
 disabled = false
-format = "[╰─>]($style)"
-style = "bold blue"
+format = "[└─➤]($style)"
+style = "bold orange"
 
 [os.symbols]
 Alpine = " "
@@ -90,8 +90,9 @@ Windows = "󰍲 "
 # Directory
 # -------------------------
 [directory]
-truncation_length = 6
-format = "[$path](bold bright-blue)"
+truncation_length = 0
+truncate_to_repo = false
+format = "[$path](bold bright-blue) "
 read_only = " "
 
 # -------------------------
@@ -111,27 +112,3 @@ format = " [󰔛️ $duration ](bold pink)"
 success_symbol = "[](orange)"
 error_symbol = "[](orange)"
 vicmd_symbol = "[](orange)"
-
-# -------------------------
-# Git Branch
-# -------------------------
-[git_branch]
-symbol = " "
-style = "bold pink"
-# Added a space at the very beginning of the format string
-format = " [on $symbol$branch]($style) " 
-
-[git_status]
-style = "bold red"
-format = "([\\[$all_status$ahead_behind\\]]($style) )"
-conflicted = " "
-ahead = " "
-behind = " "
-diverged = "󱐪 "
-untracked = " "
-stashed = " "
-modified = " "
-staged = '[++\($count\)](green)'
-renamed = " "
-deleted = " "
-
