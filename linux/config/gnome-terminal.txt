@@ -1,8 +1,0 @@
-[legacy]
-default-show-menubar=true
-
-[legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9]
-font='Noto Mono 12'
-use-system-font=false
-use-theme-colors=true
-visible-name='Warthunder'
