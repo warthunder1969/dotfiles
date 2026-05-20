@@ -1,5 +1,5 @@
 #!/bin/bash
-#Warthunder's QEMU/KVM installation script
+#Warthunder's Virtual Machine Manager installation script
 #Version 1.2
 
 # Check for Intel VT-x (vmx) or AMD-V (svm) flags in /proc/cpuinfo
@@ -18,16 +18,18 @@ fi
 # Variables
 $VM=$HOME/VMs/
 $ISO=$HOME/VMs/ISOs/
+$PACKAGE_NAME="virt-manager"
+$PKGs="virt-manager qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils"
 # Define the Title and the Summary Message
 DIALOG_TITLE="WELCOME"
 
 # Use triple quotes for cleaner multi-line strings in the message
 SCRIPT_SUMMARY="
-Welcome to Warthunder's KVM Install Script!
+Welcome to Warthunder's Virtual-Manager Install Script!
 
 This script is for doing the following actions:
 
-1. Install KVM Virtual Machine Manager.
+1. Install Virtual Machine Manager.
 2. Put your user in the proper groups.
 3. Set and restart the correct systemd services.
 
@@ -41,21 +43,28 @@ dialog --clear \
 # Clear the dialog screen upon exit
 clear
 #Install Base Packages
-echo "Installing QEMU"
-sudo apt install -y bridge-utils virt-manager virtiofsd
-
-#Add User to Necessary Groups
-sudo adduser $USER libvirt
-sudo adduser $USER kvm
-
+sudo apt update
+echo "Installing"
+sudo apt install -y $PKGs
 
 #Enable system daemon
-sudo systemctl start libvirtd
-sudo systemctl enable libvirtd
+sudo systemctl enable --now libvirtd
 
-#Checking to see we're good
+#Add User to Necessary Groups
+sudo usermod -aG libvirt $USER
+sudo usermod -aG kvm $USER
+
+#Start Virtual Network      
+sudo virsh net-start default
+sudo virsh net-autostart default
+
+# Check Package actually installed
+if ! command -v virt-manager &> /dev/null; then
+    echo "Error: virt-manager is not installed." >&2
+    exit 1
+fi 
+echo "Virt-Manager Installed"  
 sudo virt-host-validate qemu
-echo "QEMU Installed"
 
 # to display the box correctly and capture the exit status.
 dialog --title "Confirmation" --yesno "Do you want to Setup Directories? Location: /home/$USER/VMs  /home/$USER/VMs/ISOs"  10 30 2>/dev/tty
@@ -77,7 +86,7 @@ case $response in
         exit 1
         ;;
 esac
-
+clear
 # to display the box correctly and capture the exit status.
 dialog --title "Confirmation" --yesno "Do you want to Download Spice Guest Tools?Location: /home/$USER/VMs/ISOs" 10 30 2>/dev/tty
 
@@ -88,7 +97,7 @@ case $response in
     0) 
         echo "Aquiring spice guest tools ISO"
         wget -P $HOME/VMs/ISOs/ https://github.com/utmapp/qemu/releases/download/v7.0.0-utm/spice-guest-tools-0.164.4.iso
-        
+        clear
         ;;
     1)
         echo "No. Spice Tools Downloaded. Exiting..."

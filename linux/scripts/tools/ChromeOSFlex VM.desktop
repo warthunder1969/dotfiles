@@ -1,0 +1,13 @@
+[Desktop Entry]
+Name=ChromeOSFlex VM
+Name[en_US]=ChromeOSFlex VM
+Exec=sudo qemu-system-x86_64 -enable-kvm -smp 2 -m 8G -cpu host -drive file="/home/war/VMs/chromeoxflex.qcow2",format=qcow2     -display "gtk,gl=on,show-cursor=on"     -device virtio-vga-gl     -device usb-tablet -usb
+Exec[en_US]=sudo qemu-system-x86_64 -enable-kvm -smp 2 -m 8G -cpu host -drive file="/home/war/VMs/chromeoxflex.qcow2",format=qcow2     -display "gtk,gl=on,show-cursor=on"     -device virtio-vga-gl     -device usb-tablet -usb
+Comment=Launches QEMU with Virtio-vga-gl
+Comment[en_US]=Launches QEMU with Virtio-vga-gl
+Terminal=true
+PrefersNonDefaultGPU=false
+Icon=virt-manager
+Icon[en_US]=cinnamon-panel-launcher
+Type=Application
+Type[en_US]=Application

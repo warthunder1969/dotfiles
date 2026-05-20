@@ -1,6 +1,7 @@
 #!/bin/bash
-# Symlink migration script for relinking all my dotfiles to the proper directories. Useage is not recomended unless you know what you are doing.
-# Version 0.1
+# Symlink migration script for relinking all my dotfiles to the proper directories. 
+# Useage is not recomended unless you know what you are doing.
+# Version 0.2
 
 # === Dependencies ===
 # Ensure whiptail is installed
@@ -13,7 +14,7 @@ config="$HOME/.config"
 dotclone="https://codeberg.org/warthunder1969/dotfiles.git"
 dotgit="$HOME/Nextcloud/Projects/git/dotfiles"
 nextcloud="$HOME/Nextcloud"
-dotconfig="$HOME/Nextcloud/Projects/configs/linux"
+dotnext="$HOME/Nextcloud/Projects/configs/linux"
 
 
 # === Functions ===
@@ -35,10 +36,10 @@ loc_git(){
 }
 
 loc_configs(){
-    if [ -d "$dotconfig" ]; then
-        echo "$dotconfig exists."
+    if [ -d "$dotnext" ]; then
+        echo "$dotnext exists."
     else
-        echo "$dotconfig is missing."
+        echo "$dotnext is missing."
     fi
 }
 
@@ -67,14 +68,15 @@ while true; do
         2)  
             echo "Applying Symlinks..."
             # Private Dots
-            ln -sf $dotconfig/gtk-3.0/bookmarks /home/war/.config/gtk-3.0/bookmarks
-            ln -sf $dotconfig/Apps $HOME/Desktop
-            ln -sf $dotconfig/Games $HOME/Desktop
+            ln -sf $dotnext/gtk-3.0/bookmarks /home/war/.config/gtk-3.0
+            ln -sf $dotnext/Apps $HOME/Desktop
+            ln -sf $dotnext/Games $HOME/Desktop
             # Public Dots
-            ln -sf $dotgit/linux/scripts/tools $HOME/Desktop/Tools
-            ln -sf $dotgit/linux/config/fastfetch/config.jsonc $config/fastfetch/config.jsonc
+            ln -sf $dotgit/linux/scripts/tools $HOME/Desktop
+            ln -sf $dotgit/linux/config/fastfetch/config.jsonc $config/fastfetch
             ln -sf $dotgit/linux/config/bashrc $HOME/.bashrc
-            ln -sf $dotgit/linux/config/starship.toml $config/starship.toml
+            ln -sf $dotgit/linux/config/bash_aliases $HOME/.bash_aliases
+            ln -sf $dotgit/linux/config/starship.toml $config
 		
             echo "Done!"
             sleep 2
@@ -82,9 +84,10 @@ while true; do
         3)  
             echo "Applying Symlinks..."
             # Public Dots
-            ln -sf $dotclone/linux/scripts/tools $HOME/Desktop/Tools
-            ln -sf $dotclone/linux/config/fastfetch/config.jsonc $config/fastfetch/config.jsonc
+            ln -sf $dotclone/linux/scripts/tools $HOME/Desktop
+            ln -sf $dotclone/linux/config/fastfetch/config.jsonc $config/fastfetch/
             ln -sf $dotclone/linux/config/bashrc $HOME/.bashrc
+            ln -sf $dotclone/linux/config/bashrc_aliases $HOME/.bashrc_aliases
             ln -sf $dotclone/linux/config/starship.toml $config/starship.toml
 		
             echo "Done!"

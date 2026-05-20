@@ -1,8 +1,19 @@
 #!/bin/bash
 
-# --- CONFIGURATION ---
-# Set the "specified length" in days (e.g., 365 for a year, 1095 for 3 years)
-TOTAL_LENGTH_DAYS=1460
+if [ $# -eq 0 ]; then
+    echo "Usage: $0 <years>"
+    exit 1
+fi
+
+years=$1
+
+if ! [[ "$years" =~ ^[0-9]*\.?[0-9]+$ ]]; then
+    echo "Error: Use a positive number (e.g. 1, 0.5, 2.75)."
+    exit 1
+fi
+
+days=$(echo "$years * 365" | bc)
+TOTAL_LENGTH_DAYS=$days
 # ---------------------
 
 # 1. Get the installation date in seconds since epoch.

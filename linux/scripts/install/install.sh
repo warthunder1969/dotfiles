@@ -22,7 +22,7 @@ dotfiles="https://codeberg.org/warthunder1969/dotfiles.git"
 # === Profiles ===
 ## CORE
 apt_core=(curl git wget micro htop btop nvtop s-tui duf eza nala cmatrix cpufetch fastfetch cheese vlc gnome-firmware copyq fonts-noto fonts-jetbrains-mono fonts-crosextra-carlito fonts-crosextra-caladea)
-flat_core=(io.github.plrigaux.sysd-manager)
+flat_core=(io.github.plrigaux.sysd-manager io.m51.Gelly)
 
 ## PRODUCTION 
 apt_prod=(nextcloud-desktop keepassxc dconf-editor virt-viewer)
