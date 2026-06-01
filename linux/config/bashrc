@@ -4,6 +4,12 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+#load fish shell if installed
+if command -v fish >/dev/null 2>&1; then
+    exec fish
+fi
+
+
 # Load starship prompt if starship is installed
 if [ -x /usr/bin/starship ]; then
 	__main() {
@@ -125,4 +131,4 @@ if ! shopt -oq posix; then
   fi
 fi
 eval "$(starship init bash)"
-fastfetch
+export PATH="$HOME/.local/bin:$PATH"

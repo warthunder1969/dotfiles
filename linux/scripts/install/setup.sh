@@ -77,6 +77,7 @@ while true; do
             ln -sf $dotgit/linux/config/bashrc $HOME/.bashrc
             ln -sf $dotgit/linux/config/bash_aliases $HOME/.bash_aliases
             ln -sf $dotgit/linux/config/starship.toml $config
+            ln -sf $dotgit/linux/config/alacritty $config
 		
             echo "Done!"
             sleep 2
@@ -89,7 +90,7 @@ while true; do
             ln -sf $dotclone/linux/config/bashrc $HOME/.bashrc
             ln -sf $dotclone/linux/config/bashrc_aliases $HOME/.bashrc_aliases
             ln -sf $dotclone/linux/config/starship.toml $config/starship.toml
-		
+			ln -sf $dotclone/linux/config/alacritty $config
             echo "Done!"
             sleep 2
             ;;

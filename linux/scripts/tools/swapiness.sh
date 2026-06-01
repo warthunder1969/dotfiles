@@ -41,9 +41,9 @@ fi
 sysctl vm.swappiness=$NEW_VAL
 
 # Offer to make it permanent
-if whiptail --title "Save Settings?" --yesno "Apply this permanently to /etc/sysctl.conf?" 10 60; then
-    sed -i '/vm.swappiness/d' /etc/sysctl.conf
-    echo "vm.swappiness=$NEW_VAL" >> /etc/sysctl.conf
+if whiptail --title "Save Settings?" --yesno "Apply this permanently?" 10 60; then
+    sed -i '/vm.swappiness/d' /etc/sysctl.d/99-swappiness.conf
+    echo "vm.swappiness=$NEW_VAL" >> /etc/sysctl.d/99-swappiness.conf
     whiptail --title "Success" --msgbox "Swappiness set to $NEW_VAL permanently." 8 45
 else
     whiptail --title "Success" --msgbox "Applied. Value will reset after reboot." 8 45

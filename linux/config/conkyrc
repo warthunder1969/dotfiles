@@ -1,0 +1,134 @@
+conky.config = {
+
+	--Various settings
+
+	background = true, 							-- forked to background
+	if_up_strictness = 'address',				-- how strict if testing interface is up - up, link or address
+	text_buffer_size = 2048,					-- size of buffer for display of content of large variables - default 256
+    use_xft = true,
+    xftalpha = 0.8,
+    update_interval = 1.0,
+    total_run_times = 0,
+    own_window = true,
+    own_window_transparent = true,
+    own_window_argb_visual = true,
+    own_window_type = 'normal',
+    own_window_class = 'conky-semi',
+    own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+    background = false,
+    double_buffer = true,
+    imlib_cache_size = 0,
+    no_buffers = true,
+    uppercase = false,
+    cpu_avg_samples = 2,
+    override_utf8_locale = true,
+
+    -- Placement
+    alignment = 'top_right',
+    gap_x = 25,
+    gap_y = 25,
+
+	--Graphical
+
+    draw_shades = false,
+    draw_outline = false,
+    draw_borders = false,
+    draw_graph_borders = true,
+    default_bar_width = 150, default_bar_height = 5,
+    default_graph_width = 150, default_graph_height = 12,
+    default_gauge_width = 20, default_gauge_height = 20,
+
+	--Textual
+
+	extra_newline = false,						-- extra newline at the end - for asesome's wiboxes
+	format_human_readable = true,				-- KiB, MiB rather then number of bytes
+	font = 'Roboto Mono:size=10',  				-- font for complete conky unless in code defined
+	max_text_width = 0,							-- 0 will make sure line does not get broken if width too smal
+	max_user_text = 16384,						-- max text in conky default 16384
+	override_utf8_locale = true,				-- force UTF8 requires xft
+	short_units = true,							-- shorten units from KiB to k
+	top_name_width = 21,						-- width for $top name value default 15
+	top_name_verbose = false,					-- If true, top name shows the full command line of  each  process - Default value is false.
+	uppercase = false,							-- uppercase or not
+	use_spacer = 'none',						-- adds spaces around certain objects to align - default none
+	use_xft = true,								-- xft font - anti-aliased font
+	xftalpha = 1,								-- alpha of the xft font - between 0-1
+
+	--Windows
+
+	own_window = true,							-- create your own window to draw
+	own_window_argb_value = 100,			    -- real transparency - composite manager required 0-255
+	own_window_argb_visual = true,				-- use ARGB - composite manager required
+	own_window_colour = '#000000',				-- set colour if own_window_transparent no
+	own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',  -- if own_window true - just hints - own_window_type sets it
+	own_window_transparent = false,				-- if own_window_argb_visual is true sets background opacity 0%
+	own_window_title = 'system_conky',			-- set the name manually  - default conky "hostname"
+	own_window_type = 'normal',				-- if own_window true options are: normal/override/dock/desktop/panel
+
+
+	--Colours
+    font = 'Noto Sans Mono Regular:size=12',
+    default_color = 'EEEEEE',
+    color1 = 'd79921',
+    color2 = 'FF993D',
+    color3 = '458588',
+    color5 = '#00BFFF',
+    color6 = '#FFFFFF',
+	color7 = '#1F7411',  						--green
+	color8 = '#FFA726',  						--orange
+	color9 = '#F1544B',  						--firebrick
+
+
+    -- layouting
+    template0 = [[${font Noto Sans Mono Regular:bold:size=11}${color2}\1 ${color3}${hr 2}${font}]],
+    template1 = [[${color1}\1]],
+    template2 = [[${goto 100}${color}]],
+    template3 = [[${goto 180}${color}${alignr}]],
+};
+
+conky.text = [[
+${template0 Processors}
+${if_existing /sys/devices/system/cpu/cpu0}${color1}CPU1${alignr}${cpu cpu1}%
+${cpubar cpu1 4}${endif}${if_existing /sys/devices/system/cpu/cpu1}
+CPU2 ${alignr}${cpu cpu2}%
+${cpubar cpu2 4}${endif}${if_existing /sys/devices/system/cpu/cpu2}
+CPU3 ${alignr}${cpu cpu3}%
+${cpubar cpu3 4}${endif}${if_existing /sys/devices/system/cpu/cpu3}
+CPU4 ${alignr}${cpu cpu4}%
+${cpubar cpu4 4}${endif}
+
+${template0 Memory}${color1}
+Ram ${alignr}$mem / $memmax ($memperc%)
+${membar 4}
+Swap ${alignr}$swap / $swapmax ($swapperc%)
+${swapbar 4}
+
+${template0 Disks}${color1}
+Boot ${alignr}${fs_free /} / ${fs_size /}
+${fs_bar 4 /}${if_mounted /mnt/storage1}
+Disk1 ${alignr}${fs_free /mnt/storage1} / ${fs_size /mnt/storage1}
+${fs_bar 4 /mnt/storage}${endif}${if_mounted /mnt/storage2}
+Disk2 ${alignr}${fs_free /mnt/storage2} / ${fs_size /mnt/storage2}
+${fs_bar 4 /mnt/storage2}${endif}${if_mounted /mnt/storage3}
+Disk3 ${alignr}${fs_free /mnt/storage3} / ${fs_size /mnt/storage3}
+${fs_bar 4 /mnt/storage3}${endif}${if_mounted /mnt/storage4}
+Disk4 ${alignr}${fs_free /mnt/storage4} / ${fs_size /mnt/storage4}
+${fs_bar 4 /mnt/storage4}${endif}${if_mounted /mnt/storage5}
+Disk5 ${alignr}${fs_free /mnt/storage5} / ${fs_size /mnt/storage5}
+${fs_bar 4 /mnt/storage5}${endif}
+${template1 IO\ Read}  ${template2}${diskio_read}                  ${template3}${diskiograph_read}
+${template1 IO\ Write} ${template2}$diskio_write                   ${template3}$diskiograph_write
+
+${template0 Networking}
+${if_existing /sys/class/net/eth0/operstate up}
+Down: ${downspeed eth0} k/s ${alignr}Up: ${upspeed eth0} k/s
+${downspeedgraph eth0 20,90} ${alignr}${upspeedgraph eth0 20,90}
+Total: ${totaldown eth0} ${alignr}Total: ${totalup eth0}
+
+${endif}${if_existing /sys/class/net/wlp0s20f3/operstate up}${color1}
+Connection: Wireless ${alignr}Bitrate: ${wireless_bitrate wlp0s20f3}
+Down: ${downspeed wlp0s20f3} k/s ${alignr}Up: ${upspeed wlp0s20f3} k/s
+${downspeedgraph wlp0s20f3 20,90} ${alignr}${upspeedgraph wlp0s20f3 20,90}
+Total: ${totaldown wlp0s20f3} ${alignr}Total: ${totalup wlp0s20f3}
+ 
+]];

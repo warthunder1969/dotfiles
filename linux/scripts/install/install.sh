@@ -61,7 +61,7 @@ while true; do
             ;;
         2)
             clear
-            CHOICES=$(whiptail --title "System Persona Selection" --checklist \
+            CHOICES=$(whiptail --title "System Profile Selection" --checklist \
             "Select the profiles for this machine (Space to toggle):" 15 60 5 \
             "CORE" "Basic Apps, CLI tools" ON \
 			"PRODUTION" "Essential Apps I Use" ON \
@@ -115,29 +115,78 @@ while true; do
             flatpak install flathub "${FINAL_FLAT[@]}" -y
             fi
 
-			# Non-Repository Packages
-			read -p "Do you want Google Chrome? (y/n): " response
-			
-			if [[ "$response" == "y" || "$response" == "Y" ]]; then
-			  wget -P /tmp https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-			  sudo apt install /tmp/google-chrome-stable_current_amd64.deb
-			  rm /tmp/google-chrome-stable_current_amd64.deb
-			else
-			    echo "Chrome not installed."
-			    exit 1
-			fi
+			CHOICES=$(dialog --clear \
+					                --backtitle "Additional Packages" \
+					                --title "Selection" \
+					                --checklist "Use SPACE to toggle apps and OK to install." \
+					                15 50 5 \
+					                "chrome"    "Cross-platform Web Browser Developed by Google" off \
+					                "discord"    "Propeitary Messing and VoIP Platform"   on \
+					                "fluxer"   "Open Source Instant Messaging and VoIP Platform" off \
+					                "superproductivity"   "Open-Source Deep Work Task Manager" off \
+					                2>&1 >/dev/tty)
+					
+					# Check if user pressed Cancel or Escape
+					exitstatus=$?
+					if [ $exitstatus != 0 ]; then
+					    echo "Installation cancelled."
+					    exit
+					fi
 
-			read -p "Do you want Fluxer? (y/n): " response
-						
-			if [[ "$response" == "y" || "$response" == "Y" ]]; then
-			  wget -OP fluxer.deb /tmp https://api.fluxer.app/dl/desktop/stable/linux/x64/latest/deb
-			  sudo apt install /tmp/fluxer.deb
-			  rm /tmp/fluxer.deb
-			else
-			  echo "Fluxer not installed."
-			exit 1
-			fi
-			
+					for APP in $CHOICES; do
+							    # Remove quotes from the tag if present
+							    APP=$(echo $APP | sed 's/"//g')
+							    
+							    case $APP in
+							        chrome)
+							            echo "Installing $APP..."
+							            wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb -O $HOME/chrome.deb
+							            sudo apt install $HOME/chrome.deb
+							            rm $HOME/chrome.deb
+
+							     if dpkg-query -W -f='${Status}' "google-chrome-stable" 2>/dev/null | grep -q "ok installed"; then
+			  							echo "$app is installed"
+								else
+			  							echo "$app was NOT installed"
+								fi							            
+							            ;;
+							        discord)
+							           	wget -O $HOME/discord.deb "https://discord.com/api/download?platform=linux" 
+										sudo dpkg -i $HOME/discord.deb 
+										rm ~/discord.deb
+		
+							     if dpkg-query -W -f='${Status}' "discord" 2>/dev/null | grep -q "ok installed"; then
+			  							echo "$app is installed"
+								else
+			  							echo "$app was NOT installed"
+								fi
+							            ;;
+							        fluxer)
+							            wget https://api.fluxer.app/dl/desktop/stable/linux/x64/latest/deb -O $HOME/fluxer.deb
+							            sudo apt install $HOME/fluxer.deb
+							            rm $HOME/fluxer.deb
+							    if dpkg-query -W -f='${Status}' "fluxer" 2>/dev/null | grep -q "ok installed"; then
+							            echo "$app is installed"
+							    else
+							    	    echo "$app was NOT installed"
+							    fi				
+							            ;;
+							        superproductivity)
+							   			wget https://github.com/johannesjo/super-productivity/releases/latest/download/superProductivity-amd64.deb -O $HOME/superProductivity.deb
+							        	sudo apt install $HOME/superProductivity.deb
+							        	rm $HOME/superProductivity.deb
+							        	 
+							        	# Check if Package Installed
+							    if dpkg-query -W -f='${Status}' "superproductivity" 2>/dev/null | grep -q "ok installed"; then
+							    		  echo "$app is installed"
+							    else
+							    		  echo "$app was NOT installed"
+							    fi
+							        	 		 ;;
+							    esac
+							done
+							
+							clear
             echo "Done!"
             sleep 2
             ;;

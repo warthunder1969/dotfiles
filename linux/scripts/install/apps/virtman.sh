@@ -18,8 +18,6 @@ fi
 # Variables
 $VM=$HOME/VMs/
 $ISO=$HOME/VMs/ISOs/
-$PACKAGE_NAME="virt-manager"
-$PKGs="virt-manager qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils"
 # Define the Title and the Summary Message
 DIALOG_TITLE="WELCOME"
 
@@ -45,14 +43,12 @@ clear
 #Install Base Packages
 sudo apt update
 echo "Installing"
-sudo apt install -y $PKGs
+sudo apt install -y qemu-kvm libvirt-clients libvirt-daemon-system virt-manager ovmf swtpm swtpm-tools virtiofsd bridge-utils
+#Add user to the right group(s)
+sudo usermod -aG libvirt $USER
 
 #Enable system daemon
 sudo systemctl enable --now libvirtd
-
-#Add User to Necessary Groups
-sudo usermod -aG libvirt $USER
-sudo usermod -aG kvm $USER
 
 #Start Virtual Network      
 sudo virsh net-start default

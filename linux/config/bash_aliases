@@ -37,10 +37,12 @@ alias bs='micro ~/.bashrc'
 alias ba='micro ~/.bashrc_aliases'
 alias ed='micro'
 alias rl='source ~/.bashrc'
+alias ef='exec fish'
 alias dt='cd ~/Nextcloud/Projects/git/dotfiles/linux'
 alias ff="fastfetch"
 alias cf="cpufetch"
 alias lc="bash $HOME/Nextcloud/Projects/git/dotfiles/linux/scripts/tools/system_age.sh"
+alias fs="micro ~/.config/fish/config.fish"
 # Other
 alias free='free -h'
 alias myip="ip -f inet address | grep inet | grep -v 'lo$' | cut -d ' ' -f 6,13 && curl ifconfig.me && echo ' external ip'"
