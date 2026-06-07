@@ -30,6 +30,4 @@ family = "Noto Sans Mono"
 style = "Bold Italic"
 
 [general]
-import = [
-    "~/.config/alacritty/themes/vscode.toml"
-]
+import = [ "~/.config/alacritty/themes/vscode.toml" ]
