@@ -1,7 +1,7 @@
 #!/bin/bash
 # Symlink migration script for relinking all my dotfiles to the proper directories. 
 # Useage is not recomended unless you know what you are doing.
-# Version 0.2
+# Version 0.3
 
 # === Dependencies ===
 # Ensure whiptail is installed
@@ -73,7 +73,7 @@ while true; do
             ln -sf $dotnext/Games $HOME/Desktop
             # Public Dots
             ln -sf $dotgit/linux/scripts/tools $HOME/Desktop
-            ln -sf $dotgit/linux/config/fastfetch/config.jsonc $config/fastfetch
+            ln -sf $dotgit/linux/config/fastfetch/config.jsonc $config/fastfetch/config.jsonc
             ln -sf $dotgit/linux/config/bashrc $HOME/.bashrc
             ln -sf $dotgit/linux/config/bash_aliases $HOME/.bash_aliases
             ln -sf $dotgit/linux/config/starship.toml $config

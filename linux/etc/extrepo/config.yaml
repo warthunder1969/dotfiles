@@ -1,0 +1,10 @@
+---
+url: https://extrepo-team.pages.debian.net/extrepo-data
+dist: debian
+version: trixie
+# To enable repositories that host software with non-DFSG-free licenses,
+# uncomment "contrib" and/or "non-free" in the list below.
+enabled_policies:
+- main
+ - contrib
+ - non-free

@@ -46,9 +46,10 @@ echo "Installing"
 sudo apt install -y qemu-kvm libvirt-clients libvirt-daemon-system virt-manager ovmf swtpm swtpm-tools virtiofsd bridge-utils
 #Add user to the right group(s)
 sudo usermod -aG libvirt $USER
-
+sudo chown $USER:$USER /var/run/libvirt/libvirt-sock
 #Enable system daemon
 sudo systemctl enable --now libvirtd
+sudo systemctl restart libvirtd
 
 #Start Virtual Network      
 sudo virsh net-start default
