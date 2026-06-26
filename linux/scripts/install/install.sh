@@ -21,7 +21,7 @@ dotfiles="https://codeberg.org/warthunder1969/dotfiles.git"
 
 # === Profiles ===
 ## CORE
-apt_core=(curl git wget micro htop btop nvtop s-tui duf eza nala cmatrix cpufetch fastfetch cheese vlc gnome-firmware copyq fonts-noto fonts-jetbrains-mono fonts-crosextra-carlito fonts-crosextra-caladea)
+apt_core=(curl git wget micro htop btop nvtop s-tui duf eza nala cmatrix cpufetch fastfetch vlc gnome-firmware copyq fonts-noto fonts-jetbrains-mono fonts-crosextra-carlito fonts-crosextra-caladea)
 flat_core=(io.github.plrigaux.sysd-manager io.m51.Gelly)
 
 ## PRODUCTION 
@@ -120,7 +120,7 @@ while true; do
 					                --title "Selection" \
 					                --checklist "Use SPACE to toggle apps and OK to install." \
 					                15 50 5 \
-					                "chrome"    "Cross-platform Web Browser Developed by Google" off \
+					                "brave-origin"    "Minimalist, paid version of the Brave" on \
 					                "discord"    "Propeitary Messing and VoIP Platform"   on \
 					                "fluxer"   "Open Source Instant Messaging and VoIP Platform" off \
 					                "superproductivity"   "Open-Source Deep Work Task Manager" off \
@@ -140,11 +140,12 @@ while true; do
 							    case $APP in
 							        chrome)
 							            echo "Installing $APP..."
-							            wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb -O $HOME/chrome.deb
-							            sudo apt install $HOME/chrome.deb
-							            rm $HOME/chrome.deb
+							            sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
+							            sudo curl -fsSLo /etc/apt/sources.list.d/brave-browser-release.sources https://brave-browser-apt-release.s3.brave.com/brave-browser.sources
+							            sudo apt update
+							            sudo apt install brave-origin
 
-							     if dpkg-query -W -f='${Status}' "google-chrome-stable" 2>/dev/null | grep -q "ok installed"; then
+							     if dpkg-query -W -f='${Status}' "brave-origin" 2>/dev/null | grep -q "ok installed"; then
 			  							echo "$app is installed"
 								else
 			  							echo "$app was NOT installed"
