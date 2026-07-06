@@ -10,9 +10,6 @@ if [[ -x /usr/bin/eza ]]; then
 fi
 
 # Common use
-alias fix="sudo apt --fix-broken install"
-alias fpkg="sudo dpkg --configure -a"
-alias fmis="sudo apt update --fix-missing"
 alias tarnow='tar -acf '
 alias untar='tar -zxvf '
 alias l='dir --color=auto'
@@ -21,13 +18,11 @@ alias df='duf'
 alias x="exit"
 
 # Package Management
-alias up='sudo nala upgrade && sudo flatpak update -y && cinnamon-spice-updater --update-all && sudo mintupdate-cli refresh-cache'
-alias rf='sudo nala update && nala list --upgradable && flatpak remote-ls --updates'
-alias in='sudo nala install'
-alias re='sudo nala remove'
-alias nk='sudo nala purge'
-alias se='nala search'
-alias cl='sudo nala autoremove && flatpak uninstall --unused'
+alias up='sudo dnf upgrade && sudo flatpak update -y'
+alias rf='sudo dnf update && dnf list --upgradable && flatpak remote-ls --updates'
+alias in='sudo dnf install'
+alias re='sudo dnf remove'
+alias se='dnf search'
 alias fin='flatpak install'
 alias fre='flatpak remove'
 alias fse='flatpak search'
