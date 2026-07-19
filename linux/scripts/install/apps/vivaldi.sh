@@ -1,6 +1,6 @@
 #!/bin/bash
-#Warthunder's Brave Browser installation script
-#Version 1.1
+#Warthunder's Vivaldi Browser installation script
+#Version 1.0
 
 # Ensure dialog is installed
 if ! command -v dialog &> /dev/null; then
@@ -9,7 +9,7 @@ if ! command -v dialog &> /dev/null; then
 fi
 
 # Variables
-app="Brave"
+app="Vivaldi"
 
 # Define the Title and the Summary Message
 DIALOG_TITLE="WELCOME"
@@ -32,9 +32,8 @@ dialog --clear \
 clear
 
 OPTIONS=(
-    1 "Repository (Brave)"
-    2 "Repository (Origon)"
-    3 "Flatpak (Flathub)"    
+    1 "Repository (Vivaldi-Stable)"
+    2 "Flatpak (Flathub)"    
 )
 
 # Use dialog to display a menu box and capture the user's choice
@@ -48,14 +47,16 @@ clear
 # Execute based on the user's choice
 case $CHOICE in
     1)
-        echo "Installing..."
-		curl -fsSLO "https://dl.brave.com/install.sh{,.asc}"
-        gpg --keyserver hkps://keys.openpgp.org --recv-keys D16166072CACDF2C9429CBF11BF41E37D039F691
-        gpg --verify install.sh.asc install.sh
-        sh install.sh
-        rm install.sh.asc            
+        echo "Downloading: $app"
+        curl -fL --retry 5 -o "$HOME/vivaldi-stable.deb" "https://vivaldi.com/download/vivaldi-stable_amd64.deb"
+        
+        echo "Installing .deb"
+        sudo apt-get update -y
+        sudo dpkg -i $HOME/vivaldi-stable.deb || sudo apt-get -f install -y
+        rm $HOME/vivaldi-stable.deb
+                    
 		# Check if Package Installed
-		if dpkg-query -W -f='${Status}' "brave-browser-stable" 2>/dev/null | grep -q "ok installed"; then
+		if dpkg-query -W -f='${Status}' "vivaldi-stable" 2>/dev/null | grep -q "ok installed"; then
 			  echo "$app is installed"
 		else
 			  echo "$app was NOT installed"
@@ -64,28 +65,10 @@ case $CHOICE in
         ;;
 
     2)
-        echo "Installing..."
-		curl -fsSLO "https://dl.brave.com/install.sh{,.asc}"
-        gpg --keyserver hkps://keys.openpgp.org --recv-keys D16166072CACDF2C9429CBF11BF41E37D039F691
-        gpg --verify install.sh.asc install.sh
-        FLAVOR=origin sh install.sh
-        rm install.sh.asc
-                    
-		# Check if Package Installed
-		if dpkg-query -W -f='${Status}' "brave-origin" 2>/dev/null | grep -q "ok installed"; then
-			  echo "$app is installed"
-		else
-			  echo "$app was NOT installed"
-		fi
-		
-        ;;
-
-   
-    3)
          echo "Installing..."
 		dpkg -l | grep -qw flatpak || sudo apt install -yyq flatpak
 		flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-		flatpak install flathub com.brave.Browser	
+		flatpak install flathub com.vivaldi.Vivaldi	
 		echo "Installed!"
 
         ;;

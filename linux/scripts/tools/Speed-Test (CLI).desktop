@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Speed-Test (CLI)
+Exec=speedtest-cli
+Comment=Internet Speedtest
+Terminal=true
+PrefersNonDefaultGPU=false
+Icon=internet-news-reader
+Type=Application

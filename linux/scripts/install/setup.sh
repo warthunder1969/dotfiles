@@ -57,14 +57,15 @@ install_profile() {
                     #Repository Packages
                     sudo apt install -y git curl wget micro htop btop nvtop eza nala cmatrix cpufetch fastfetch alacritty vlc fonts-noto-color-emoji libfreetype6 fontconfig libcairo2
                     #Flatpaks
-                    flatpak install -y io.m51.Gelly dev.vencord.Vesktop 
+                    flatpak install -y io.m51.Gelly com.discordapp.Discord app.fluxer.Fluxer im.riot.Riot
                     # 3rd Party  Packages
-                    #Brave-Origon
+                    #Browser
                     curl -fsSLO "https://dl.brave.com/install.sh{,.asc}"
                     gpg --keyserver hkps://keys.openpgp.org --recv-keys D16166072CACDF2C9429CBF11BF41E37D039F691
                     gpg --verify install.sh.asc install.sh
                     FLAVOR=origin sh install.sh
-                    
+                    rm install.sh.asc
+                            
                       
                     ;;
                 "prod")
