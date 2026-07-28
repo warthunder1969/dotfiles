@@ -1,4 +1,0 @@
-#install Chocolatey
-Set-ExecutionPolicy Bypass -Scope Process -Force; iwr https://community.chocolatey.org/install.ps1 -UseBasicParsing | iex
-
-choco install hwmonitor libreoffice-fresh gpu-z foxitreader hwinfo googlechrome element-desktop firefox nextcloud-client discord cpu-z winrar thunderbird  vivaldi flameshot notesnook

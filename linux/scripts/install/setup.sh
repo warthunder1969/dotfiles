@@ -57,7 +57,7 @@ install_profile() {
                     #Repository Packages
                     sudo apt install -y git curl wget micro htop btop nvtop eza nala cmatrix cpufetch fastfetch alacritty vlc fonts-noto-color-emoji libfreetype6 fontconfig libcairo2
                     #Flatpaks
-                    flatpak install -y io.m51.Gelly com.discordapp.Discord app.fluxer.Fluxer im.riot.Riot
+                    flatpak install -y io.m51.Gelly dev.vencord.Vesktop app.fluxer.Fluxer im.riot.Riot
                     # 3rd Party  Packages
                     #Browser
                     curl -fsSLO "https://dl.brave.com/install.sh{,.asc}"

@@ -1,20 +1,46 @@
-source:https://teksyndicate.com/switch-to-windows-10-ltsc-heres-how-i-set-it-up/
+# Ensure the execution policy allows running scripts
+Set-ExecutionPolicy Bypass -Scope Process -Force
 
 # Install Chocolatey
-Set-ExecutionPolicy Bypass -Scope Process -Force
-[System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072
-iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
-#enable yes to all
+if (-not (Test-Path -Path "$env:ProgramData\Chocolatey")) {
+    [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072
+    Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+}
+
+# Reload environment variables so 'choco' is immediately recognized
+$env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
+
 choco feature enable -n allowGlobalConfirmation
-Install programs with the latest versions using Chocolatey
 
-choco install 7zip -y
-choco install notepadplusplus -y
-choco install firefox -y
-choco install dotnet-6.0-desktopruntime -y
-Install more programs using these commands… you can find them here: community.chocolatey.org/packages
+# Define Packages
+$Apps = @(
+    "chocolateygui",
+    "brave",
+    "keepassxc",
+    "git",
+    "vlc",
+    "thunderbird",
+    "discord",
+    "element-desktop",
+    "foxitreader",
+    "7zip",
+    "notepadplusplus",
+    "alacritty",
+    "dotnet-6.0-desktopruntime"	
 
-Here are the tweaks I do to my UI:
+)
+
+# Bulk install all listed applications silently
+Write-Host "Starting software installations..." -ForegroundColor Cyan
+foreach ($App in $Apps) {
+    Write-Host "Installing $App..." -ForegroundColor Green
+    choco install $App -y --no-progress
+}
+
+Write-Host "All software installations completed!" -ForegroundColor Cyan
+
+# Tweaks/Settings
+
 
 # Enable Dark Mode
 New-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize" -Name "AppsUseLightTheme" -Value 0 -PropertyType DWORD -Force
@@ -73,17 +99,16 @@ foreach ($setting in $settings) {
 # Restart Explorer to apply changes
 Stop-Process -Name explorer -Force
 Start-Process explorer
-Then, if you want to make Firefox your default browser, use this:
 
-#set firefox default
+# Set Browser Defaults
 $associations_xml = @"
 <?xml version="1.0" encoding="UTF-8"?>
 <DefaultAssociations>
-  <Association Identifier=".htm" ProgId="FirefoxHTML" ApplicationName="Mozilla Firefox" />
-  <Association Identifier=".html" ProgId="FirefoxHTML" ApplicationName="Mozilla Firefox" />
-  <Association Identifier=".pdf" ProgId="AcroExch.Document.DC" ApplicationName="Mozilla Firefox" />
-  <Association Identifier="http" ProgId="FirefoxURL" ApplicationName="Mozilla Firefox" />
-  <Association Identifier="https" ProgId="FirefoxURL" ApplicationName="Mozilla Firefox" />
+  <Association Identifier=".htm" ProgId="FirefoxHTML" ApplicationName="Brave" />
+  <Association Identifier=".html" ProgId="FirefoxHTML" ApplicationName="Brave" />
+  <Association Identifier=".pdf" ProgId="AcroExch.Document.DC" ApplicationName="Brave" />
+  <Association Identifier="http" ProgId="FirefoxURL" ApplicationName="Brave" />
+  <Association Identifier="https" ProgId="FirefoxURL" ApplicationName="Brave" />
 </DefaultAssociations>
 "@
 
@@ -93,9 +118,3 @@ $associations_xml | Out-File "$($provisioning.FullName)\associations.xml" -Encod
 
 dism /online /Import-DefaultAppAssociations:"$($provisioning.FullName)\associations.xml"
 TOC
-01:36 – Unlock Windows 10 LTSC with this key
-04:02 – Correction From the Last Video
-04:48 – My Simple UI Tweaks
-05:26 – Powershell Script to Install Programs
-10:36 – Install a Photo Viewer
-14:29 – The Microsoft Store
