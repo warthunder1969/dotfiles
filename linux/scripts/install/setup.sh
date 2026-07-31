@@ -55,17 +55,19 @@ install_profile() {
                 "basic")
                     echo "Installing  Essential Packages..."
                     #Repository Packages
-                    sudo apt install -y git curl wget micro htop btop nvtop eza nala cmatrix cpufetch fastfetch alacritty vlc fonts-noto-color-emoji libfreetype6 fontconfig libcairo2
+                    sudo apt install -y git curl wget micro htop btop nvtop eza nala cmatrix cpufetch fastfetch vlc fonts-noto-color-emoji libfreetype6 fontconfig libcairo2
                     #Flatpaks
                     flatpak install -y io.m51.Gelly dev.vencord.Vesktop app.fluxer.Fluxer im.riot.Riot
                     # 3rd Party  Packages
                     #Browser
-                    curl -fsSLO "https://dl.brave.com/install.sh{,.asc}"
-                    gpg --keyserver hkps://keys.openpgp.org --recv-keys D16166072CACDF2C9429CBF11BF41E37D039F691
-                    gpg --verify install.sh.asc install.sh
-                    FLAVOR=origin sh install.sh
-                    rm install.sh.asc
-                            
+                    curl -fsS https://dl.brave.com/install.sh | FLAVOR=origin sh
+                    
+                    #Terminal
+                    curl -fsSL https://apt.fury.io/wez/gpg.key | sudo gpg --yes --dearmor -o /usr/share/keyrings/wezterm-fury.gpg
+                    echo 'deb [signed-by=/usr/share/keyrings/wezterm-fury.gpg] https://apt.fury.io/wez/ * *' | sudo tee /etc/apt/sources.list.d/wezterm.list
+                    sudo chmod 644 /usr/share/keyrings/wezterm-fury.gpg
+                    sudo apt update
+                    sudo apt install wezterm -y                
                       
                     ;;
                 "prod")
