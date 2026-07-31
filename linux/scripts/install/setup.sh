@@ -1,6 +1,6 @@
 #!/bin/bash
 # TUI Installer for making Debian-based Distros work for me after install(like Linux Mint.) 
-# Version 0.1
+# Version 0.5
 
 # === System Functions === #
 
@@ -84,7 +84,7 @@ install_profile() {
                      # Repository Packages
                     sudo apt install -y build-essential gcc make python3 python3-pip
                     
-                    #3td Party Packages
+                    #3rd Party Packages
                     #Fresh Editor
                     curl -sL $(curl -s https://api.github.com/repos/sinelaw/fresh/releases/latest | grep "browser_download_url.*_$(dpkg --print-architecture)\.deb" | cut -d '"' -f 4) -o fresh-editor.deb && sudo dpkg -i fresh-editor.deb
                     #lazygit
@@ -103,7 +103,7 @@ install_profile() {
                     ;;
                 "utils")
                     echo "Installing Utilities..."
-                    sudo apt install -y s-tui duf gparted gnome-firmware
+                    sudo apt install -y s-tui duf gparted gnome-firmware nvtop btop htop
                     ;;
             esac
         done <<< "$selections"
