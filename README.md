@@ -12,7 +12,7 @@
 :MMM:MMMM`  :MM.  -MM-  .MM:  `MMMM:MMM:   ├ System Theme: Mint-Y
 :MMM:MMMM`  :MM.  -MM-  .MM:  `MMMM-MMM:   └ System Icons: Mint-Y
 .MMM.MMMM`  :MM:--:MM:--:MM:  `MMMM.MMM.    
- :MMM:MMM-  `-MMMMMMMMMMMM-`  -MMM-MMM:   PC/Laptop: Too Many, Less than I used to (I don't have a problem I swear!)
+ :MMM:MMM-  `-MMMMMMMMMMMM-`  -MMM-MMM:   PC/Laptop: My wife says I have a problem XD (I call it projects)
   :MMM:MMM:`                `:MMM:MMM:     ├ Laptops: Thinkpad T15, Thinkpad P53, HP ProBook 440 G9, Dell Latitude 7390 (2in1)
    .MMM.MMMM:--------------:MMMM.MMM.      ├ Main: AMD Ryzen 7 7700X; 32GB DDR5 RAM; AMD RX6950XT
      '-MMMM.-MMMMMMMMMMMMMMM-.MMMM-'       ├ CPU: AMD/Intel
@@ -21,8 +21,8 @@
                ``-:::::-``                TLC Distro Challenge: 30 Day [+] |6 Month [+] | 2 Year [+] | 4 Year [*]
                                            ├ Achievements: Gifmaster, Davinci Resolve Working on Intel, AMD & NVIDIA GPUs
                                            | Converted Wife to Linux (Mint), Homelab 3.0 (TrueNAS) and VMs (Proxmox+ KVM)
-                                           ├ ToDo's: Learn a Language (C/Rust/Python), Improve Scripts, Convert to KVM from 
-                                           └ Virtualbox/VMware, Learn Blender, Reduce Reliance on Windows                
+                                           ├ ToDo's: Learn a Language (C/Rust/Python), Improve Scripts[+], Convert to KVM from 
+                                           └ Virtualbox/VMware[*], Learn Blender, Reduce Reliance on Windows [+]               
 ```
 System setup and configs for my linux systems. I have a few hanging around but I try to leave their configs here as I can.
 ## Important links
@@ -43,8 +43,7 @@ System setup and configs for my various systems. I have a few hanging around but
 
  - Linux Mint                  
  - Linux Mint [Debian Edition]
- - Windows [10/11]
- - MacOS [Monterey]
+ - Windows [11]
 
 those platforms shoudl give you a nice time. I primarily work with apt and flaptak so take that for what you will.
 
