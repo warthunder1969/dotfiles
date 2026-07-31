@@ -39,6 +39,7 @@ alias ed='micro'
 alias rl='source ~/.bashrc'
 alias dt='cd ~/Nextcloud/Projects/git/dotfiles/linux'
 alias gt='cd ~/Nextcloud/Projects/git'
+alias lg='lazygit'
 alias ff="fastfetch"
 alias cf="cpufetch"
 alias lc="bash $HOME/Nextcloud/Projects/git/dotfiles/linux/scripts/tools/system_age.sh"

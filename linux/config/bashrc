@@ -4,6 +4,10 @@
 
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
+# Starship Prompt
+if command -v starship >/dev/null 2>&1; then
+    eval "$(starship init $SHELL)"
+fi   
 
 # don't put duplicate lines in the history. See bash(1) for more options
 # don't overwrite GNU Midnight Commander's setting of `ignorespace'.
