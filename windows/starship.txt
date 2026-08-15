@@ -1,2 +1,0 @@
-New-Item -ItemType Directory -Force ~/.config
-New-Item -ItemType File ~/.config/starship.toml
