@@ -25,7 +25,8 @@ $Apps = @(
     "foxitreader",
     "7zip",
     "notepadplusplus",
-    "wezterm",
+	"open-shell",
+    "alacritty",
     "dotnet-6.0-desktopruntime"	
 
 )
