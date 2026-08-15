@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<Settings component="StartMenu" version="4.4.198">
+	<ShiftRight value="1"/>
+	<SkinW7 value="Fluent-Metro"/>
+	<SkinVariationW7 value=""/>
+	<SkinOptionsW7>
+		<Line>USER_IMAGE=1</Line>
+		<Line>SMALL_ICONS=0</Line>
+		<Line>LARGE_FONT=0</Line>
+		<Line>ICON_FRAMES=1</Line>
+		<Line>OPAQUE=0</Line>
+	</SkinOptionsW7>
+	<SkipMetro value="1"/>
+</Settings>
