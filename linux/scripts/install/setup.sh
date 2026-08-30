@@ -60,8 +60,9 @@ install_profile() {
                     flatpak install -y io.m51.Gelly com.discordapp.Discord app.fluxer.Fluxer im.riot.Riot
                     # 3rd Party  Packages
                     #Browser
-                    curl -fsS https://dl.brave.com/install.sh | FLAVOR=origin sh
-                      
+                    wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb -O $HOME/Downloads/google-chrome-stable_current_amd64.deb
+                    sudo apt install $HOME/Downloads/google-chrome-stable_current_amd64.deb
+                    rm $HOME/Downloads/google-chrome-stable_current_amd64.deb
                     ;;
                 "prod")
                     echo "Installing Production Applications..."

@@ -49,10 +49,10 @@ case $CHOICE in
     1)
         echo "Installing..."
 		
-		wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb -O $HOME/chrome.deb
-		sudo apt install $HOME/chrome.deb
-		rm $HOME/chrome.deb
-
+		wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb -O $HOME/Downloads/google-chrome-stable_current_amd64.deb
+        sudo apt install $HOME/Downloads/google-chrome-stable_current_amd64.deb
+        rm $HOME/Downloads/google-chrome-stable_current_amd64.deb
+                    
 		# Check if Package Installed
 		if dpkg-query -W -f='${Status}' "google-chrome-stable" 2>/dev/null | grep -q "ok installed"; then
 			  echo "$app is installed"
