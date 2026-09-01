@@ -42,7 +42,7 @@ function Show-TUI-Menu {
                 # Define Packages
                 $Apps = @(
                     "chocolateygui",
-                    "brave",
+                    "googlechrome",
                     "keepassxc",
                     "git",
                     "vlc",
@@ -50,7 +50,7 @@ function Show-TUI-Menu {
                     "discord",
                     "element-desktop",
                     "foxitreader",
-                    "7zip",
+                    "winrar",
                     "notepadplusplus",
                     "open-shell",
                     "alacritty",
