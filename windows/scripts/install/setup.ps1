@@ -50,7 +50,7 @@ function Show-TUI-Menu {
                     "discord",
                     "element-desktop",
                     "foxitreader",
-                    "winrar",
+                    "7-zip",
                     "notepadplusplus",
                     "open-shell",
                     "alacritty",
