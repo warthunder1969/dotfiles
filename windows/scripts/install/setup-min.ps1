@@ -15,15 +15,13 @@ choco feature enable -n allowGlobalConfirmation
 # Define Packages
 $Apps = @(
     "chocolateygui",
-    "googlechrome",
+    "firefox",
     "keepassxc",
-    "git",
     "vlc",
     "foxitreader",
-    "winrar",
+    "7-zip",
     "notepadplusplus",
     "open-shell",
-    "alacritty",
     "dotnet-6.0-desktopruntime"	
 
 )
