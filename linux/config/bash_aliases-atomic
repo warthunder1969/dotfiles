@@ -1,0 +1,50 @@
+## Aliases
+
+# Replace ls with eza
+if [[ -x /usr/bin/eza ]]; then
+  alias ls='eza -al --color=always --group-directories-first --icons'     # preferred listing
+  alias la='eza -a --color=always --group-directories-first --icons'      # all files and dirs
+  alias ll='eza -l --color=always --group-directories-first --icons'      # long format
+  alias lt='eza -aT --color=always --group-directories-first --icons'     # tree listing
+  alias l.='eza -ald --color=always --group-directories-first --icons .*' # show only dotfiles
+fi
+
+# Common use
+alias tarnow='tar -acf '
+alias untar='tar -zxvf '
+alias l='dir --color=auto'
+alias hw='hwinfo --short'
+alias df='duf'
+alias x="exit"
+
+# Package Management
+alias up='ujust update -y'
+alias rf='flatpak remote-ls --updates'
+alias in='sudo flatpak install'
+alias re='sudo flatpak remove'
+alias se='flatpak search'
+
+# Dotfiles & Files
+alias bs='micro ~/.bashrc'
+alias ba='micro ~/.bash_aliases'
+alias ed='micro'
+alias rl='source ~/.bashrc'
+alias ef='exec fish'
+alias dt='cd ~/Nextcloud/Projects/git/dotfiles/linux'
+alias ff="fastfetch"
+alias fastfetch="fastfetch -c ~/.config/fastfetch/config.jsonc"
+alias cf="cpufetch"
+alias lc="bash $HOME/Nextcloud/Projects/git/dotfiles/linux/scripts/tools/system_age.sh"
+alias fs="micro ~/.config/fish/config.fish"
+# Other
+alias free='free -h'
+alias myip="ip -f inet address | grep inet | grep -v 'lo$' | cut -d ' ' -f 6,13 && curl ifconfig.me && echo ' external ip'"
+alias tstat="tailscale status"
+alias tcon="tailscale configure"
+alias tip="tailscale ip -4"
+alias tup="tailscale up || tailscale status"
+alias tdo="tailscale down ||  tailscale status"
+
+# Add an "alert" alias for long running commands.  Use like so:
+#   sleep 10; alert
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
