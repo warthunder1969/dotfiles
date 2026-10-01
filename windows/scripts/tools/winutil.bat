@@ -1,0 +1,1 @@
+& ([ScriptBlock]::Create((irm https://christitus.com/win))) -Preset Standard
