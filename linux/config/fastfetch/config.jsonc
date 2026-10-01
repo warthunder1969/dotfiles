@@ -6,17 +6,17 @@
     "modules": [
         {
             "type": "os",
-            "key": "󰣭 OS",
+            "key": " OS",
             "keyColor": "yellow"
         },
         {
             "type": "kernel",
-            "key": "├ Kernel",
+            "key": "├ Kernel",
             "keyColor": "yellow"
         },
         {
             "type": "packages",
-            "key": "├󰏖 Packages",
+            "key": "├ Packages",
             "keyColor": "yellow"
         },
         {
@@ -52,60 +52,60 @@
         },
         {
             "type": "wm",
-            "key": "├󰧨 Window Manager",
+            "key": "├ Window Manager",
             "keyColor": "blue"
         },
         {
             "type": "lm",
-            "key": "├󰧨 Login Manager",
+            "key": "├ Login Manager",
             "keyColor": "blue"
         },
         {
             "type": "wmtheme",
-            "key": "├󰉼 System Theme",
+            "key": "├ System Theme",
             "keyColor": "blue"
         },
         {
             "type": "icons",
-            "key": "└󰸉 System Icons",
+            "key": "└ System Icons",
             "keyColor": "blue"
         },
             "break",
         {
             "type": "host",
-            "key": "󰇅 PC",
+            "key": " PC",
             "keyColor": "green"
         },
         {
             "type": "cpu",
-            "key": "├󰻠 CPU",
+            "key": "├ CPU",
             "keyColor": "green",
             "temp": false,
             "freqNdigits": 1
         },
         {
             "type": "memory",
-            "key": "├󰑭 RAM",
+            "key": "├ RAM",
             "keyColor": "green"
         },
         {
             "type": "swap",
-            "key": "├󰓡 Swap",
+            "key": "├󰯍 Swap",
             "keyColor": "green"
         },
         {
             "type": "disk",
-            "key": "├󰉉 Disk",
+            "key": "├󰋊 Disk",
             "keyColor": "green"
         },
         {
             "type": "gpu",
-            "key": "├󰍛 GPU",
+            "key": "├ GPU",
             "keyColor": "green"
         },
         {
             "type": "display",
-            "key": "└󰍹 Display(s)",
+            "key": "└ Display(s)",
             "keyColor": "green"
         },
     "break",
