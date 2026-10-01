@@ -1,4 +1,4 @@
-import = ["~/.config/alacritty/themes/monokai_charcoal.toml"]
+import = ["~/.config/alacritty/themes/monokai.toml"]
 
 live_config_reload = true
 
