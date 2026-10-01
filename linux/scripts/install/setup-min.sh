@@ -10,6 +10,7 @@ YELLOW='\033[1;33m'
 BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
+
 # ============================================================================
 # FUNCTIONS
 # ============================================================================
@@ -17,7 +18,7 @@ NC='\033[0m' # No Color
 intro() {
     clear
 TITLE="Linux Setup Script"
-DESCRIPTION="This is a Setup Script for Debian-based Distros to apply post-install tweaks for me (like Linux Mint.) Press YES to continue or NO to exit. "
+DESCRIPTION="This is a Minimal Setup Script for fresh Debian-based Distros (like Linux Mint.) Press YES to continue or NO to exit. "
 
 
 # Display the welcome screen with Yes/No buttons
@@ -41,8 +42,6 @@ fi
 clear
 
 }
-
-
 
 
 section_header() {
@@ -83,11 +82,11 @@ tweak_system() {
 install_pkgs() {
     section_header "Installing Essential Packages"
         sudo apt update
-        sudo apt install -y git curl wget micro alacritty flameshot htop btop nvtop eza nala cmatrix cpufetch vlc fonts-noto-color-emoji libfreetype6 fontconfig libcairo2 nextcloud-desktop keepassxc dconf-editor virt-viewer
+        sudo apt install -y vlc fonts-noto-color-emoji libfreetype6 fontconfig libcairo2
         sudo apt install -yy ttf-mscorefonts-installer
     
     section_header "Installing Flatpaks"
-    flatpak install -y com.google.Chrome com.discordapp.Discord app.fluxer.Fluxer im.riot.Riot com.github.tchx84.Flatseal org.localsend.localsend_app com.tomjwatson.Emote flathub md.obsidian.Obsidian
+    flatpak install -y com.google.Chrome com.github.tchx84.Flatseal
 }
 
 configure_system() {
@@ -99,13 +98,6 @@ configure_system() {
         sudo flatpak override --filesystem=$HOME/.local/share/applications:create
         sudo flatpak override --filesystem=$HOME/.local/share/icons:create
     
-    echo "Setting up Fonts & Themes" 
-        gsettings set org.cinnamon.desktop.interface icon-theme "Mint-Y"
-        gsettings set org.cinnamon.desktop.interface gtk-theme "Mint-Y-Dark"
-        gsettings set org.cinnamon.theme name "Mint-Y-Dark"
-        gsettings set org.cinnamon.desktop.interface font-name "Noto Sans Regular 10"
-	    gsettings set org.nemo.desktop font "Noto Sans Regular 12"
-	    gsettings set org.cinnamon.desktop.wm.preferences titlebar-font "Noto Sans Bold 10"
 }
 
 # ============================================================================
