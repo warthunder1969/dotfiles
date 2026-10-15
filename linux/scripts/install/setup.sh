@@ -87,7 +87,7 @@ install_pkgs() {
         sudo apt install -yy ttf-mscorefonts-installer
     
     section_header "Installing Flatpaks"
-    flatpak install -y com.google.Chrome com.discordapp.Discord app.fluxer.Fluxer im.riot.Riot com.github.tchx84.Flatseal org.localsend.localsend_app com.tomjwatson.Emote flathub md.obsidian.Obsidian
+    flatpak install -y com.google.Chrome net.waterfox.waterfox com.discordapp.Discord app.fluxer.Fluxer im.riot.Riot com.github.tchx84.Flatseal org.localsend.localsend_app com.tomjwatson.Emote flathub md.obsidian.Obsidian
 }
 
 configure_system() {

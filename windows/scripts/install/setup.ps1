@@ -42,7 +42,8 @@ function Show-TUI-Menu {
                 # Define Packages
                 $Apps = @(
                     "chocolateygui",
-                    "firefox",
+                    "waterfox",
+                    "brave",
                     "keepassxc",
                     "git",
                     "vlc",
