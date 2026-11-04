@@ -30,7 +30,7 @@
         "description": "Date format",
         "dependency": "use-custom-format",
         "tooltip": "Set your custom format here.",
-        "value": "%I:%M %p%n%x"
+        "value": "%m/%d/%Y \u2022 %I:%M %p"
     },
     "custom-tooltip-format": {
         "type": "entry",
@@ -56,7 +56,7 @@
         "description": "Show calendar",
         "default": "<Super>c",
         "tooltip": "Set keybinding(s) to show the calendar.",
-        "value": "<Super>c"
+        "value": "<Alt>c"
     },
     "__md5__": "de90b5cca13fa5a4289009477b98b2f7"
 }

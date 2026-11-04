@@ -145,7 +145,7 @@
             }
         ],
         "default_category": "Linux Mint",
-        "value": "/home/war/.local/share/icons/st-gold.png"
+        "value": "/home/war/Nextcloud/Projects/git/st-logos/st-logo-border-purple.png"
     },
     "menu-icon-size": {
         "type": "spinbutton",
@@ -156,7 +156,7 @@
         "units": "px",
         "description": "Icon size",
         "dependency": "menu-custom",
-        "value": 46.0
+        "value": 46
     },
     "menu-label": {
         "type": "entry",
@@ -289,7 +289,7 @@
         "max": 600,
         "step": 1,
         "description": "Maximum sidebar width (px)",
-        "value": 280.0
+        "value": 280
     },
     "show-favorites": {
         "type": "switch",
@@ -356,7 +356,7 @@
     "popup-width": {
         "type": "generic",
         "default": 665,
-        "value": 756.7452392578125
+        "value": 845.1118774414062
     },
     "popup-height": {
         "type": "generic",
