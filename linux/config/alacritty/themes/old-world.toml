@@ -1,0 +1,36 @@
+# github Alacritty Colors
+
+# Default colors
+[colors.primary]
+background = '#161617'
+foreground = '#C9C7CD'
+
+# Normal colors
+[colors.normal]
+black   = '#131314'
+red     = '#ea83a5'
+green   = '#90b99f'
+yellow  = '#e6b99d'
+blue    = '#92a2d5'
+magenta = '#e29eca'
+cyan    = '#85b5ba'
+white   = '#d1d5da'
+
+# Bright colors
+[colors.bright]
+black   = '#959da5'
+red     = '#f97583'
+green   = '#85e89d'
+yellow  = '#ffea7f'
+blue    = '#79b8ff'
+magenta = '#aca1cf'
+cyan    = '#56d4dd'
+white   = '#fafbfc'
+
+[[colors.indexed_colors]]
+index = 16
+color = '#f5a191'
+
+[[colors.indexed_colors]]
+index = 17
+color = '#e29eca'
