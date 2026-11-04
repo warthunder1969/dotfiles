@@ -75,8 +75,6 @@ tweak_system() {
     echo "Optimizing swappiness" 
         echo 'vm.swappiness=10' | sudo tee /etc/sysctl.d/99-custom.conf &>/dev/null
     
-    echo "Setting timezone to UTC"
-        sudo timedatectl set-timezone UTC
 }
 
 
@@ -87,7 +85,7 @@ install_pkgs() {
         sudo apt install -yy ttf-mscorefonts-installer
     
     section_header "Installing Flatpaks"
-    flatpak install -y com.google.Chrome net.waterfox.waterfox com.discordapp.Discord app.fluxer.Fluxer im.riot.Riot com.github.tchx84.Flatseal org.localsend.localsend_app com.tomjwatson.Emote flathub md.obsidian.Obsidian
+    flatpak install -y com.google.Chrome com.brave.Browser net.waterfox.waterfox com.discordapp.Discord app.fluxer.Fluxer im.riot.Riot com.github.tchx84.Flatseal org.localsend.localsend_app com.tomjwatson.Emote flathub md.obsidian.Obsidian
 }
 
 configure_system() {
