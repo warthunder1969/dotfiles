@@ -1,0 +1,21 @@
+/************************************************************************************************/
+/*  Mint-Y only: bigger windows title bar buttons. Thx @delete44!
+ 	min-height, min-width, background-size: 20px ... 30px ... 40px ... 50px ... 60px        */
+/************************************************************************************************/
+
+headerbar button.titlebutton,
+.titlebar button.titlebutton {
+  min-height: 32px;
+  min-width: 32px;
+  padding: 0px;
+  margin: 4px 1px;
+}
+
+headerbar button.titlebutton.close,
+headerbar button.titlebutton.maximize,
+headerbar button.titlebutton.minimize,
+.titlebar button.titlebutton.close,
+.titlebar button.titlebutton.maximize,
+.titlebar button.titlebutton.minimize {
+  background-size: 32px 32px;
+}
