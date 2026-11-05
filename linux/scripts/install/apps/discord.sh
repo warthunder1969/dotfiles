@@ -1,6 +1,6 @@
 #!/bin/bash
-#Warthunder's Discord installation script
-#Version 1.0
+#Warthunder's Simple Installation Script
+#Version 1.3
 
 # Ensure dialog is installed
 if ! command -v dialog &> /dev/null; then
@@ -9,70 +9,70 @@ if ! command -v dialog &> /dev/null; then
 fi
 
 # Variables
-$app="Discord"
-# Define the Title and the Summary Message
-DIALOG_TITLE="WELCOME"
+app="Discord"
 
-# Use triple quotes for cleaner multi-line strings in the message
-SCRIPT_SUMMARY="
-Welcome to Warthunder's $app Install Script!
 
-This script is for installing $app on Debian 
-based systems.
+# Define Menu and Summary
+HEIGHT=15
+WIDTH=40
+CHOICE_HEIGHT=5
+BACKTITLE="Warthunder's $app Installation Script"
+TITLE="$app Installer"
+MENU="Please choose an Installation Method:"
 
-This script is provided as-is. Press OK to Continue.
-"
-dialog --clear \
-    --title "$DIALOG_TITLE" \
-    --msgbox "$SCRIPT_SUMMARY" 15 60 \
-    2>&1 >/dev/tty
+OPTIONS=(1 "Official Package (DEB)"
+         2 "Flatpak (Flathub)"
+         3 "Vesktop (Flathub)"
+         4 "Webcord (Flathub)")
 
-# Clear the dialog screen upon exit
+CHOICE=$(dialog --clear \
+                --backtitle "$BACKTITLE" \
+                --title "$TITLE" \
+                --menu "$MENU" \
+                $HEIGHT $WIDTH $CHOICE_HEIGHT \
+                "${OPTIONS[@]}" \
+                2>&1 >/dev/tty)
+
 clear
-
-OPTIONS=(
-    1 "Debian Package (Deb)"
-    2 "Flatpak (Flathub)"    
-)
-
-# Use dialog to display a menu box and capture the user's choice
-CHOICE=$(dialog --clear --title "$app Installation Script" \
-    --menu "Select Which Version to Install:" 15 50 4 "${OPTIONS[@]}" \
-    2>&1 >/dev/tty)
-
-# Clear the dialog screen upon exit
-clear
-
-# Execute based on the user's choice
 case $CHOICE in
-    1)
-        echo "Installing..."
-		wget -O $HOME/discord.deb "https://discord.com/api/download?platform=linux" 
-		sudo dpkg -i $HOME/discord.deb 
-		rm ~/discord.deb
-		
-		# Check if Package Installed
-		if dpkg-query -W -f='${Status}' "discord" 2>/dev/null | grep -q "ok installed"; then
-		  echo "$app is installed"
-		else
-		  echo "$app was NOT installed"
-		fi
-					
-        ;;
-    
-    2)
-         echo "Installing..."
-		dpkg -l | grep -qw flatpak || sudo apt install -yyq flatpak
-		flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-		flatpak install flathub com.discordapp.Discord		
-		echo "Installed!"
+   1)
+        wget "https://discord.com/api/download?platform=linux&format=deb" -O discord.deb
+        dpkg-deb -f discord.deb
 
+        if dpkg-query -W -f='${Status}' "discord" 2>/dev/null | grep -q "ok installed"; then
+            echo "$app was Installed"
+        else
+            echo "$app was NOT Installed"
+        fi
+        ;;
+
+    2)
+        dpkg -l | grep -qw flatpak || sudo apt install -yyq flatpak
+        flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+        flatpak install flathub dev.vencord.Vesktop
+
+        if flatpak install -y flathub dev.vencord.Vesktop &&
+           flatpak info dev.vencord.Vesktop >/dev/null 2>&1; then
+            echo "Vesktop was installed."
+        else
+            echo "Vesktop wasn't installed."
+        fi
+        ;;
+
+    3)
+        dpkg -l | grep -qw flatpak || sudo apt install -yyq flatpak
+        flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+        flatpak install flathub io.github.spacingbat3.webcord
+
+        if flatpak install -y flathub io.github.spacingbat3.webcord &&
+           flatpak info io.github.spacingbat3.webcord >/dev/null 2>&1; then
+            echo "Webcord was installed."
+        else
+            echo "Webcord wasn't installed."
+        fi
         ;;
 
     *)
         echo "Script Aborted or Cancelled."
         ;;
 esac
-
-
-

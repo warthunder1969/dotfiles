@@ -1,6 +1,6 @@
 #!/bin/bash
-#Warthunder's Vivaldi Browser installation script
-#Version 1.0
+#Warthunder's Simple Installation Script
+#Version 1.1
 
 # Ensure dialog is installed
 if ! command -v dialog &> /dev/null; then
@@ -11,66 +11,50 @@ fi
 # Variables
 app="Vivaldi"
 
-# Define the Title and the Summary Message
-DIALOG_TITLE="WELCOME"
 
-# Use triple quotes for cleaner multi-line strings in the message
-SCRIPT_SUMMARY="
-Welcome to Warthunder's $app Install Script!
+# Define Menu and Summary
+HEIGHT=15
+WIDTH=40
+CHOICE_HEIGHT=3
+BACKTITLE="Warthunder's $app Installation Script"
+TITLE="$app Installer"
+MENU="Please choose an Installation Method:"
 
-This script is for installing $app on Debian 
-based systems.
+OPTIONS=(1 "Vivaldi Repository"
+         2 "Flatpak (Flathub)")
 
-This script is provided as-is. Press OK to Continue.
-"
-dialog --clear \
-    --title "$DIALOG_TITLE" \
-    --msgbox "$SCRIPT_SUMMARY" 15 60 \
-    2>&1 >/dev/tty
+CHOICE=$(dialog --clear \
+                --backtitle "$BACKTITLE" \
+                --title "$TITLE" \
+                --menu "$MENU" \
+                $HEIGHT $WIDTH $CHOICE_HEIGHT \
+                "${OPTIONS[@]}" \
+                2>&1 >/dev/tty)
 
-# Clear the dialog screen upon exit
 clear
-
-OPTIONS=(
-    1 "Repository (Vivaldi-Stable)"
-    2 "Flatpak (Flathub)"    
-)
-
-# Use dialog to display a menu box and capture the user's choice
-CHOICE=$(dialog --clear --title "$app Installation Script" \
-    --menu "Select Which Version to Install:" 15 50 4 "${OPTIONS[@]}" \
-    2>&1 >/dev/tty)
-
-# Clear the dialog screen upon exit
-clear
-
-# Execute based on the user's choice
 case $CHOICE in
-    1)
-        echo "Downloading: $app"
-        curl -fL --retry 5 -o "$HOME/vivaldi-stable.deb" "https://vivaldi.com/download/vivaldi-stable_amd64.deb"
-        
-        echo "Installing .deb"
-        sudo apt-get update -y
-        sudo dpkg -i $HOME/vivaldi-stable.deb || sudo apt-get -f install -y
-        rm $HOME/vivaldi-stable.deb
-                    
-		# Check if Package Installed
-		if dpkg-query -W -f='${Status}' "vivaldi-stable" 2>/dev/null | grep -q "ok installed"; then
-			  echo "$app is installed"
-		else
-			  echo "$app was NOT installed"
-		fi
-		
+   1)
+        wget "https://vivaldi.com/download/vivaldi-stable_amd64.deb" -O vivaldi.deb
+        dpkg-deb -f vivaldi.deb
+
+        if dpkg-query -W -f='${Status}' "vivaldi-stable" 2>/dev/null | grep -q "ok installed"; then
+            echo "$app was Installed"
+        else
+            echo "$app was NOT Installed"
+        fi
         ;;
 
     2)
-         echo "Installing..."
-		dpkg -l | grep -qw flatpak || sudo apt install -yyq flatpak
-		flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-		flatpak install flathub com.vivaldi.Vivaldi	
-		echo "Installed!"
+        dpkg -l | grep -qw flatpak || sudo apt install -yyq flatpak
+        flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+        flatpak install flathub com.vivaldi.Vivaldi
 
+        if flatpak install -y flathub com.vivaldi.Vivaldi &&
+           flatpak info com.vivaldi.Vivaldi >/dev/null 2>&1; then
+            echo "$app was installed."
+        else
+            echo "$app wasn't installed."
+        fi
         ;;
 
     *)

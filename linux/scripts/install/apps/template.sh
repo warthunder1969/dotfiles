@@ -1,78 +1,35 @@
 #!/bin/bash
-#Warthunder's  installation script
-#Version #
+#Warthunder's Simple Installation Script
+#Version 1.0
 
-# Ensure dialog is installed
-if ! command -v dialog &> /dev/null; then
-    echo "Error: 'dialog' is not installed. Please install it to use this script (e.g., sudo apt install dialog)."
-    exit 1
-fi
+HEIGHT=15
+WIDTH=40
+CHOICE_HEIGHT=4
+BACKTITLE="Backtitle here"
+TITLE="Title here"
+MENU="Choose one of the following options:"
 
-# Variables
-$app=""
-# Define the Title and the Summary Message
-DIALOG_TITLE="WELCOME"
+OPTIONS=(1 "Option 1"
+         2 "Option 2"
+         3 "Option 3")
 
-# Use triple quotes for cleaner multi-line strings in the message
-SCRIPT_SUMMARY="
-Welcome to Warthunder's $app Install Script!
+CHOICE=$(dialog --clear \
+                --backtitle "$BACKTITLE" \
+                --title "$TITLE" \
+                --menu "$MENU" \
+                $HEIGHT $WIDTH $CHOICE_HEIGHT \
+                "${OPTIONS[@]}" \
+                2>&1 >/dev/tty)
 
-This script is for installing $app on Debian 
-based systems.
-
-This script is provided as-is. Press OK to Continue.
-"
-dialog --clear \
-    --title "$DIALOG_TITLE" \
-    --msgbox "$SCRIPT_SUMMARY" 15 60 \
-    2>&1 >/dev/tty
-
-# Clear the dialog screen upon exit
 clear
-#Install Base Packages
-echo "Installing Depenencies"
-dpkg -l | grep -qw wget || sudo apt install -yyq wget
-dpkg -l | grep -qw apt-transport-https || sudo apt install -yyq apt-transport-https
-
-OPTIONS=(
-    1 "Repository Package (Stable)"
-    2 "Tarball (tar.gz)"
-    3 "Flatpak (Flathub)"    
-)
-
-# Use dialog to display a menu box and capture the user's choice
-CHOICE=$(dialog --clear --title "$app Installation Script" \
-    --menu "Select Which Version to Install:" 15 50 4 "${OPTIONS[@]}" \
-    2>&1 >/dev/tty)
-
-# Clear the dialog screen upon exit
-clear
-
-# Execute based on the user's choice
 case $CHOICE in
-    1)
-       echo "Installing..."
-
-       echo "Installed!"
-		
-        ;;
-    2)
-       echo "Installing..."
-
-       echo "Installed!"
-		
-        ;;
-    3)
-       echo "Installing..."
-
-       echo "Installed!"
-		
-        ;;
-
-    *)
-        echo "Script Aborted or Cancelled."
-        ;;
+        1)
+            echo "You chose Option 1"
+            ;;
+        2)
+            echo "You chose Option 2"
+            ;;
+        3)
+            echo "You chose Option 3"
+            ;;
 esac
-
-
-

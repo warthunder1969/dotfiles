@@ -1,6 +1,6 @@
 #!/bin/bash
-#Warthunder's Fluxer installation script
-#Version 1.0
+#Warthunder's Simple Installation Script
+#Version 1.1
 
 # Ensure dialog is installed
 if ! command -v dialog &> /dev/null; then
@@ -9,73 +9,61 @@ if ! command -v dialog &> /dev/null; then
 fi
 
 # Variables
-$app="Fluxer"
+app="Fluxer"
 
-# Define the Title and the Summary Message
-DIALOG_TITLE="WELCOME"
 
-# Use triple quotes for cleaner multi-line strings in the message
-SCRIPT_SUMMARY="
-Welcome to Warthunder's $app Install Script!
+# Define Menu and Summary
+HEIGHT=15
+WIDTH=40
+CHOICE_HEIGHT=3
+BACKTITLE="Warthunder's $app Installation Script"
+TITLE="$app Installer"
+MENU="Please choose an Installation Method:"
 
-This script is for installing Fluxer on Debian 
-based systems.
+OPTIONS=(1 "Fluxer Repository"
+         2 "Flatpak (Flathub)")
 
-This script is provided as-is. Press OK to Continue.
-"
-dialog --clear \
-    --title "$DIALOG_TITLE" \
-    --msgbox "$SCRIPT_SUMMARY" 15 60 \
-    2>&1 >/dev/tty
+CHOICE=$(dialog --clear \
+                --backtitle "$BACKTITLE" \
+                --title "$TITLE" \
+                --menu "$MENU" \
+                $HEIGHT $WIDTH $CHOICE_HEIGHT \
+                "${OPTIONS[@]}" \
+                2>&1 >/dev/tty)
 
-# Clear the dialog screen upon exit
 clear
-
-OPTIONS=(
-    1 "Debian Package (DEB)"
-    2 "Flatpak (Flathub)"    
-)
-
-# Use dialog to display a menu box and capture the user's choice
-CHOICE=$(dialog --clear --title "$app Installation Script" \
-    --menu "Select Which Version to Install:" 15 50 4 "${OPTIONS[@]}" \
-    2>&1 >/dev/tty)
-
-# Clear the dialog screen upon exit
-clear
-
-# Execute based on the user's choice
 case $CHOICE in
-    1)
-        echo "Installing..."
-		
-		wget https://api.fluxer.app/dl/desktop/stable/linux/x64/latest/deb -O $HOME/fluxer.deb
-		sudo apt install $HOME/fluxer.deb
-		rm $HOME/fluxer.deb
+   1)
+        sudo install -d -m 0755 /etc/apt/keyrings
+        sudo curl -fsSL -o /etc/apt/keyrings/fluxer-archive-keyring.gpg \
+  https://pkgs.fluxer.com/keys/fluxer-archive-keyring.gpg
+        sudo curl -fsSL -o /etc/apt/sources.list.d/fluxer.sources \
+  https://pkgs.fluxer.com/deb/fluxer.sources
 
-		# Check if Package Installed
-		if dpkg-query -W -f='${Status}' "fluxer" 2>/dev/null | grep -q "ok installed"; then
-			  echo "$app is installed"
-		else
-			  echo "$app was NOT installed"
-		fi
-		
+        sudo apt update
+        sudo apt install fluxer
+
+        if dpkg-query -W -f='${Status}' "fluxer" 2>/dev/null | grep -q "ok installed"; then
+            echo "$app was Installed"
+        else
+            echo "$app was NOT Installed"
+        fi
         ;;
 
-   
     2)
-         echo "Installing..."
-		dpkg -l | grep -qw flatpak || sudo apt install -yyq flatpak
-		flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-		flatpak install flathub app.fluxer.Fluxer		
-		echo "Installed!"
+        dpkg -l | grep -qw flatpak || sudo apt install -yyq flatpak
+        flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+        flatpak install flathub app.fluxer.Fluxer
 
+        if flatpak install -y flathub app.fluxer.Fluxer &&
+           flatpak info app.fluxer.Fluxer >/dev/null 2>&1; then
+            echo "$app was installed."
+        else
+            echo "$app wasn't installed."
+        fi
         ;;
 
     *)
         echo "Script Aborted or Cancelled."
         ;;
 esac
-
-
-

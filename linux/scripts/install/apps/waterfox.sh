@@ -1,6 +1,6 @@
 #!/bin/bash
-#Warthunder's Floorp Browser installation script
-#Version 1.1
+#Warthunder's Simple Installation Script
+#Version 1.0
 
 # Ensure dialog is installed
 if ! command -v dialog &> /dev/null; then
@@ -11,67 +11,49 @@ fi
 # Variables
 app="Waterfox"
 
-# Define the Title and the Summary Message
-DIALOG_TITLE="WELCOME"
 
-# Use triple quotes for cleaner multi-line strings in the message
-SCRIPT_SUMMARY="
-Welcome to Warthunder's $app Install Script!
+# Define Menu and Summary
+HEIGHT=15
+WIDTH=40
+CHOICE_HEIGHT=3
+BACKTITLE="Warthunder's $app Installation Script"
+TITLE="$app Installer"
+MENU="Please choose an Installation Method:"
 
-This script is for installing $app on Debian 
-based systems.
+OPTIONS=(1 "Waterfox Repository"
+         2 "Flatpak (Flathub)")
 
-This script is provided as-is. Press OK to Continue.
-"
-dialog --clear \
-    --title "$DIALOG_TITLE" \
-    --msgbox "$SCRIPT_SUMMARY" 15 60 \
-    2>&1 >/dev/tty
+CHOICE=$(dialog --clear \
+                --backtitle "$BACKTITLE" \
+                --title "$TITLE" \
+                --menu "$MENU" \
+                $HEIGHT $WIDTH $CHOICE_HEIGHT \
+                "${OPTIONS[@]}" \
+                2>&1 >/dev/tty)
 
-# Clear the dialog screen upon exit
 clear
-
-OPTIONS=(
-    1 "Repository (PPA)"
-    2 "Flatpak (Flathub)"    
-)
-
-# Use dialog to display a menu box and capture the user's choice
-CHOICE=$(dialog --clear --title "$app Installation Script" \
-    --menu "Select Which Version to Install:" 15 50 4 "${OPTIONS[@]}" \
-    2>&1 >/dev/tty)
-
-# Clear the dialog screen upon exit
-clear
-
-# Execute based on the user's choice
 case $CHOICE in
-    1)
-        echo "Installing..."
-		
-		curl -fsSL https://download.opensuse.org/repositories/isv:/BrowserWorks/Debian_13/Release.key \
-				  | gpg --dearmor | sudo tee /usr/share/keyrings/waterfox.gpg > /dev/null
-		echo 'deb [signed-by=/usr/share/keyrings/waterfox.gpg] https://download.opensuse.org/repositories/isv:/BrowserWorks/Debian_13/ /' \
-				  | sudo tee /etc/apt/sources.list.d/waterfox.list
-		sudo apt update && sudo apt install waterfox		
+   1)
+        #TBD
 
-		# Check if Package Installed
-		if dpkg-query -W -f='${Status}' "waterfox" 2>/dev/null | grep -q "ok installed"; then
-			  echo "$app is installed"
-		else
-			  echo "$app was NOT installed"
-		fi
-		
+        if dpkg-query -W -f='${Status}' "waterfox" 2>/dev/null | grep -q "ok installed"; then
+            echo "$app was Installed"
+        else
+            echo "$app was NOT Installed"
+        fi
         ;;
 
-   
     2)
-         echo "Installing..."
-		dpkg -l | grep -qw flatpak || sudo apt install -yyq flatpak
-		flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-		flatpak install net.waterfox.waterfox		
-		echo "Installed!"
+        dpkg -l | grep -qw flatpak || sudo apt install -yyq flatpak
+        flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+        flatpak install flathub net.waterfox.waterfox
 
+        if flatpak install -y flathub net.waterfox.waterfox &&
+           flatpak info net.waterfox.waterfox >/dev/null 2>&1; then
+            echo "$app was installed."
+        else
+            echo "$app wasn't installed."
+        fi
         ;;
 
     *)
