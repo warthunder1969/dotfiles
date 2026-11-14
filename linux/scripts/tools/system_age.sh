@@ -37,11 +37,11 @@ AGE_DAYS=$((AGE_SECONDS / 86400))
 REMAINING_DAYS=$((TOTAL_LENGTH_DAYS - AGE_DAYS))
 
 # 5. Output results
-echo -en "\e[35m Challenge \e[0m" && echo -e "Linux Mint Distro Challenge"
+echo -en "\e[35m󰭹 Challenge \e[0m" && echo -e "Linux Mint Distro Challenge"
 
 #echo -en "\e[35m├󰻗 Installation Date\e[0m" && echo " $(date -d "@$INSTALL_EPOCH" '+%Y-%m-%d')"
 #echo -en "\e[35m├System Age\e[0m" && echo " $AGE_DAYS days"
-echo -en "\e[35m├ Challenge Length\e[0m" && echo " $TOTAL_LENGTH_DAYS days"
+echo -en "\e[35m├ Challenge Length\e[0m" && echo " $TOTAL_LENGTH_DAYS days"
 
 if [ $REMAINING_DAYS -gt 0 ]; then
     echo -en "\e[35m└󰥔 Status\e[0m" &&  echo " $REMAINING_DAYS days Remain"
