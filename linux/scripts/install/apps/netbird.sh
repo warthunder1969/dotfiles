@@ -51,6 +51,7 @@ case $CHOICE in
             echo "$app was Installed"
         else
             echo "$app was NOT Installed"
+         fi
         ;;
 
     *)
