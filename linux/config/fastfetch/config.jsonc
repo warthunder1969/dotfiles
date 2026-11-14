@@ -40,7 +40,7 @@
     },
     {
             "type": "command",
-            "key": "└󰥕 Age",
+            "key": "└󰅒 Age",
             "keyColor": "yellow",
             "text": "echo $(( ($(date +%s) - $(stat -c %W /)) / 86400 )) days ago",
     },
@@ -62,12 +62,18 @@
         },
         {
             "type": "wmtheme",
-            "key": "├ System Theme",
+            "key": "├ Theme",
             "keyColor": "blue"
         },
         {
             "type": "icons",
-            "key": "└ System Icons",
+            "key": "├ Icons",
+            "keyColor": "blue"
+        },
+        
+        {
+            "type": "cursor",
+            "key": "└ Cursor",
             "keyColor": "blue"
         },
             "break",
@@ -78,7 +84,8 @@
         },
         {
             "type": "cpu",
-            "key": "├ CPU",
+            "format": "{name} ({cores-physical}C/{cores-logical}T) @ {freq-max}",
+            "key": "├ CPU",
             "keyColor": "green",
             "temp": false,
             "freqNdigits": 1
@@ -88,25 +95,23 @@
             "key": "├ RAM",
             "keyColor": "green"
         },
-        {
-            "type": "swap",
-            "key": "├󰯍 Swap",
+               {
+            "type": "gpu",
+            "key": "├󰡀 GPU",
             "keyColor": "green"
         },
+
         {
             "type": "disk",
             "key": "├󰋊 Disk",
             "keyColor": "green"
         },
-        {
-            "type": "gpu",
-            "key": "├ GPU",
-            "keyColor": "green"
-        },
+ 
         {
             "type": "display",
             "key": "└ Display(s)",
-            "keyColor": "green"
+            "keyColor": "green",
+            "compactType": "original-with-refresh-rate"
         },
     "break",
   ]
