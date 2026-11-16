@@ -7,6 +7,7 @@
         {
             "type": "os",
             "key": " OS",
+            "format": "{pretty-name} ",
             "keyColor": "yellow"
         },
         {
@@ -80,26 +81,30 @@
         {
             "type": "host",
             "key": " PC",
+            "format": "{vendor} {name} ",            
             "keyColor": "green"
         },
         {
             "type": "cpu",
-            "format": "{name} ({cores-physical}C/{cores-logical}T) @ {freq-max}",
+            "format": "{name} ({cores-physical}C/{cores-logical}T) @ {freq-max}GHz",
             "key": "├ CPU",
             "keyColor": "green",
             "temp": false,
             "freqNdigits": 1
         },
+                       {
+            "type": "gpu",
+            "format": "{vendor} {name} ({type})",
+            "key": "├󰡀 GPU",
+            "keyColor": "green"
+        },
+        
         {
             "type": "memory",
             "key": "├ RAM",
             "keyColor": "green"
         },
-               {
-            "type": "gpu",
-            "key": "├󰡀 GPU",
-            "keyColor": "green"
-        },
+
 
         {
             "type": "disk",
