@@ -22,7 +22,7 @@ MENU="Please choose an Installation Method:"
 
 OPTIONS=(1 "Official Package (DEB)"
          2 "Flatpak (Flathub)"
-         3 "Vesktop (Flathub)"
+         3 "Legcord (Flathub)"
          4 "Webcord (Flathub)")
 
 CHOICE=$(dialog --clear \
@@ -49,13 +49,13 @@ case $CHOICE in
     2)
         dpkg -l | grep -qw flatpak || sudo apt install -yyq flatpak
         flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-        flatpak install flathub dev.vencord.Vesktop
+        flatpak install flathub app.legcord.Legcord
 
-        if flatpak install -y flathub dev.vencord.Vesktop &&
-           flatpak info dev.vencord.Vesktop >/dev/null 2>&1; then
-            echo "Vesktop was installed."
+        if flatpak install -y flathub app.legcord.Legcord &&
+           flatpak info app.legcord.Legcord >/dev/null 2>&1; then
+            echo "Legcord was installed."
         else
-            echo "Vesktop wasn't installed."
+            echo "Legcord wasn't installed."
         fi
         ;;
 
