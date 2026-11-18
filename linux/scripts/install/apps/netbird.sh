@@ -36,6 +36,7 @@ case $CHOICE in
    1)
         curl -sSL https://pkgs.netbird.io/debian/public.key | sudo gpg --dearmor --output /usr/share/keyrings/netbird-archive-keyring.gpg
  		echo 'deb [signed-by=/usr/share/keyrings/netbird-archive-keyring.gpg] https://pkgs.netbird.io/debian stable main' | sudo tee /etc/apt/sources.list.d/netbird.list
+		sudo apt update
 		sudo apt-get install netbird netbird-ui
 
         if dpkg-query -W -f='${Status}' "netbird" 2>/dev/null | grep -q "ok installed"; then
