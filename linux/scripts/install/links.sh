@@ -73,11 +73,12 @@ while true; do
             ln -sf $dotnext/Games $HOME/Desktop
             # Public Dots
             ln -sf $dotgit/linux/scripts/tools $HOME/Desktop
+            mkdir -p $config/fastfetch
             ln -sf $dotgit/linux/config/fastfetch/config.jsonc $config/fastfetch/config.jsonc
             ln -sf $dotgit/linux/config/bashrc $HOME/.bashrc
             ln -sf $dotgit/linux/config/bash_aliases $HOME/.bash_aliases
-            ln -sf $dotgit/linux/config/starship.toml $config
-            ln -sf $dotgit/linux/config/alacritty $config
+            
+            ln -sf $dotgit/linux/config/kitty $config
 		
             echo "Done!"
             sleep 2
