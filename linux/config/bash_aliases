@@ -44,16 +44,16 @@ alias ff="fastfetch"
 alias nf='neofetch'
 alias cf="cpufetch"
 alias lc="bash $HOME/Nextcloud/Projects/git/dotfiles/linux/scripts/tools/system_age.sh"
-
+alias speed="speedtest-cli"
 # System Management
 alias free='free -h'
 alias nap='sleep 15m && systemctl suspend'
 
 # VPN Related
 alias myip="ip -f inet address | grep inet | grep -v 'lo$' | cut -d ' ' -f 6,13 && curl ifconfig.me && echo ' external ip'"
-alias ts="tailscale status"
-alias tsup="sudo tailscale up"
-alias tsof="sudo tailscale down"
+#alias ts="tailscale status"
+#alias tsup="sudo tailscale up"
+#alias tsof="sudo tailscale down"
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
