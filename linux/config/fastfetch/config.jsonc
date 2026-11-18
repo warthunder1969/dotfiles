@@ -86,7 +86,7 @@
         },
         {
             "type": "cpu",
-            "format": "{name} ({cores-physical}C/{cores-logical}T) @ {freq-max}GHz",
+            "format": "{name} ({cores-physical}C/{cores-logical}T) @ {freq-max}",
             "key": "├ CPU",
             "keyColor": "green",
             "temp": false,
